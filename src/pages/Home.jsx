@@ -166,18 +166,26 @@ export default function Home() {
           {/* HERO TITLE */}
           <motion.h1
             style={{ x: moveX, y: moveY }}
-            className="text-7xl md:text-8xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)]"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-4 text-center"
           >
             EKARIKTHIN 2K26
           </motion.h1>
 
           <motion.p
-            className="text-2xl md:text-3xl text-cyan-300 font-bold mt-3 tracking-widest"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold mt-3 tracking-widest px-4 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            THE CULTURAL EXTRAVAGANZA OF NIT NAGALAND
+            THE CULTURAL EXTRAVAGANZA
+          </motion.p>
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-widest px-4 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            OF NIT NAGALAND
           </motion.p>
 
           <motion.p
@@ -216,8 +224,8 @@ export default function Home() {
         </section>
 
         {/* ================= SINGLE LOGO SHOWCASE ================= */}
-        <section className="py-28 relative z-10 text-center">
-          <h2 className="text-5xl font-extrabold text-cyan-300 mb-10 drop-shadow-lg">Festival Logo</h2>
+        <section className="py-16 md:py-28 relative z-10 text-center px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 mb-8 md:mb-10 drop-shadow-lg">Festival Logo</h2>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -232,8 +240,8 @@ export default function Home() {
         </section>
 
         {/* ================= AFTERMOVIE SECTION ================= */}
-        <section className="py-28 text-center relative z-10">
-          <h2 className="text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-16">Aftermovie 2023</h2>
+        <section className="py-16 md:py-28 text-center relative z-10 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-16">Aftermovie 2023</h2>
 
           <motion.div
             className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,200,255,0.5)] border border-white/20 backdrop-blur-xl"
@@ -274,8 +282,8 @@ export default function Home() {
         </section>
 
         {/* ================= MAP SECTION ================= */}
-        <section className="py-28 relative z-10">
-          <h2 className="text-4xl font-extrabold text-cyan-300 text-center mb-10">Festival Venue Map</h2>
+        <section className="py-16 md:py-28 relative z-10 px-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-cyan-300 text-center mb-8 md:mb-10">Festival Venue Map</h2>
 
           <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_40px_rgba(0,200,255,0.4)] p-6">
             <Map />

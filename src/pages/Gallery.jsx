@@ -56,20 +56,20 @@ const Gallery = () => {
   };
 
   return (
-    <div className="min-h-screen py-24 px-6 text-white relative">
+    <div className="min-h-screen py-12 md:py-24 px-4 sm:px-6 text-white relative">
 
       {/* HEADER */}
-      <div className="text-center mb-16">
-        <h1 className="text-6xl font-extrabold bg-gradient-to-r from-blue-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
+      <div className="text-center mb-10 md:mb-16 px-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
           Gallery
         </h1>
-        <p className="text-gray-300 mt-4 text-lg">
+        <p className="text-gray-300 mt-3 md:mt-4 text-base md:text-lg">
           Swipe through the highlights of Ekarikthin 2025
         </p>
       </div>
 
       {/* CATEGORY FILTERS */}
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 md:mb-12 px-4 overflow-x-auto pb-2 no-scrollbar">
         {categories.map((cat) => (
           <motion.button
             key={cat}
@@ -87,21 +87,23 @@ const Gallery = () => {
       </div>
 
       {/* =============================================
-          PREMIUM CAROUSEL
+          GALLERY GRID / CAROUSEL
       ============================================= */}
-      <div
-        ref={scrollRef}
-        onWheel={handleWheel}
-        className="flex gap-10 overflow-x-auto no-scrollbar py-6 px-4 snap-x snap-mandatory"
-        style={{ scrollBehavior: "smooth" }}
-      >
-        {filtered.map((img, i) => (
-          <motion.div
-            key={img.id}
-            onClick={() => open(img, i)}
-            className="cursor-pointer min-w-[350px] max-w-[350px] snap-center relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition group"
-            whileHover={{ scale: 1.05 }}
-          >
+      <div className="px-4">
+        <div 
+          ref={scrollRef}
+          onWheel={handleWheel}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:flex-row gap-4 lg:gap-6 lg:overflow-x-auto lg:no-scrollbar lg:py-6 lg:snap-x lg:snap-mandatory lg:-mx-4"
+          style={{ scrollBehavior: "smooth" }}
+        >
+          {filtered.map((img, i) => (
+            <motion.div
+              key={img.id}
+              onClick={() => open(img, i)}
+              className="cursor-pointer w-full sm:w-auto lg:min-w-[280px] lg:max-w-[320px] relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition group lg:snap-center"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
             {/* Shine sweep */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-20"
@@ -111,11 +113,11 @@ const Gallery = () => {
             {/* IMAGE */}
             <img
               src={img.src}
-              className="w-full h-[450px] object-cover duration-700 group-hover:scale-110"
+              className="w-full h-[300px] sm:h-[350px] md:h-[400px] object-cover duration-500 group-hover:scale-105"
             />
 
             {/* CAPTION */}
-            <div className="absolute bottom-0 p-4 w-full bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 duration-300">
+            <div className="absolute bottom-0 p-3 sm:p-4 w-full bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 duration-300">
               <h3 className="font-bold">{img.title}</h3>
               <span className="text-xs bg-cyan-500 px-2 py-1 rounded-full">
                 {img.category}
@@ -123,6 +125,7 @@ const Gallery = () => {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
 
       {/* =============================================
