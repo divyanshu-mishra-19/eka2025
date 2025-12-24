@@ -37,11 +37,19 @@ import './App.css';
 import './fonts.css';
 
 // Protected Route Component
-const ProtectedRoute = ({ isAuthenticated, redirectPath = '/admin/login' }) => {
-  if (!isAuthenticated) {
-    return <Navigate to={redirectPath} replace />;
+const ProtectedRoute = ({ isAuthenticated, redirectPath = '/admin/login', children }) => {
+  const token = localStorage.getItem('adminToken');
+  
+  if (!isAuthenticated || !token) {
+    // Clear any existing auth data if there's a mismatch
+    if (token) {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+    }
+    return <Navigate to={redirectPath} replace state={{ from: window.location.pathname }} />;
   }
-  return <Outlet />;
+  
+  return children || <Outlet />;
 };
 
 function AppContent() {
@@ -97,22 +105,38 @@ function AppContent() {
                 <Route path="/register" element={<Registration />} />
                 <Route path="/events/register" element={<EventRegistration />} />
                 <Route path="/registration/success" element={<RegistrationSuccess />} />
-              
+                
                 {/* Admin Routes */}
-                {/* Admin Auth Routes */}
-                <Route path="/admin/login" element={
-                  isAuthenticated ? 
-                  <Navigate to="/admin/dashboard" replace /> : 
-                  <AdminLogin onLogin={() => setIsAuthenticated(true)} />
-                } />
-
-                {/* Protected Admin Routes */}
-                <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
-                  <Route element={<AdminLayout />}>
-                    <Route path="/admin/dashboard" element={<Dashboard />} />
-                    <Route path="/admin/events" element={<AdminEvents />} />
-                    <Route path="/admin/members" element={<AdminMembers />} />
-                    <Route path="/admin/schedules" element={<AdminSchedules />} />
+                <Route path="/admin">
+                  {/* Admin Login - Only accessible when not authenticated */}
+                  <Route 
+                    path="login" 
+                    element={
+                      isAuthenticated ? (
+                        <Navigate to="/admin/dashboard" replace />
+                      ) : (
+                        <AdminLogin onLogin={() => setIsAuthenticated(true)} />
+                      )
+                    } 
+                  />
+                  
+                  {/* Protected Admin Routes */}
+                  <Route 
+                    element={
+                      <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <AdminLayout onLogout={() => {
+                          localStorage.removeItem('adminToken');
+                          localStorage.removeItem('adminUser');
+                          setIsAuthenticated(false);
+                        }} />
+                      </ProtectedRoute>
+                    }
+                  >
+                    <Route index element={<Navigate to="dashboard" replace />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="events" element={<AdminEvents />} />
+                    <Route path="members" element={<AdminMembers />} />
+                    <Route path="schedules" element={<AdminSchedules />} />
                   </Route>
                 </Route>
 

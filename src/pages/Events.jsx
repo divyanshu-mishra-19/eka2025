@@ -43,7 +43,21 @@ const Events = () => {
       }
     };
     window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
+    
+    // Cleanup function to ensure body styles are reset when component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'static';
+    };
+  }, []);
+  
+  // Clean up body styles when navigating away
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'static';
+    };
   }, []);
 
   const events = [
@@ -985,8 +999,12 @@ const Events = () => {
                         </span>
                       </div>
                       
-                      <Link
+                      <Link 
                         to={`/register?event=${selectedEvent.id}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          closeModal();
+                        }}
                         className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center"
                       >
                         <span>Register Now</span>

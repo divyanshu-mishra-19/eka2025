@@ -61,13 +61,13 @@ const Footer = () => {
               Terms
             </Link>
             <span className="text-gray-600">•</span>
-            <a 
-              href="/admin/login" 
+            <Link 
+              to="/admin/login" 
               className="text-emerald-400 hover:text-emerald-300 flex items-center transition-colors"
             >
               <Lock className="w-3 h-3 mr-1" />
               Admin
-            </a>
+            </Link>
           </div>
           
           {/* Social Links */}
