@@ -9,7 +9,7 @@ import Map from "../components/Map";
    ============================================================ */
 const CinematicBackground = () => {
   return (
-    <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none w-full h-full" style={{ transform: 'scale(1)', transformOrigin: 'top left' }}>
       {/* MAIN DARK GRADIENT */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b1220] to-black" />
 
@@ -27,13 +27,16 @@ const CinematicBackground = () => {
 
       {/* MOVING SPOTLIGHT BEAM */}
       <motion.div
-        className="absolute top-[-40%] left-1/2 w-[1400px] h-[1400px] rounded-full opacity-30"
-        animate={{ x: ["-10%", "10%", "-10%"] }}
-        transition={{ duration: 20, repeat: Infinity }}
+        className="absolute top-[50%] left-1/2 w-[200vmax] h-[200vmax] sm:w-[1400px] sm:h-[1400px] rounded-full opacity-30"
         style={{
+          transform: 'translate(-50%, -50%)',
+          maxWidth: 'none',
+          maxHeight: 'none',
           background: "radial-gradient(circle, rgba(0,180,255,0.25), transparent 70%)",
           filter: "blur(160px)",
         }}
+        animate={{ x: ["-10%", "10%", "-10%"] }}
+        transition={{ duration: 20, repeat: Infinity }}
       />
 
       {/* STAGE LIGHT RAYS */}
@@ -41,8 +44,10 @@ const CinematicBackground = () => {
         return (
           <motion.div
             key={i}
-            className="absolute w-[2px] h-[140vh] bg-gradient-to-b from-cyan-400/40 to-transparent"
+            className="absolute w-[1px] sm:w-[2px] h-[200vh] bg-gradient-to-b from-cyan-400/40 to-transparent"
             style={{
+              transform: 'translateX(-50%)',
+              top: '-30vh',
               left: `${15 + i * 15}%`,
               opacity: 0.15,
             }}
@@ -58,7 +63,7 @@ const CinematicBackground = () => {
 /* ============================================================
    ⏳ 2. COUNTDOWN TIMER
    ============================================================ */
-const Countdown = ({ targetDate = "2025-02-15T00:00:00" }) => {
+const Countdown = ({ targetDate = "2026-02-17T00:00:00" }) => {
   const target = new Date(targetDate);
 
   const [time, setTime] = useState({
@@ -243,53 +248,95 @@ export default function Home() {
         </section>
 
         {/* ================= AFTERMOVIE SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-28 text-center relative z-10 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-16">Aftermovie 2023</h2>
-
-          <motion.div
-            className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,200,255,0.5)] border border-white/20 backdrop-blur-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-          >
-            <iframe
-              className="w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-xl sm:rounded-2xl lg:rounded-3xl"
-              src="https://youtu.be/T0Hf_Q9SAG8?si=XUCVTr-ZFDmvjcCE"
-              title="Aftermovie 2025"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </motion.div>
+        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-12">Aftermovie 2023</h2>
+          <div className="max-w-4xl mx-auto px-2 sm:px-4">
+            <motion.div
+              className="relative overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/T0Hf_Q9SAG8?si=ihRnfdsMLoJV3udL"
+                  title="Ekarikthin 2023 Aftermovie"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{ border: 'none' }}
+                />
+              </div>
+            </motion.div>
+          </div>
         </section>
 
-        {/* ================= EKARIKTHIN 2024 MOVIE SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-28 text-center relative z-10 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 sm:mb-12 md:mb-16">Ekarikthin 2024 Movie</h2>
-
-          <motion.div
-            className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,200,255,0.5)] border border-white/20 backdrop-blur-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-          >
-            <iframe
-              className="w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-xl sm:rounded-2xl lg:rounded-3xl"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-              title="Ekarikthin 2024 Movie"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </motion.div>
+        {/* ================= EKARIKTHIN 2020 MOVIE SECTION ================= */}
+        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 bg-gradient-to-b from-transparent to-black/30">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-12">Ekarikthin 2020 Movie</h2>
+          <div className="max-w-4xl mx-auto px-2 sm:px-4">
+            <motion.div
+              className="relative overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/S3skvtm7HfI?si=D5SPT3f6ZDQk9F2R"
+                  title="Ekarikthin 2020 Aftermovie"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{ border: 'none' }}
+                />
+              </div>
+            </motion.div>
+          </div>
         </section>
+
+        
 
         {/* ================= MAP SECTION ================= */}
         <section className="py-12 sm:py-16 md:py-28 relative z-10 px-4">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-cyan-300 text-center mb-8 md:mb-10">Festival Venue Map</h2>
 
           <div className="max-w-4xl mx-auto rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_40px_rgba(0,200,255,0.4)] p-3 sm:p-4 md:p-6">
-            <Map />
+            <div className="relative group">
+              <Map />
+              <a 
+                href="https://www.google.com/maps/d/embed?mid=1vHMns8xqwBpyWr9j0JgeNNjDNWs&ehbc=2E312F" width="640" height="480" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+              >
+                <div className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2">
+                  <span>Open in Google Maps</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-gray-300 text-sm sm:text-base">
+                <span className="opacity-70">Venue:</span>{' '}
+                <a 
+                  href="https://www.google.com/maps?q=NIT+Nagaland" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-cyan-300 hover:text-cyan-200 hover:underline"
+                >
+                  National Institute of Technology Nagaland, Chumukedima, Nagaland - 797103
+                </a>
+              </p>
+            </div>
           </div>
         </section>
       </div>

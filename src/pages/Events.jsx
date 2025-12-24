@@ -1,13 +1,23 @@
+import React, { useState, useEffect } from "react";
 import { Calendar, Clock, MapPin, ArrowRight, X, Award, ExternalLink, Star, Users, Music, Film, Mic2, IndianRupee } from "lucide-react";
 import PaymentButton from '../components/PaymentButton';
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Set loading to false when component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Small delay to show loading state
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const openModal = (event) => {
     setSelectedEvent(event);
@@ -21,7 +31,20 @@ const Events = () => {
     setIsModalOpen(false);
     document.body.style.overflow = 'unset';
     document.body.style.position = 'static';
+    // Add a small delay before clearing the selected event to allow the animation to complete
+    setTimeout(() => setSelectedEvent(null), 300);
   };
+
+  // Close modal when pressing Escape key
+  React.useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
 
   const events = [
     {
@@ -599,44 +622,46 @@ const Events = () => {
       case '🎵 Music Fest': return 'from-yellow-500 to-amber-600';
       case '😂 Comedy Show': return 'from-pink-500 to-rose-600';
       case '🎭 Theatre Show': return 'from-blue-500 to-cyan-600';
+      case 'Ramp Walk': return 'from-purple-500 to-pink-600';
       default: return 'from-gray-500 to-gray-700';
     }
   };
 
   // Filter events based on active category
-  const filteredEvents = events.filter(event => {
-    if (activeCategory === 'all') return true;
-    if (activeCategory === 'cultural') {
-      // Match any cultural-related tags or events with 'cultural' in title (case insensitive)
-      const tag = event.tag?.toLowerCase() || '';
-      const title = event.title?.toLowerCase() || '';
-      return tag.includes('cultural') || 
-             tag.includes('music') || 
-             tag.includes('dance') ||
-             tag.includes('performance') ||
-             title.includes('cultural');
-    }
-    if (activeCategory === 'mini') {
-      // Match any mini events or tech-related events
-      const tag = event.tag?.toLowerCase() || '';
-      const title = event.title?.toLowerCase() || '';
-      return tag.includes('mini') || 
-             tag.includes('tech') || 
-             tag.includes('academic') ||
-             title.includes('mini');
-    }
-    if (activeCategory === 'sports') {
-      // Match any sports-related events
-      const tag = event.tag?.toLowerCase() || '';
-      const title = event.title?.toLowerCase() || '';
-      return tag.includes('sport') || 
-             tag.includes('game') || 
-             tag.includes('battle') ||
-             title.includes('sport') || 
-             title.includes('game');
-    }
-    return true;
-  });
+  const filteredEvents = activeCategory === 'all' 
+    ? events 
+    : events.filter(event => {
+      if (activeCategory === 'cultural') {
+        // Match any cultural-related tags or events with 'cultural' in title (case insensitive)
+        const tag = (event.tag || '').toLowerCase();
+        const title = (event.title || '').toLowerCase();
+        return tag.includes('cultural') || 
+               tag.includes('music') || 
+               tag.includes('dance') ||
+               tag.includes('performance') ||
+               title.includes('cultural');
+      }
+      if (activeCategory === 'mini') {
+        // Match any mini events or tech-related events
+        const tag = (event.tag || '').toLowerCase();
+        const title = (event.title || '').toLowerCase();
+        return tag.includes('mini') || 
+               tag.includes('tech') || 
+               tag.includes('academic') ||
+               title.includes('mini');
+      }
+      if (activeCategory === 'sports') {
+        // Match any sports-related events
+        const tag = (event.tag || '').toLowerCase();
+        const title = (event.title || '').toLowerCase();
+        return tag.includes('sport') || 
+               tag.includes('game') || 
+               tag.includes('battle') ||
+               title.includes('sport') || 
+               title.includes('game');
+      }
+      return true;
+    });
 
   // Debug logs
   console.log('Active category:', activeCategory);
@@ -706,7 +731,12 @@ const Events = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.length > 0 ? (
+          {isLoading ? (
+            <div className="col-span-full text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+              <p className="text-lg text-gray-600 dark:text-gray-300">Loading events...</p>
+            </div>
+          ) : filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
             <motion.div
               key={event.id}
@@ -948,27 +978,25 @@ const Events = () => {
                           ₹{Math.floor(selectedEvent.prizePool * 0.6).toLocaleString()}
                         </span>
                       </div>
-                      <div className="flex justify-between items-center text-sm">
+                      <div className="flex justify-between items-center text-sm mb-4">
                         <span className="text-gray-600 dark:text-gray-300">2nd Prize</span>
                         <span className="font-medium text-blue-600 dark:text-blue-400">
                           ₹{Math.floor(selectedEvent.prizePool * 0.4).toLocaleString()}
                         </span>
                       </div>
-                    </div>
-                    
-                    <div className="mt-6">
-                      <button
-                        onClick={() => window.open(selectedEvent.registrationLink || '#', '_blank')}
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+                      
+                      <Link
+                        to={`/register?event=${selectedEvent.id}`}
+                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center"
                       >
                         <span>Register Now</span>
-                        <ArrowRight size={18} className="ml-2" />
-                      </button>
+                        <ArrowRight size={18} className="ml-2 inline" />
+                      </Link>
                       
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
                         Limited seats available
                       </p>
-                    </div>
+                  </div>
                   </div>
                 </div>
 

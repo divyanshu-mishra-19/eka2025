@@ -13,6 +13,7 @@ import FloatingIcons from './components/FloatingIcons';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import EventRegistration from './pages/EventRegistration';
+import Registration from './pages/Registration';
 import RegistrationSuccess from './pages/RegistrationSuccess';
 import Contact from './pages/Contact';
 import About from './pages/About';
@@ -93,6 +94,7 @@ function AppContent() {
                 <Route path="/sponsors" element={<Sponsors />} />
                 
                 {/* Event Registration Routes */}
+                <Route path="/register" element={<Registration />} />
                 <Route path="/events/register" element={<EventRegistration />} />
                 <Route path="/registration/success" element={<RegistrationSuccess />} />
               
