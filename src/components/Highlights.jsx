@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ChevronRight, ChevronLeft, Calendar, Users, Clock, MapPin } from "lucide-react";
 
-const HighlightCard = ({ img, alt, date, location, participants, index }) => (
+const HighlightCard = ({ img, alt, date, location, participants, index, photographer }) => (
   <motion.div
     className="relative group overflow-hidden rounded-2xl border border-white/10 hover:border-pink-500/30 transition-all duration-500 h-[400px] md:h-[500px]"
     initial={{ opacity: 0, y: 50 }}
@@ -12,11 +12,18 @@ const HighlightCard = ({ img, alt, date, location, participants, index }) => (
   >
     {/* Background Image */}
     <div className="absolute inset-0">
-      <img
-        src={img}
-        alt={alt}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      <div className="relative w-full h-full">
+        <img
+          src={img}
+          alt={alt}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {photographer && (
+          <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white/80 text-xs px-2 py-1 rounded">
+            📸 {photographer}
+          </div>
+        )}
+      </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
     </div>
 
@@ -77,42 +84,48 @@ export default function Highlights() {
       alt: "Cultural Night Extravaganza",
       date: "March 15, 2025",
       location: "Main Auditorium",
-      participants: 500
+      participants: 500,
+      photographer: "John Doe"
     },
     { 
       img: "https://images.unsplash.com/photo-1531913764164-f85c52d6e654?auto=format&fit=crop&w=1200&q=80",
       alt: "Art & Innovation Expo",
       date: "March 16, 2025",
       location: "Exhibition Hall",
-      participants: 350
+      participants: 350,
+      photographer: "Jane Smith"
     },
     { 
       img: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
       alt: "Battle of Bands",
       date: "March 16, 2025",
       location: "Open Air Theater",
-      participants: 800
+      participants: 800,
+      photographer: "Alex Johnson"
     },
     { 
       img: "https://images.unsplash.com/photo-1579389083395-4506e6ffef75?auto=format&fit=crop&w=1200&q=80",
       alt: "Drama Competition",
       date: "March 17, 2025",
       location: "Drama Hall",
-      participants: 200
+      participants: 200,
+      photographer: "Sarah Williams"
     },
     { 
       img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80",
       alt: "Literary Fest",
       date: "March 17, 2025",
       location: "Library Complex",
-      participants: 300
+      participants: 300,
+      photographer: "Michael Brown"
     },
     { 
       img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
       alt: "Tech Workshops",
       date: "March 18, 2025",
       location: "Tech Block",
-      participants: 250
+      participants: 250,
+      photographer: "Emily Davis"
     }
   ];
 

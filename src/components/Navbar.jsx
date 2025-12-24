@@ -57,28 +57,31 @@ const Navbar = () => {
       {/* Main Navigation */}
       <motion.nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm md:bg-transparent"
+        className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 md:bg-gray-900/80 backdrop-blur-sm"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between h-16 sm:h-20 items-center">
+            {/* Logo - Simplified for mobile */}
             <motion.div
-              className="flex items-center group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Link to="/" className="flex items-center mt-10">
+              <Link to="/" className="flex items-center">
                 <motion.span 
-                  className="text-2xl font-extrabold bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-300 bg-clip-text text-transparent drop-shadow-lg"
+                  className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-300 bg-clip-text text-transparent"
                   whileHover={{ 
-                    textShadow: ['0 0 10px rgba(253, 224, 71, 0.5)', '0 0 20px rgba(236, 72, 153, 0.7)', '0 0 10px rgba(253, 224, 71, 0.5)'],
+                    textShadow: ['0 0 10px rgba(253, 224, 71, 0.5)', '0 0 20px rgba(236, 72, 153, 0.7)'],
                     transition: { duration: 1, repeat: Infinity, repeatType: 'reverse' }
                   }}
                 >
-                  <span className="text-yellow-300 animate-bounce inline-block">🎪</span>Ekarikthin 2026<span className="text-pink-200 animate-pulse inline-block">✨</span>
+                  <span className="text-yellow-300 animate-bounce inline-block">🎪</span>
+                  <span className="hidden xs:inline">Ekarikthin</span>
+                  <span className="xs:hidden">EK26</span>
+                  <span className="text-pink-200 animate-pulse inline-block">✨</span>
                 </motion.span>
               </Link>
             </motion.div>
@@ -101,8 +104,8 @@ const Navbar = () => {
                           isActive ? 'text-emerald-400' : 'text-white/90 hover:text-white'
                         }`}
                       >
-                        <item.icon className={`w-5 h-5 mr-1.5 ${isActive ? 'text-emerald-400' : 'text-gray-300'}`} />
-                        {item.name}
+                        <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 ${isActive ? 'text-emerald-400' : 'text-gray-300'}`} />
+                        <span className="whitespace-nowrap">{item.name}</span>
                       </Link>
                       {isActive && (
                         <motion.div 
@@ -122,42 +125,42 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button and Theme Toggle */}
-            <div className="flex items-center space-x-3 md:hidden">
+            <div className="flex items-center space-x-2 sm:space-x-3 md:hidden">
               {/* Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-1.5 sm:p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <Sun className="w-5 h-5 text-yellow-200" />
+                  <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-200" />
                 ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
+                  <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
                 )}
               </motion.button>
 
               {/* Mobile Menu Button */}
               <motion.button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-full bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 text-white shadow-lg relative z-50"
+                className="inline-flex items-center justify-center p-1.5 sm:p-2 rounded-full bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 text-white shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
                 <motion.span
-                  className="block relative w-6 h-6"
+                  className="block relative w-5 h-5 sm:w-6 sm:h-6"
                   animate={isMobileMenuOpen ? { rotate: 90 } : { rotate: 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   {isMobileMenuOpen ? (
-                    <X className="w-6 h-6" />
+                    <X className="w-full h-full" />
                   ) : (
                     <>
-                      <span className="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"></span>
-                      <span className="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out mt-2"></span>
-                      <span className="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out mt-4"></span>
+                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out"></span>
+                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out mt-1.5"></span>
+                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out mt-3"></span>
                     </>
                   )}
                 </motion.span>
@@ -176,7 +179,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/70 z-40"
+              className="fixed inset-0 bg-black/80 z-40 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -184,44 +187,52 @@ const Navbar = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-gray-900/95 backdrop-blur-lg z-50 overflow-y-auto shadow-2xl"
+              transition={{ type: 'tween', duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed top-0 right-0 h-full w-[85%] max-w-xs bg-gray-900/95 backdrop-blur-lg z-50 overflow-y-auto shadow-2xl border-l border-white/10"
             >
               <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-white/10">
+                <div className="p-4 sm:p-6 border-b border-white/10">
                   <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 bg-clip-text text-transparent">
+                    <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 bg-clip-text text-transparent">
                       Menu
                     </span>
                     <button
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                      className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors"
                       aria-label="Close menu"
                     >
-                      <X className="w-6 h-6 text-white" />
+                      <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300" />
                     </button>
                   </div>
                 </div>
                 
-                <nav className="flex-1 overflow-y-auto p-6 space-y-4">
+                <nav className="flex-1 px-2 py-2 space-y-0.5 overflow-y-auto">
                   {navItems.map((item) => {
                     const isActive = location.pathname === item.path;
                     return (
                       <motion.div
                         key={item.path}
                         whileTap={{ scale: 0.98 }}
-                        className="relative"
+                        className="px-1"
                       >
                         <Link
                           to={item.path}
-                          className={`flex items-center p-3 rounded-lg text-lg font-medium transition-colors ${
+                          className={`group flex items-center px-3 py-3.5 sm:py-4 text-base sm:text-sm font-medium rounded-lg mx-1 transition-colors duration-200 ${
                             isActive
-                              ? 'bg-white/10 text-white'
-                              : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                              ? 'bg-gradient-to-r from-emerald-600/20 to-emerald-400/10 text-white border-l-4 border-emerald-400 pl-4'
+                              : 'text-gray-300 hover:bg-white/5 hover:text-white border-l-4 border-transparent pl-4'
                           }`}
                         >
-                          <item.icon className="w-6 h-6 mr-3" />
-                          {item.name}
+                          <item.icon
+                            className={`mr-3 h-5 w-5 flex-shrink-0 ${
+                              isActive ? 'text-emerald-400' : 'text-gray-400 group-hover:text-gray-300'
+                            }`}
+                            aria-hidden="true"
+                          />
+                          <span className="truncate">{item.name}</span>
+                          {isActive && (
+                            <span className="ml-auto inline-block h-2 w-2 rounded-full bg-emerald-400" />
+                          )}
                         </Link>
                       </motion.div>
                     );

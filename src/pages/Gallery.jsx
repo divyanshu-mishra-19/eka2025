@@ -6,14 +6,14 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
    DATA
 ============================================ */
 const images = [
-  { id: 1, src: "assests/1.webp", title: "Admin Building", category: "College" },
-  { id: 2, src: "assests/2.jpg", title: "Battle of Bands", category: "music" },
-  { id: 3, src: "assests/3.png", title: "Dance Competition", category: "dance" },
-  { id: 4, src: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?auto=format&w=1200", title: "Drama & Mime", category: "theatre" },
-  { id: 5, src: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&w=1200", title: "Literary Event", category: "literary" },
-  { id: 6, src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&w=1200", title: "Workshop Session", category: "workshop" },
-  { id: 7, src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&w=1200", title: "Art Exhibition", category: "art" },
-  { id: 8, src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&w=1200", title: "Fashion Show", category: "fashion" },
+  { id: 1, src: "assests/1.webp", title: "Admin Building", category: "College", photographer: "John Doe" },
+  { id: 2, src: "assests/2.jpg", title: "Battle of Bands", category: "music", photographer: "Sarah Chen" },
+  { id: 3, src: "assests/3.png", title: "Dance Competition", category: "dance", photographer: "Mike Johnson" },
+  { id: 4, src: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?auto=format&w=1200", title: "Drama & Mime", category: "theatre", photographer: "Emma Wilson" },
+  { id: 5, src: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&w=1200", title: "Literary Event", category: "literary", photographer: "David Kim" },
+  { id: 6, src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&w=1200", title: "Workshop Session", category: "workshop", photographer: "Priya Patel" },
+  { id: 7, src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&w=1200", title: "Art Exhibition", category: "art", photographer: "Carlos Mendez" },
+  { id: 8, src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&w=1200", title: "Fashion Show", category: "fashion", photographer: "Aisha Khan" },
 ];
 
 const categories = ["all", ...new Set(images.map((i) => i.category))];
@@ -111,17 +111,31 @@ const Gallery = () => {
             />
 
             {/* IMAGE */}
-            <img
-              src={img.src}
-              className="w-full h-[300px] sm:h-[350px] md:h-[400px] object-cover duration-500 group-hover:scale-105"
-            />
+            <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden">
+              <img
+                src={img.src}
+                className="w-full h-full object-cover duration-500 group-hover:scale-105"
+              />
+              {img.photographer && (
+                <div className="absolute bottom-2 right-2 bg-black/60 text-white/80 text-xs px-2 py-1 rounded backdrop-blur-sm">
+                  📸 {img.photographer}
+                </div>
+              )}
+            </div>
 
             {/* CAPTION */}
             <div className="absolute bottom-0 p-3 sm:p-4 w-full bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 duration-300">
               <h3 className="font-bold">{img.title}</h3>
-              <span className="text-xs bg-cyan-500 px-2 py-1 rounded-full">
-                {img.category}
-              </span>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-xs bg-cyan-500 px-2 py-1 rounded-full">
+                  {img.category}
+                </span>
+                {img.photographer && (
+                  <span className="text-xs text-white/70">
+                    by {img.photographer}
+                  </span>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}
@@ -185,8 +199,16 @@ const Gallery = () => {
             </button>
 
             {/* Caption */}
-            <div className="absolute bottom-6 bg-black/40 px-6 py-2 rounded-full text-sm">
-              {selectedImage.title} • {index + 1} / {filtered.length}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm px-6 py-2 rounded-full text-sm text-center">
+              <div className="font-medium">{selectedImage.title}</div>
+              {selectedImage.photographer && (
+                <div className="text-xs text-white/70">
+                  Photo by {selectedImage.photographer}
+                </div>
+              )}
+              <div className="text-xs text-cyan-300 mt-1">
+                {index + 1} / {filtered.length}
+              </div>
             </div>
           </motion.div>
         )}
