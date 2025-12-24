@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}
           <p className="text-xs text-gray-500 mb-2 md:mb-0">
-            © {currentYear} Ekarikthin. All rights reserved.
+            © {currentYear} Ekarikthin. All rights reserved. Managed by Technical Board , NIT Nagaland . Fermetrix Lab
           </p>
           
           {/* Quick Links */}
