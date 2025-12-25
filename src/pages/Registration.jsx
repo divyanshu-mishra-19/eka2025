@@ -14,32 +14,143 @@ const Registration = () => {
     phone: "",
     college: "",
     event: "",
+    teamType: "solo", // For Cosplay event
+    participantType: "inside", // inside or outside
     utrNumber: "",
-    userId: generateUserId(), // Generate unique ID when component mounts
+    userId: generateUserId(),
   });
-  
-  // Map of event IDs to event names
-  const eventMap = {
-    '1': 'Voice of Ekarikthin',
-    '2': 'Battle of Bands',
-    '3': 'Drama Competition',
-    '4': 'Fashion Show',
-    '5': 'BGMI',
-    '6': 'Cricket',
-    '7': 'Football',
-    '8': 'Chess',
-    '9': 'Brain Snap',
-    '10': 'Treasure Hunt',
-    '11': 'Dance Competition',
-    '12': 'Rangoli',
-    '13': 'Face Painting',
-    '14': 'Photography',
-    '15': 'MEN\'S MARATHON',
-    '16': 'WOMEN\'S MARATHON',
-    '17': 'Mr. & Ms. Ekarikthin',
-    '18': 'Rap Battle',
-    '19': 'Standup Comedy',
-    '20': 'Solo Singing',
+
+  // Map of event IDs to event details with inside/outside pricing
+  const eventDetails = {
+    '1': { 
+      name: 'Voice of Ekarikthin', 
+      inside: 700, 
+      outside: 700,
+      teamSize: 'Solo'
+    },
+    '2': { 
+      name: 'Ritzy', 
+      inside: 800, 
+      outside: 800,
+      teamSize: 'Solo'
+    },
+    '3': { 
+      name: 'Cosplay', 
+      inside: { solo: 500, duo: 800, group: 1000 },
+      outside: { solo: 500, duo: 800, group: 1000 },
+      teamSize: 'Solo/Duo/Group',
+      hasTeamType: true
+    },
+    '4': { 
+      name: 'Rockville', 
+      inside: 2500, 
+      outside: 2500,
+      teamSize: 'Band'
+    },
+    '5': { 
+      name: 'BGMI', 
+      inside: 600, 
+      outside: 1200,
+      teamSize: '4 members'
+    },
+    '6': { 
+      name: 'MLBB', 
+      inside: 750, 
+      outside: 1500,
+      teamSize: '5 members'
+    },
+    '7': { 
+      name: 'Survive NIT', 
+      inside: 50, 
+      outside: 100,
+      teamSize: 'Solo'
+    },
+    '8': { 
+      name: 'Pitch It', 
+      inside: 50, 
+      outside: 100,
+      teamSize: '1-3 members'
+    },
+    '9': { 
+      name: 'Brain Snap', 
+      inside: 50, 
+      outside: 100,
+      teamSize: 'Solo'
+    },
+    '10': { 
+      name: 'Spell Bee', 
+      inside: 50, 
+      outside: 100,
+      teamSize: 'Solo'
+    },
+    '11': { 
+      name: 'Circuit X', 
+      inside: 50, 
+      outside: 100,
+      teamSize: '1-2 members'
+    },
+    '12': { 
+      name: 'Rangoli', 
+      inside: 50, 
+      outside: 100,
+      teamSize: '1-2 members'
+    },
+    '13': { 
+      name: 'Reel of Ekarikthin', 
+      inside: 0, 
+      outside: 0,
+      teamSize: 'Solo'
+    },
+    '14': { 
+      name: 'Photo of Ekarikthin', 
+      inside: 0, 
+      outside: 0,
+      teamSize: 'Solo'
+    },
+    '15': { 
+      name: 'Men\'s Marathon', 
+      inside: 100, 
+      outside: 200,
+      teamSize: 'Solo'
+    },
+    '16': { 
+      name: 'Women\'s Marathon', 
+      inside: 70, 
+      outside: 150,
+      teamSize: 'Solo'
+    },
+    '17': { 
+      name: 'Futsal', 
+      inside: 1500, 
+      outside: 2500,
+      teamSize: '5-7 members'
+    },
+  };
+
+  // Get current event details
+  const currentEvent = formData.event ? Object.values(eventDetails).find(e => e.name === formData.event) : null;
+
+  // Get current event price based on participant type (inside/outside) and team type (for Cosplay)
+  const getEventPrice = () => {
+    if (!formData.event) return { inside: 0, outside: 0 };
+    const event = Object.values(eventDetails).find(details => details.name === formData.event);
+    if (!event) return { inside: 0, outside: 0 };
+    
+    // For Cosplay, return the price based on team type
+    if (event.name === 'Cosplay' && formData.teamType) {
+      return {
+        inside: event.inside[formData.teamType],
+        outside: event.outside[formData.teamType],
+        teamSize: event.teamSize
+      };
+    }
+    
+    // For other events
+    return {
+      inside: event.inside,
+      outside: event.outside,
+      teamSize: event.teamSize
+    };
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,10 +159,10 @@ const Registration = () => {
   
   // Set initial event from URL parameter
   useEffect(() => {
-    if (eventIdFromUrl && eventMap[eventIdFromUrl]) {
+    if (eventIdFromUrl && eventDetails[eventIdFromUrl]) {
       setFormData(prev => ({
         ...prev,
-        event: eventMap[eventIdFromUrl]
+        event: eventDetails[eventIdFromUrl].name
       }));
     }
   }, [eventIdFromUrl]);
@@ -337,11 +448,38 @@ const Registration = () => {
                 className={`w-full p-3 rounded-lg bg-black/40 border ${eventIdFromUrl ? 'border-cyan-500/50 bg-cyan-500/10' : 'border-white/10'}`}
               >
                 <option value="">Select Event {eventIdFromUrl ? '' : '(Optional)'}</option>
-                {Object.entries(eventMap).map(([id, name]) => (
-                  <option key={id} value={name}>
-                    {name}
-                  </option>
-                ))}
+                {Object.entries(eventDetails).map(([id, details]) => {
+                  // For Cosplay, show price range
+                  if (details.name === 'Cosplay') {
+                    return (
+                      <option key={id} value={details.name}>
+                        {details.name} (₹500-₹1000)
+                      </option>
+                    );
+                  }
+                  // For free events
+                  if (details.inside === 0 && details.outside === 0) {
+                    return (
+                      <option key={id} value={details.name}>
+                        {details.name} (Free)
+                      </option>
+                    );
+                  }
+                  // For events with same price inside/outside
+                  if (details.inside === details.outside) {
+                    return (
+                      <option key={id} value={details.name}>
+                        {details.name} (₹{details.inside})
+                      </option>
+                    );
+                  }
+                  // For events with different prices
+                  return (
+                    <option key={id} value={details.name}>
+                      {details.name} (₹{details.inside}-₹{details.outside})
+                    </option>
+                  );
+                })}
               </select>
               {eventIdFromUrl && (
                 <div className="absolute inset-0 flex items-center justify-end pr-3 pointer-events-none">
@@ -352,12 +490,94 @@ const Registration = () => {
               )}
             </div>
 
+            {/* Payment Instructions */}
+            <div className="bg-amber-900/20 border-l-4 border-amber-500 p-4 rounded-r-lg mb-4">
+              <h4 className="font-medium text-amber-300 mb-2">Payment Instructions</h4>
+              <div className="text-sm text-amber-100 space-y-2">
+                <div className="space-y-2">
+                  <p className="font-medium">
+                    Registration Fee: 
+                    <span className="text-yellow-300 ml-1">
+                      {formData.event ? (
+                        currentEvent?.hasTeamType ? (
+                          <span>
+                            {formData.participantType === 'inside' ? 'Inside' : 'Outside'} - ₹{getEventPrice()[formData.participantType]}
+                            {formData.teamType && ` (${formData.teamType.charAt(0).toUpperCase() + formData.teamType.slice(1)})`}
+                          </span>
+                        ) : (
+                          <span>
+                            {formData.participantType === 'inside' ? 'Inside' : 'Outside'} - ₹{getEventPrice()[formData.participantType]}
+                          </span>
+                        )
+                      ) : 'Select an event'}
+                    </span>
+                  </p>
+                  {currentEvent?.hasTeamType && (
+                    <div className="flex gap-2 flex-wrap">
+                      {['solo', 'duo', 'group'].map(type => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, teamType: type }))}
+                          className={`px-3 py-1 text-sm rounded-md ${
+                            formData.teamType === type 
+                              ? 'bg-cyan-600 text-white' 
+                              : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+                          }`}
+                        >
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, participantType: 'inside' }))}
+                      className={`px-3 py-1 text-sm rounded-md ${
+                        formData.participantType === 'inside' 
+                          ? 'bg-green-600 text-white' 
+                          : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+                      }`}
+                    >
+                      Inside NITN
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, participantType: 'outside' }))}
+                      className={`px-3 py-1 text-sm rounded-md ${
+                        formData.participantType === 'outside' 
+                          ? 'bg-blue-600 text-white' 
+                          : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+                      }`}
+                    >
+                      Outside NITN
+                    </button>
+                  </div>
+                </div>
+                <p>1. Make payment using the QR code or UPI ID below:</p>
+                <div className="bg-black/30 p-3 rounded-lg">
+                  <p className="font-mono font-bold">tejakondari@ybl</p>
+                  <p className="text-xs text-amber-200">(UPI ID for payments)</p>
+                </div>
+                <p>2. Enter the UTR/Transaction ID from your payment receipt below</p>
+                <p className="text-xs text-amber-200">
+                  Note: Registration will be confirmed only after payment verification.
+                  Failing to provide correct UTR will result in registration cancellation.
+                </p>
+                <p className="text-xs mt-2">
+                  Need help? Email us at <a href="mailto:techvai@nitnagaland.ac.in" className="text-cyan-300 hover:underline">techvai@nitnagaland.ac.in</a>
+                </p>
+              </div>
+            </div>
+
             <input
               name="utrNumber"
-              placeholder="UTR / Transaction ID"
+              placeholder="Enter UTR / Transaction ID *"
               value={formData.utrNumber}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
+              className="w-full p-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 font-mono"
+              required
             />
 
             <button
@@ -373,12 +593,12 @@ const Registration = () => {
             <h3 className="text-xl font-semibold text-cyan-300 mb-4">Payment</h3>
             <div className="bg-white p-3 rounded-lg inline-block mb-4">
               <QRCode
-                value={`upi://pay?pa=${PAYMENT_UPI_ID}&pn=Ekarikthin%202026&am=${PAYMENT_AMOUNT}&cu=INR`}
+                value={`upi://pay?pa=tejakondari@ybl&pn=Ekarikthin%202026&am=${formData.event ? getEventPrice()[formData.participantType] : '0'}&cu=INR`}
                 size={180}
               />
             </div>
             <p className="text-gray-400 text-sm">
-              UPI ID: <span className="text-cyan-300">{PAYMENT_UPI_ID}</span>
+              UPI ID: <span className="text-cyan-300 font-mono">tejakondari@ybl</span>
             </p>
           </div>
         </div>
