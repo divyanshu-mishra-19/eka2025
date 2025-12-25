@@ -436,11 +436,11 @@ const Registration = () => {
               Print Confirmation
             </button>
             <Link
-              to="/"
+              to="/events"
               className="flex items-center justify-center px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg no-print"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
+              Back to Events
             </Link>
           </div>
         </div>
@@ -452,9 +452,9 @@ const Registration = () => {
     <div className="min-h-screen text-white overflow-x-hidden bg-transparent">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="sticky top-0 z-10 pb-4 pt-6">
-          <Link to="/" className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors">
+          <Link to="/events" className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors">
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Home
+            Back to Events
           </Link>
         </div>
 
@@ -659,7 +659,7 @@ const Registration = () => {
             <div className="flex justify-center mb-4">
               <div className="bg-white p-6 rounded-lg shadow-lg">
                 <img 
-                  src="/assets/teja.png" 
+                  src="/src/assets/teja.png" 
                   alt="Scan to Pay" 
                   className="w-64 h-64 object-contain"
                   onError={(e) => {
