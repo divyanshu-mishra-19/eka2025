@@ -27,6 +27,63 @@
   }
 }
 
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0.8) 90%, rgba(0,0,0,0) 100%);
+}
+
+.ticker-wrapper {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  padding: 0.5rem 0;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 2rem;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Add a small separator between items */
+.ticker-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Pause on hover */
+.ticker-container:hover .ticker-wrapper {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ticker-item {
+    font-size: 0.9em;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import Map from "../components/Map";
@@ -111,17 +111,17 @@ const Countdown = ({ targetDate = "2026-02-17T00:00:00" }) => {
   }, [targetDate]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-8 sm:mt-10 px-4">
-      <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+    <div className="w-full max-w-2xl mx-auto mt-6 sm:mt-8 px-3 sm:px-4">
+      <div className="grid grid-cols-4 gap-1.5 xs:gap-2 sm:gap-3 md:gap-4">
         {Object.entries(time).map(([key, value]) => (
           <motion.div
             key={key}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-white/10 backdrop-blur-xl border border-white/20 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-[0_0_15px_rgba(0,200,255,0.2)] text-white"
+            className="bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 sm:p-3 md:p-4 rounded-lg sm:rounded-2xl shadow-[0_0_10px_rgba(0,200,255,0.2)] text-white"
           >
-            <div className="text-2xl xs:text-3xl sm:text-4xl font-extrabold">{value}</div>
-            <div className="text-[10px] xs:text-xs uppercase mt-0.5 sm:mt-1 tracking-wider text-cyan-300">{key}</div>
+            <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none">{value}</div>
+            <div className="text-[9px] xs:text-[10px] sm:text-xs uppercase mt-0.5 sm:mt-1 tracking-wider text-cyan-300">{key}</div>
           </motion.div>
         ))}
       </div>
@@ -133,71 +133,87 @@ const Countdown = ({ targetDate = "2026-02-17T00:00:00" }) => {
    🌌 3. HOMEPAGE HERO
    ============================================================ */
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const moveX = useTransform(x, [-300, 300], [-20, 20]);
   const moveY = useTransform(y, [-300, 300], [-10, 10]);
 
   useEffect(() => {
-    // defensive cleanup for motion values
+    // Check if mobile and update state
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
     return () => {
       x.set(0);
       y.set(0);
+      window.removeEventListener('resize', checkMobile);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [x, y]);
 
   return (
-    <div
-      className="relative min-h-screen overflow-hidden"
+    <div 
+      className="relative min-h-screen overflow-x-hidden"
       onMouseMove={(e) => {
-        x.set(e.clientX - window.innerWidth / 2);
-        y.set(e.clientY - window.innerHeight / 2);
+        // Only apply parallax effect on larger screens
+        if (window.innerWidth >= 768) {
+          x.set(e.clientX - window.innerWidth / 2);
+          y.set(e.clientY - window.innerHeight / 2);
+        }
       }}
     >
       <CinematicBackground />
 
       <div className="relative z-10">
         {/* ================= HERO ================= */}
-        <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 relative z-10 pt-20 pb-16 sm:pt-0 sm:pb-0">
+        <section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-10">
           {/* BADGE */}
           <motion.div
-            className="px-4 sm:px-6 py-1.5 sm:py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-lg text-white text-sm sm:text-base font-semibold mb-4 sm:mb-6 flex items-center gap-2 mx-2"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-lg text-white text-xs xs:text-sm sm:text-base font-medium sm:font-semibold mb-4 sm:mb-6 flex items-center gap-1.5 sm:gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300" />
-            <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[85vw]">Ekarikthin 2026 • The Grand Cultural Festival</span>
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-300 flex-shrink-0" />
+            <span className="whitespace-nowrap overflow-hidden text-ellipsis">Ekarikthin 2026 • The Grand Cultural Festival</span>
           </motion.div>
 
           {/* HERO TITLE */}
           <motion.h1
-            style={{ x: moveX, y: moveY }}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-2 sm:px-4 text-center leading-tight"
+            style={!isMobile ? { x: moveX, y: moveY } : {}}
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-2 sm:px-4 text-center leading-[1.1] sm:leading-tight"
           >
             EKARIKTHIN 2K26
           </motion.h1>
 
-          <motion.p
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold mt-2 sm:mt-3 tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            THE CULTURAL EXTRAVAGANZA
-          </motion.p>
-          <motion.p
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            OF NIT NAGALAND
-          </motion.p>
+          <motion.div className="space-y-0.5 sm:space-y-1">
+            <motion.p
+              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              THE CULTURAL EXTRAVAGANZA
+            </motion.p>
+            <motion.p
+              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              OF NIT NAGALAND
+            </motion.p>
+          </motion.div>
 
           <motion.p
-            className="max-w-2xl mt-4 sm:mt-6 text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 px-4"
+            className="max-w-2xl mt-4 sm:mt-6 text-sm xs:text-base sm:text-lg text-gray-300 px-3 sm:px-4 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -208,23 +224,23 @@ export default function Home() {
 
           {/* BUTTONS */}
           <motion.div
-            className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none sm:w-auto px-4 sm:px-0"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <Link
               to="/events"
-              className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-bold text-base sm:text-lg text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,200,255,0.4)] hover:shadow-[0_0_35px_rgba(0,200,255,0.6)] transition flex items-center justify-center gap-2 w-full sm:w-auto"
+              className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_15px_rgba(0,200,255,0.4)] hover:shadow-[0_0_25px_rgba(0,200,255,0.6)] transition-all duration-300 flex items-center justify-center gap-1.5 w-full sm:w-auto"
             >
-              Explore Events <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              Explore Events <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </Link>
 
             <a
               href="#highlights"
-              className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-bold text-base sm:text-lg text-white bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition flex items-center justify-center gap-2 w-full sm:w-auto"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base text-white bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition flex items-center justify-center gap-1.5 w-full sm:w-auto"
             >
-              <Play className="w-4 h-4 sm:w-5 sm:h-5" /> Highlights
+              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Highlights
             </a>
           </motion.div>
 
@@ -232,27 +248,28 @@ export default function Home() {
         </section>
 
         {/* ================= SINGLE LOGO SHOWCASE ================= */}
-        <section className="py-12 sm:py-16 md:py-28 relative z-10 text-center px-4" id="highlights">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 mb-8 md:mb-10 drop-shadow-lg">Festival Logo</h2>
+        <section className="py-12 sm:py-16 md:py-20 relative z-10 text-center px-4 sm:px-6 md:px-8" id="highlights">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 mb-6 sm:mb-8 md:mb-10 drop-shadow-lg">Festival Logo</h2>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            className="px-2"
           >
             <img
               src="assests/ekarikthin.png"
               alt="Event Logo"
-              className="mx-auto max-w-[300px] object-contain"
+              className="mx-auto w-full max-w-[250px] sm:max-w-[300px] object-contain"
             />
           </motion.div>
         </section>
 
         {/* ================= AFTERMOVIE SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-12">Aftermovie 2023</h2>
-          <div className="max-w-4xl mx-auto px-2 sm:px-4">
+        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 sm:px-6 md:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Aftermovie 2023</h2>
+          <div className="max-w-4xl mx-auto px-1 sm:px-3">
             <motion.div
-              className="relative overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -275,11 +292,11 @@ export default function Home() {
         </section>
 
         {/* ================= EKARIKTHIN 2020 MOVIE SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 bg-gradient-to-b from-transparent to-black/30">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-300 drop-shadow-lg mb-8 md:mb-12">Ekarikthin 2020 Movie</h2>
-          <div className="max-w-4xl mx-auto px-2 sm:px-4">
+        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-transparent to-black/30">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Ekarikthin 2020 Movie</h2>
+          <div className="max-w-4xl mx-auto px-1 sm:px-3">
             <motion.div
-              className="relative overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -304,36 +321,36 @@ export default function Home() {
         
 
         {/* ================= MAP SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-28 relative z-10 px-4">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-cyan-300 text-center mb-8 md:mb-10">Festival Venue Map</h2>
+        <section className="py-12 sm:py-16 md:py-20 relative z-10 px-4 sm:px-6 md:px-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-cyan-300 text-center mb-6 sm:mb-8">Festival Venue Map</h2>
 
-          <div className="max-w-4xl mx-auto rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_40px_rgba(0,200,255,0.4)] p-3 sm:p-4 md:p-6">
+          <div className="max-w-4xl mx-auto rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_30px_rgba(0,200,255,0.4)] p-2 sm:p-3 md:p-4">
             <div className="relative group">
               <Map />
               <a 
-                href="https://www.google.com/maps/d/embed?mid=1vHMns8xqwBpyWr9j0JgeNNjDNWs&ehbc=2E312F" width="640" height="480" 
+                href="https://www.google.com/maps/d/embed?mid=1vHMns8xqwBpyWr9j0JgeNNjDNWs&ehbc=2E312F" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
               >
-                <div className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2">
-                  <span>Open in Google Maps</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <div className="bg-cyan-500 hover:bg-cyan-600 text-white text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-medium flex items-center gap-1.5 sm:gap-2">
+                  <span>Open in Maps</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
                   </svg>
                 </div>
               </a>
             </div>
-            <div className="mt-4 text-center">
-              <p className="text-gray-300 text-sm sm:text-base">
+            <div className="mt-3 sm:mt-4 text-center">
+              <p className="text-gray-300 text-xs sm:text-sm">
                 <span className="opacity-70">Venue:</span>{' '}
                 <a 
                   href="https://www.google.com/maps?q=NIT+Nagaland" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-cyan-300 hover:text-cyan-200 hover:underline"
+                  className="text-cyan-300 hover:text-cyan-200 hover:underline break-words inline-block max-w-full"
                 >
-                  National Institute of Technology Nagaland, Chumukedima, Nagaland - 797103
+                  NIT Nagaland, Chumukedima, Nagaland - 797103
                 </a>
               </p>
             </div>

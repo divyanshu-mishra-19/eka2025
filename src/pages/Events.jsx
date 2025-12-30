@@ -684,26 +684,26 @@ const Events = () => {
   console.log('Filtered events:', filteredEvents);
 
   return (
-    <div className="min-h-screen w-full pt-24 pb-16 px-6 relative flex flex-col items-center text-gray-800 dark:text-white">
-      <div className="max-w-7xl w-full">
+    <div className="min-h-screen w-full pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-3 md:px-6 relative flex flex-col items-center text-gray-800 dark:text-white transition-all duration-300">
+      <div className="max-w-7xl w-full px-1 sm:px-2 md:px-4 transition-all duration-300">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Events & Competitions
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0">
             Experience the excitement of Ekarikthin 2025 through our diverse range of events and competitions.
           </p>
           
           {/* Category Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-1">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-5 py-2 rounded-full font-medium transition-colors text-sm sm:text-base ${
+              className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full font-medium transition-colors text-xs sm:text-sm md:text-base ${
                 activeCategory === 'all' 
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
                   : 'bg-white/10 text-white hover:bg-white/20'
@@ -735,7 +735,7 @@ const Events = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 transition-all duration-300">
           {isLoading ? (
             <div className="col-span-full text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
@@ -751,7 +751,7 @@ const Events = () => {
               transition={{ duration: 0.5 }}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-36 xs:h-40 sm:h-44 md:h-48 overflow-hidden transition-all duration-300">
                 <img
                   src={event.image}
                   alt={event.title}
@@ -761,9 +761,9 @@ const Events = () => {
                   {event.tag}
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{event.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{event.shortDescription}</p>
+              <div className="p-3 sm:p-4 md:p-5 lg:p-6 transition-all duration-300">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">{event.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{event.shortDescription}</p>
                 
                 <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-2">
                   <Calendar size={16} className="mr-2" />
@@ -775,7 +775,7 @@ const Events = () => {
                     <IndianRupee size={16} className="mr-1" />
                     <span className="font-medium">Registration Fee</span>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 text-sm">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-2 sm:p-3 text-xs sm:text-sm">
                     {event.registrationFee ? (
                       typeof event.registrationFee.inside === 'object' ? (
                         <table className="w-full text-sm">
@@ -854,7 +854,7 @@ const Events = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 z-50 overflow-y-auto"
+            className="fixed inset-0 bg-black/80 md:bg-opacity-50 flex items-start justify-center p-0 z-50 overflow-y-auto transition-all duration-300 backdrop-blur-sm"
             style={{ top: '0', bottom: '0', left: '0', right: '0' }}
             onClick={closeModal}
           >
@@ -862,8 +862,8 @@ const Events = () => {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full my-8 overflow-hidden flex flex-col"
-              style={{ maxHeight: 'calc(100vh - 4rem)' }}
+              className="bg-white dark:bg-gray-800 rounded-none sm:rounded-xl shadow-2xl w-full h-full sm:max-w-4xl sm:w-[95%] sm:my-8 overflow-hidden flex flex-col transition-all duration-300"
+              style={{ maxHeight: '100vh', minHeight: '100vh', maxWidth: '100vw' }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
@@ -873,7 +873,7 @@ const Events = () => {
                 >
                   <X size={20} />
                 </button>
-                <div className="h-64 md:h-80 w-full overflow-hidden">
+                <div className="h-48 sm:h-64 md:h-80 w-full overflow-hidden">
                   <img
                     src={selectedEvent.image}
                     alt={selectedEvent.title}
@@ -882,8 +882,8 @@ const Events = () => {
                 </div>
               </div>
 
-              <div className="p-6 md:p-8 overflow-y-auto flex-1">
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+              <div className="p-4 sm:p-6 md:p-8 overflow-y-auto flex-1">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 sm:gap-6 mb-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">
@@ -951,7 +951,7 @@ const Events = () => {
                         <ExternalLink size={16} className="mr-2" />
                         View Rules (PDF)
                       </a>
-                      <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      <p className="mt-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                         Click to view the complete rules and guidelines for this event.
                       </p>
                     </div>
@@ -971,7 +971,7 @@ const Events = () => {
                     )}
                   </div>
                   
-                  <div className="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-lg w-full md:w-64 flex-shrink-0">
+                  <div className="bg-blue-50 dark:bg-blue-900/30 p-4 sm:p-5 md:p-6 rounded-lg w-full md:w-64 flex-shrink-0">
                     <div className="flex items-center text-blue-600 dark:text-blue-400 mb-3">
                       <Award size={20} className="mr-2" />
                       <span className="font-bold">Prize Pool</span>
@@ -1000,7 +1000,7 @@ const Events = () => {
                           e.stopPropagation();
                           closeModal();
                         }}
-                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center"
+                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-center text-sm sm:text-base"
                       >
                         <span>Register Now</span>
                         <ArrowRight size={18} className="ml-2 inline" />
@@ -1013,7 +1013,7 @@ const Events = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+                <div className="mt-6 sm:mt-8 border-t border-gray-200 dark:border-gray-700 pt-4 sm:pt-6">
                   <div className="flex justify-between items-center">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                       Event Rules

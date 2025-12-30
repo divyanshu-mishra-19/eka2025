@@ -47,7 +47,7 @@ const Footer = () => {
       <div className="w-full max-w-[98vw] mx-auto px-6">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <p className="text-xs text-gray-400 text-center sm:text-left mb-2 sm:mb-0">
-            © {currentYear} Ekarikthin. All rights reserved. Developed and Maintained by Fermetrix Lab
+            © {currentYear} Ekarikthin. All rights reserved. Developed and Maintained by Fermetrix Lab (HrishabhxCode) . 
           </p>
           
           <div className="flex items-center space-x-4 text-xs">

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Calendar, Mail, Info, Sparkles, Award, Users, Moon, Sun, Heart, X } from 'lucide-react';
+import { Home, Calendar, Mail, Info, Sparkles, Award, Users, Moon, Sun, Heart, X, Menu } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 // Fun emoji decorations
@@ -12,22 +12,35 @@ const Navbar = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrolled]);
+
   const navItems = [
-    { name: 'Home', icon: Home, path: '/' },
-    { name: 'Events', icon: Calendar, path: '/events' },
-    { name: 'Highlights', icon: Sparkles, path: '/highlights' },
-    { name: 'Gallery', icon: Award, path: '/gallery' },
-    { name: 'Team', icon: Users, path: '/team' },
-    { name: 'Playground', icon: Award, path: '/playground' },
-    { name: 'Sponsors', icon: Heart, path: '/sponsors' },
-    { name: 'About', icon: Info, path: '/about' },
-    { name: 'Contact', icon: Mail, path: '/contact' }
+    { name: 'Home', path: '/', icon: Home },
+    { name: 'Events', path: '/events', icon: Calendar },
+    { name: 'Highlights', path: '/highlights', icon: Sparkles },
+    { name: 'Gallery', path: '/gallery', icon: Award },
+    { name: 'Team', path: '/team', icon: Users },
+    { name: 'Sponsors', path: '/sponsors', icon: Heart },
+    { name: 'About', path: '/about', icon: Info },
+    { name: 'Contact', path: '/contact', icon: Mail }
   ];
 
   // Close menu when clicking outside or when route changes
@@ -57,7 +70,11 @@ const Navbar = () => {
       {/* Main Navigation */}
       <motion.nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 md:bg-gray-900/80 backdrop-blur-sm"
+        className={`fixed top-0 left-0 right-0 z-50 ${
+          scrolled 
+            ? 'bg-black/30 backdrop-blur-md' 
+            : 'bg-transparent backdrop-blur-none'
+        } transition-all duration-300`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
@@ -72,100 +89,79 @@ const Navbar = () => {
             >
               <Link to="/" className="flex items-center">
                 <motion.span 
-                  className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-300 bg-clip-text text-transparent"
-                  whileHover={{ 
-                    textShadow: ['0 0 10px rgba(253, 224, 71, 0.5)', '0 0 20px rgba(236, 72, 153, 0.7)'],
-                    transition: { duration: 1, repeat: Infinity, repeatType: 'reverse' }
-                  }}
+                  className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent"
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <span className="text-yellow-300 animate-bounce inline-block">🎪</span>
-                  <span className="hidden xs:inline">Ekarikthin</span>
-                  <span className="xs:hidden">EK26</span>
-                  <span className="text-pink-200 animate-pulse inline-block">✨</span>
+                  EKARIKTHIN
+                </motion.span>
+                <motion.span 
+                  className="text-xs bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-2 py-0.5 rounded-full font-bold tracking-wider ml-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  2026
                 </motion.span>
               </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex md:items-center md:space-x-1">
-              {navItems.map((item) => {
-                const isActive = location.pathname === item.path;
-                return (
-                  <motion.div 
-                    key={item.path}
-                    className="relative group"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+            <div className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => (
+                <motion.div 
+                  key={item.name}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
+                >
+                  <Link
+                    to={item.path}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center transition-all duration-300 ${
+                      location.pathname === item.path
+                        ? 'text-cyan-400 bg-gradient-to-r from-cyan-900/30 to-blue-900/20'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800/30'
+                    }`}
                   >
-                    <div className="relative">
-                      <Link
-                        to={item.path}
-                        className={`px-3 py-2 font-medium text-sm transition-colors duration-200 flex items-center ${
-                          isActive ? 'text-emerald-400' : 'text-white/90 hover:text-white'
-                        }`}
-                      >
-                        <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 ${isActive ? 'text-emerald-400' : 'text-gray-300'}`} />
-                        <span className="whitespace-nowrap">{item.name}</span>
-                      </Link>
-                      {isActive && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400"
-                          layoutId="activeNav"
-                          transition={{
-                            type: "spring",
-                            stiffness: 500,
-                            damping: 30
-                          }}
-                        />
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Mobile Menu Button and Theme Toggle */}
-            <div className="flex items-center space-x-2 sm:space-x-3 md:hidden">
+                    <item.icon className="w-4 h-4 mr-2 text-current" />
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+              
               {/* Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
-                className="p-1.5 sm:p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                className="ml-2 p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-800/30 transition-all duration-200 backdrop-blur-sm"
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? (
-                  <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-200" />
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5" />
                 ) : (
-                  <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
+                  <Moon className="w-5 h-5" />
                 )}
               </motion.button>
-
-              {/* Mobile Menu Button */}
-              <motion.button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-1.5 sm:p-2 rounded-full bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 text-white shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              >
-                <motion.span
-                  className="block relative w-5 h-5 sm:w-6 sm:h-6"
-                  animate={isMobileMenuOpen ? { rotate: 90 } : { rotate: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {isMobileMenuOpen ? (
-                    <X className="w-full h-full" />
-                  ) : (
-                    <>
-                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out"></span>
-                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out mt-1.5"></span>
-                      <span className="block absolute h-0.5 w-full bg-current transform transition duration-300 ease-in-out mt-3"></span>
-                    </>
-                  )}
-                </motion.span>
-              </motion.button>
             </div>
+
+            {/* Mobile menu button */}
+            <motion.div 
+              className="md:hidden flex items-center"
+              whileTap={{ scale: 0.9 }}
+            >
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 focus:outline-none transition-all duration-200"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                {isMobileMenuOpen ? (
+                  <X className="block h-6 w-6" />
+                ) : (
+                  <Menu className="block h-6 w-6" />
+                )}
+              </button>
+            </motion.div>
           </div>
         </div>
       </motion.nav>
@@ -206,43 +202,55 @@ const Navbar = () => {
                   </div>
                 </div>
                 
-                <nav className="flex-1 px-2 py-2 space-y-0.5 overflow-y-auto">
-                  {navItems.map((item) => {
-                    const isActive = location.pathname === item.path;
-                    return (
-                      <motion.div
-                        key={item.path}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-1"
+                <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={item.path}
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-2"
+                    >
+                      <Link
+                        to={item.path}
+                        className={`group flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
+                          location.pathname === item.path
+                            ? 'bg-gradient-to-r from-cyan-900/30 to-blue-900/20 text-cyan-400'
+                            : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                        }`}
                       >
-                        <Link
-                          to={item.path}
-                          className={`group flex items-center px-3 py-3.5 sm:py-4 text-base sm:text-sm font-medium rounded-lg mx-1 transition-colors duration-200 ${
-                            isActive
-                              ? 'bg-gradient-to-r from-emerald-600/20 to-emerald-400/10 text-white border-l-4 border-emerald-400 pl-4'
-                              : 'text-gray-300 hover:bg-white/5 hover:text-white border-l-4 border-transparent pl-4'
-                          }`}
-                        >
-                          <item.icon
-                            className={`mr-3 h-5 w-5 flex-shrink-0 ${
-                              isActive ? 'text-emerald-400' : 'text-gray-400 group-hover:text-gray-300'
-                            }`}
-                            aria-hidden="true"
-                          />
-                          <span className="truncate">{item.name}</span>
-                          {isActive && (
-                            <span className="ml-auto inline-block h-2 w-2 rounded-full bg-emerald-400" />
-                          )}
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
+                        <item.icon className="w-5 h-5 mr-3 text-current" />
+                        <span>{item.name}</span>
+                        {location.pathname === item.path && (
+                          <span className="ml-auto h-2 w-2 rounded-full bg-cyan-400" />
+                        )}
+                      </Link>
+                    </motion.div>
+                  ))}
                 </nav>
                 
-                <div className="p-6 border-t border-white/10">
-                  <div className="text-center text-sm text-gray-400">
-                    <p>Ekarikthin 2026</p>
-                    <p className="mt-1">Celebrating Creativity & Innovation</p>
+                <div className="p-6 border-t border-white/10 mt-auto">
+                  <div className="text-center">
+                    <motion.button
+                      onClick={toggleTheme}
+                      className="w-full flex items-center justify-center px-4 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {theme === 'dark' ? (
+                        <>
+                          <Sun className="w-5 h-5 mr-2" />
+                          <span>Light Mode</span>
+                        </>
+                      ) : (
+                        <>
+                          <Moon className="w-5 h-5 mr-2" />
+                          <span>Dark Mode</span>
+                        </>
+                      )}
+                    </motion.button>
+                    <p className="mt-4 text-sm text-gray-500">Ekarikthin 2026</p>
                   </div>
                 </div>
               </div>

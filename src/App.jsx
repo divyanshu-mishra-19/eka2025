@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import tickerMessages from './data/tickerMessages.json';
+
 import SplashScreen from './components/SplashScreen';
 
 import Navbar from './components/Navbar';
@@ -80,11 +82,34 @@ function AppContent() {
       )}
 
       <div className="flex flex-col flex-1">
-        {/* Navbar - Only show on non-admin routes */}
+        {/* Navbar - Show on all non-admin routes */}
         {!location.pathname.startsWith('/admin') && (
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         )}
-
+        
+        {/* Ticker - Only show on homepage */}
+        {location.pathname === '/' && (
+          <div className="fixed top-16 left-0 right-0 z-50 w-full bg-black/80 backdrop-blur-sm border-t border-b border-white/10 overflow-hidden">
+            <div className="ticker-container">
+              <div className="ticker-wrapper">
+                {/* Duplicate the messages for seamless looping */}
+                {[...tickerMessages, ...tickerMessages].map((message, index) => (
+                  <div 
+                    key={`ticker-${message.id}-${index}`} 
+                    className="ticker-item"
+                  >
+                    <span className={`bg-${message.color} text-black text-[10px] font-bold px-3 py-1 rounded-full mr-3`}>
+                      {message.type}
+                    </span>
+                    <span className="text-white text-sm font-medium">
+                      {message.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
         {/* Main content */}
         <main className={`flex-1 w-full ${!location.pathname.startsWith('/admin') ? 'pt-20' : ''}`}>
           <div className="min-h-[calc(100vh-200px)]">

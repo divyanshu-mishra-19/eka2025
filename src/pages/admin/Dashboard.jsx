@@ -19,6 +19,7 @@ import {
   Calendar as CalendarIcon,
   Trash2,
   AlertOctagon,
+  Bell,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -276,7 +277,13 @@ const Dashboard = () => {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-cyan-400">Admin Dashboard</h1>
-        <p className="text-gray-400">Manage registrations</p>
+        <p className="text-gray-400">Manage registrations and verifications</p>
+      </div>
+      
+      {/* Page Title */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-white">Registrations</h1>
+        <p className="text-gray-400">Manage event registrations and verifications</p>
       </div>
 
       {/* Stats */}
