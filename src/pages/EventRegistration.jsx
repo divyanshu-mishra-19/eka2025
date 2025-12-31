@@ -16,11 +16,11 @@ const EventRegistration = () => {
     teamMembers: [{ name: '', email: '', phone: '' }]
   });
 
-  // Get event data from location state
+  
   const event = location.state?.event;
 
   useEffect(() => {
-    // If no event data is passed, redirect to events page
+    
     if (!event) {
       navigate('/events');
     }
@@ -52,7 +52,7 @@ const EventRegistration = () => {
   };
 
   const addTeamMember = () => {
-    if (formData.teamMembers.length < 7) { // Max 8 members including team leader
+    if (formData.teamMembers.length < 7) { 
       setFormData(prev => ({
         ...prev,
         teamMembers: [...prev.teamMembers, { name: '', email: '', phone: '' }]

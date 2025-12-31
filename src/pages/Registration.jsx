@@ -659,7 +659,7 @@ const Registration = () => {
             <div className="flex justify-center mb-4">
               <div className="bg-white p-6 rounded-lg shadow-lg">
                 <img 
-                  src="/src/assets/teja.png" 
+                  src="/images/teja.png" 
                   alt="Scan to Pay" 
                   className="w-64 h-64 object-contain"
                   onError={(e) => {
