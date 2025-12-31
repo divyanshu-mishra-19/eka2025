@@ -190,7 +190,7 @@ const culturalSecretaries = [
   {
     name: "Cheerla Sai Varun",
     role: "Cultural Secretary",
-    image: "NA",
+    image: "/images/varun.jpeg",
     bio: "Leads cultural events and activities.",
   },
   {
@@ -206,7 +206,7 @@ const financialSecretaries = [
   {
     name: "Kondari Venkata Teja",
     role: "Financial Secretary",
-    image: "NA",
+    image: "/images/teja.jpg",
     bio: "Manages financial operations and budgeting .",
   },
   {
@@ -222,14 +222,14 @@ const sportsSecretaries = [
   {
     name: "Koyyala Kesava",
     role: "Sports Secretary",
-    image: "NA",
+    image: "/images/kesava.jpeg",
     bio: "Manages sports activities and inter-hostel tournaments.",
     
   },
   {
     name: "Kyeing David K Konyak",
     role: "Sports Secretary",
-    image: "NA",
+    image: "/images/kyeing.jpg",
     bio: "Oversees sports events and promotes athletic participation.",
     
   }
@@ -258,13 +258,13 @@ const disciplinarySecretaries = [
   {
     name: "Potula Sai Kumar",
     role: "Disciplinary Secretary",
-    image: "NA",
+    image: "/images/sai.jpg",
     bio: "Ensures discipline and code of conduct in the boys' hostel.",
   },
   {
     name: "Khyothungo R Kikon",
     role: "Disciplinary Secretary",
-    image: "NA",
+    image: "/images/kikon.jpeg",
     bio: "Maintains discipline and enforces hostel rules for girls.",
   }
 ];
@@ -291,7 +291,7 @@ const nssSecretaries = [
   {
     name: "Pachei  P Khiamniungan",
     role: "NSS Secretary",
-    image: "NA",
+    image: "/images/pachei.jpg",
     bio: "Coordinates NSS Activities",
   },
   {
@@ -307,7 +307,7 @@ const alumniSecretaries = [
   {
     name: "Chinnala Manoj",
     role: "Alumni Secretary",
-    image: "NA",
+    image: "/images/manoj.jpg",
     bio: "Maintains alumni relations and organizes alumni events for boys.",
   },
   {

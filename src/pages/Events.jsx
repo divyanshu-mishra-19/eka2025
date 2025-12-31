@@ -68,8 +68,8 @@ const Events = () => {
       time: "6:00 PM - 10:00 PM",
       location: "B.B. Court",
       image: "/images/voe.png",
-      description: "A magical night of traditional, contemporary and regional cultural performances that showcase the rich diversity of our cultural heritage. Experience an evening filled with vibrant colors, captivating music, and mesmerizing performances that will leave you spellbound.",
-      shortDescription: "A magical night of traditional, contemporary and regional cultural performances.",
+      description: "🎤 Voice of Ekarikthin (Singing)\nA flagship musical competition where talented singers perform solo to showcase their vocal range, control, and emotional expression.\nOpen to multiple genres, this event celebrates passion for music and stage confidence.\nJudged on voice quality, pitch, expression, and overall performance.",
+      shortDescription: "A flagship singing competition showcasing vocal talent across genres, judged on voice quality, pitch, and stage presence.",
       tag: "✨ Cultural",
       prizePool: 20000, // Total prize pool
       prizeBreakup: {
@@ -83,10 +83,7 @@ const Events = () => {
       teamSize: "Solo",
       registrationLink: "#",
       rules: [
-        "Maximum performance time: 10 minutes",
-        "No explicit or offensive content",
-        "Participants must report 1 hour before the event",
-        "Judges' decision will be final"
+        "Will be Updates Soon"
       ],
       highlights: [
         "Open to all music forms",
@@ -104,9 +101,9 @@ const Events = () => {
       },
       time: "4:00 PM - 8:00 PM",
       location: "Open Air Theater",
-      image: "/images/rw.png",
-      description: "Rock bands from across the region compete for the ultimate prize. Showcase your musical talent and stage presence in this high-energy competition.",
-      shortDescription: "Rock bands compete for the ultimate prize in this high-energy competition.",
+      image: "/images/rit.jpeg",
+      description: "Ritzy (Ramp Walk)\nA dazzling fashion event where participants express confidence, elegance, and personality on the ramp.\nIt's not just about outfits, but attitude, posture, and presentation.\nRitzy celebrates individuality, style, and stage presence.",
+      shortDescription: "A glamorous ramp walk event celebrating confidence, attitude, and fashion sense as participants own the stage with style.",
       tag: "Ramp Walk",
       prizePool: 50000,
       prizeBreakup: {
@@ -116,10 +113,7 @@ const Events = () => {
       },
       teamSize: "Solo",
       rules: [
-        "Maximum 15 minutes performance time",
-        "Original compositions get bonus points",
-        "Provide your own instruments (drum kit will be provided)",
-        "Sound check 2 hours before the event"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Professional sound system provided",
@@ -134,8 +128,8 @@ const Events = () => {
       time: "9:00 AM - 9:00 PM",
       location: "Computer Center",
       image: "/images/cp.png",
-      description: "A 24-hour coding marathon where developers, designers, and entrepreneurs come together to build innovative solutions to real-world problems.",
-      shortDescription: "24-hour coding marathon to build innovative solutions.",
+      description: " Cosplay\nA creative showcase where participants dress up as iconic characters from movies, anime, comics, or games.\nCosplay focuses on costume design, accuracy, expressions, and performance.\nA perfect blend of imagination, creativity, and fandom culture.",
+      shortDescription: "Step into the shoes of your favorite characters and bring imagination to life through creative costumes and performances.",
       tag: "Cultural",
       prizePool: 30000,
       prizeBreakup: {
@@ -156,10 +150,7 @@ const Events = () => {
       },
       teamSize: "2-4 members",
       rules: [
-        "Maximum team size: 4 members",
-        "No pre-built solutions allowed",
-        "Code must be written during the event",
-        "Presentations limited to 5 minutes"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Mentorship from industry experts",
@@ -174,8 +165,8 @@ const Events = () => {
       time: "10:00 AM - 4:00 PM",
       location: "Business Incubator",
       image: "/images/rv.png",
-      description: "A platform for budding entrepreneurs to pitch their startup ideas to a panel of investors and industry experts. Win seed funding and mentorship opportunities.",
-      shortDescription: "Pitch your startup idea to investors and win funding.",
+      description: "Rockville (DJ Night)\nAn electrifying DJ night that brings the campus alive with powerful beats and vibrant energy.\nA celebration of music, dance, and togetherness, making it one of the most awaited events.\nPure vibes, lights, and unforgettable memories.",
+      shortDescription: "An electrifying DJ night filled with music, beats, and energy—where the crowd vibes nonstop.",
       tag: "Music",
       prizePool: 60000,
       prizeBreakup: {
@@ -188,10 +179,7 @@ const Events = () => {
       },
       teamSize: "1-3 members",
       rules: [
-        "5-minute pitch + 3-minute Q&A",
-        "No existing funding over ₹10 lakhs",
-        "Must have a working prototype",
-        "Business plan submission required"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Chance to secure funding",
@@ -206,8 +194,8 @@ const Events = () => {
       time: "11:00 AM - 5:00 PM",
       location: "Engineering Block",
       image: "/images/bgmi.png",
-      description: "Design and build your combat robot to compete in an epic battle of engineering and strategy. Test your robot's strength, durability, and your driving skills.",
-      shortDescription: "Combat robotics competition for engineering enthusiasts.",
+      description: "BGMI\nA competitive battle royale tournament testing teamwork, strategy, and in-game decision-making.\nTeams fight it out in intense matches where survival and coordination are key.\nOnly the smartest and sharpest squads make it to the top.",
+      shortDescription: "A high-intensity battle royale gaming competition testing strategy, teamwork, and sharp reflexes.",
       tag: "Gaming",
       prizePool: 40000,
       prizeBreakup: {
@@ -220,10 +208,7 @@ const Events = () => {
       },
       teamSize: "4 members",
       rules: [
-        "Robot weight limit: 15kg",
-        "No fire, liquid, or entanglement weapons",
-        "Safety inspection required",
-        "Arena rules will be strictly enforced"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Workshop on combat robotics",
@@ -238,8 +223,8 @@ const Events = () => {
       time: "All Day",
       location: "Campus Wide",
       image: "/images/ml.png",
-      description: "Capture the essence of our college fest through your lens. Submit your best photographs across different categories and win exciting prizes.",
-      shortDescription: "Capture and submit your best photographs from the fest.",
+      description: "A fast-paced MOBA gaming competition where teams battle using heroes, skills, and strategy.\nEmphasizes coordination, tactical planning, and quick reflexes.\nPerfect for gamers who thrive under pressure.",
+      shortDescription: "A fast-paced MOBA tournament where teams compete using skills, coordination, and tactical gameplay.",
       tag: "Gaming",
       prizePool: 50000,
       prizeBreakup: {
@@ -252,10 +237,7 @@ const Events = () => {
       },
       teamSize: "As Required",
       rules: [
-        "Maximum 3 entries per participant",
-        "No digital manipulation allowed",
-        "Must be shot during the fest",
-        "High-resolution images required"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Multiple categories to compete in",
@@ -270,8 +252,8 @@ const Events = () => {
       time: "5:00 PM - 9:00 PM",
       location: "Main Stage",
       image: "/images/sn.png",
-      description: "Show off your best dance moves in this high-energy dance competition. Solo and group categories available. Let the rhythm take over!",
-      shortDescription: "Show off your best dance moves in this high-energy competition.",
+      description: "A reality-show-inspired survival challenge designed to test physical stamina, mental strength, and strategy.\nParticipants face multiple rounds of tasks and eliminations.\nOnly the most adaptable and determined survive till the end.",
+      shortDescription: "A survival-based challenge inspired by reality shows, pushing participants through physical, mental, and strategic tasks.",
       tag: "Sports",
       prizePool: 3000,
       prizeBreakup: {
@@ -284,10 +266,7 @@ const Events = () => {
       },
       teamSize: "As Required",
       rules: [
-        "Maximum 5 minutes performance time",
-        "No explicit content",
-        "Music must be submitted in advance",
-        "Judges' decision is final"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Separate categories for solo and group",
@@ -302,8 +281,8 @@ const Events = () => {
       time: "6:00 PM - 10:00 PM",
       location: "Open Air Theater",
       image: "/images/pi.png",
-      description: "Rock bands clash for the ultimate musical glory in this high-energy competition. Showcase your musical talent, stage presence, and crowd engagement as you battle it out with the best bands from across the region.",
-      shortDescription: "Rock bands clash for the ultimate musical glory. Energy, rhythm & madness!",
+      description: "An innovation-focused platform where participants pitch ideas addressing real-world problems.\nEncourages creativity, entrepreneurship, and problem-solving skills.\nJudged on innovation, feasibility, impact, and presentation.",
+      shortDescription: "An innovation-driven event where participants pitch creative ideas and solutions to real-world problems.",
       tag: "Entrepreneurship",
       prizePool: 2000,
       prizeBreakup: {
@@ -316,10 +295,7 @@ const Events = () => {
       },
       teamSize: "As Required",
       rules: [
-        "Maximum 15 minutes performance time",
-        "Original compositions get bonus points",
-        "Bands must bring their own instruments (drums will be provided)",
-        "No explicit lyrics or content"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Professional sound system and stage setup",
@@ -334,8 +310,8 @@ const Events = () => {
       time: "7:00 PM - 9:30 PM",
       location: "Amphitheater",
       image: "/images/bs.png",
-      description: "Laughter is the best medicine, and we're prescribing a heavy dose! Showcase your comedic timing, wit, and stage presence in this stand-up comedy competition.",
-      shortDescription: "Bring the house down with your humor and wit in this stand-up comedy competition.",
+      description: "A mind-bending competition packed with puzzles, riddles, and logical challenges.\nTests analytical thinking, speed, and reasoning abilities.\nPerfect for those who love mental challenges and problem-solving.",
+      shortDescription: "A brain-teasing competition full of puzzles, riddles, and logical challenges to test problem-solving skills..",
       tag: "Sport",
       prizePool: 2000,
       prizeBreakup: {
@@ -348,10 +324,7 @@ const Events = () => {
       },
       teamSize: "Solo",
       rules: [
-        "Maximum 7 minutes per performance",
-        "No offensive or discriminatory content",
-        "Material must be original",
-        "Judges' decision will be final"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Open mic for all participants",
@@ -366,8 +339,8 @@ const Events = () => {
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
       image: "/images/sb.png",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      description: "A classic yet thrilling spelling competition that tests vocabulary, pronunciation, and accuracy.Participants compete through multiple rounds with increasing difficulty.A true test of language skills and focus.",
+      shortDescription: "A classic spelling competition that tests vocabulary, pronunciation, and linguistic accuracy.",
       tag: "Sports",
       prizePool: 2000,
       prizeBreakup: {
@@ -380,10 +353,7 @@ const Events = () => {
       },
       teamSize: "1-6 members",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -398,8 +368,8 @@ const Events = () => {
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
       image: "/images/cx.png",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      description: "A technical event designed for electronics enthusiasts and problem solvers.Participants analyze and solve electrical and electronic circuits within limited time.Tests conceptual clarity, practical understanding, and logical thinking.",
+      shortDescription: "An electrical circuit-solving competition designed to test technical knowledge, logic, and practical understanding.",
       tag: "Sports",
       prizePool: 2000,
       prizeBreakup: {
@@ -412,10 +382,7 @@ const Events = () => {
       },
       teamSize: "1-6 members",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -430,8 +397,8 @@ const Events = () => {
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
       image: "/images/rg.png",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      description: "An artistic competition celebrating colors, symmetry, and cultural creativity.Participants design visually appealing rangoli patterns based on given themes.Judged on creativity, neatness, color usage, and overall presentation.",
+      shortDescription: "A colorful artistic event celebrating creativity, symmetry, and cultural expression through rangoli designs..",
       tag: "Sports",
       prizePool: 2000,
       prizeBreakup: {
@@ -444,10 +411,7 @@ const Events = () => {
       },
       teamSize: "1-6 members",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -461,9 +425,9 @@ const Events = () => {
       date: "March 17, 2025",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?q=80&w=1200",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      image: "/images/roe.png",
+      description: "A short video-making contest capturing the essence and excitement of the fest.Participants create engaging reels highlighting moments, energy, and creativity.Judged on originality, editing, storytelling, and impact.",
+      shortDescription: "A short-reel creation contest capturing the spirit, excitement, and moments of Ekarikthin.",
       tag: "Cultural",
       prizePool: 3000,
       prizeBreakup: {
@@ -476,10 +440,7 @@ const Events = () => {
       },
       teamSize: "1-6 members",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -493,9 +454,9 @@ const Events = () => {
       date: "March 17, 2025",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?q=80&w=1200",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      image: "/images/photo.jpeg",
+      description: "A photography competition focused on capturing powerful moments and emotions of the fest.Participants showcase storytelling through visuals.Judged on composition, clarity, creativity, and relevance.",
+      shortDescription: "A photography competition focused on capturing stunning visuals, emotions, and memories of the fest.",
       tag: "Cultural",
       prizePool: 2500,
       prizeBreakup: {
@@ -508,10 +469,7 @@ const Events = () => {
       },
       teamSize: "1-6 members",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -525,9 +483,9 @@ const Events = () => {
       date: "March 17, 2025",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?q=80&w=1200",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      image: "/images/mar.jpeg",
+      description: "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
+      shortDescription: "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
       prizePool: 21500,
       prizeBreakup: {
@@ -542,10 +500,7 @@ const Events = () => {
       },
       teamSize: "Solo",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -559,9 +514,9 @@ const Events = () => {
       date: "March 17, 2025",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?q=80&w=1200",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      image: "/images/mar.jpeg",
+      description: "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
+      shortDescription: "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
       prizePool: 16500,
       prizeBreakup: {
@@ -576,10 +531,7 @@ const Events = () => {
       },
       teamSize: "Solo",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
@@ -593,9 +545,9 @@ const Events = () => {
       date: "March 17, 2025",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "https://images.unsplash.com/photo-1558981033-0fcbf4e3e1c0?q=80&w=1200",
-      description: "Experience the power of silence and expression in this unique competition that celebrates the art of mime and drama. Participants will be judged on their ability to convey emotions, tell stories, and captivate the audience without words.",
-      shortDescription: "Theatre, mime, storytelling & emotions — witness power without words.",
+      image: "/images/fut.jpeg",
+      description: "A high-energy five-a-side football tournament played with speed and skill.Focuses on teamwork, quick passes, \nand fast gameplay.An action-packed event for football lovers.",
+      shortDescription: "A thrilling five-a-side football tournament featuring speed, teamwork, and high-energy gameplay.",
       tag: "Sports",
       prizePool: 54000,
       prizeBreakup: {
@@ -610,10 +562,7 @@ const Events = () => {
       },
       teamSize: "Solo",
       rules: [
-        "Time limit: 8-10 minutes per performance",
-        "No verbal communication allowed in mime category",
-        "Limited props allowed (must be approved in advance)",
-        "Content must be original"
+        "Will be Updated Soon"
       ],
       highlights: [
         "Categories: Mime, Street Play, and Mono Act",
