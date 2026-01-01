@@ -1,69 +1,140 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Mail, Facebook, Twitter, Instagram, Linkedin, MapPin, Clock, Phone, Youtube } from 'lucide-react';
+import {
+  Github,
+  ExternalLink,
+  Heart,
+  Code,
+  Building2,
+  Mail,
+  MapPin,
+} from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Quick Links
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Events', path: '/events' },
-    { name: 'Highlights', path: '/highlights' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Team', path: '/team' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-  ];
-
-  // Contact Info
-  const contactInfo = [
-    { icon: <MapPin className="w-5 h-5 text-emerald-400" />, text: 'Your College Name, City, State, PIN' },
-    { icon: <Mail className="w-5 h-5 text-emerald-400" />, text: 'contact@ekarikthin2025.com' },
-    { icon: <Phone className="w-5 h-5 text-emerald-400" />, text: '+91 XXXXXXXXXX' },
-    { 
-      icon: <Clock className="w-5 h-5 text-emerald-400" />, 
-      text: 'Mon - Sat: 9:00 AM - 5:00 PM' 
+  const organizationLinks = [
+    {
+      name: 'Coding Club NITN',
+      url: 'https://www.coding-club-nitn.tech/',
+      icon: Code,
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/Coding-Club-NIT-Nagaland',
+      icon: Github,
+    },
+    {
+      name: 'NIT Nagaland',
+      url: 'https://www.nitnagaland.ac.in/',
+      icon: Building2,
     },
   ];
 
-  // Social Media Links
-  const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, url: 'https://facebook.com', name: 'Facebook' },
-    { icon: <Twitter className="w-5 h-5" />, url: 'https://twitter.com', name: 'Twitter' },
-    { icon: <Instagram className="w-5 h-5" />, url: 'https://instagram.com', name: 'Instagram' },
-    { icon: <Youtube className="w-5 h-5" />, url: 'https://youtube.com', name: 'YouTube' },
-    { icon: <Linkedin className="w-5 h-5" />, url: 'https://linkedin.com', name: 'LinkedIn' },
-  ];
-
   return (
-    <motion.footer
-      className="w-full bg-gray-900/90 backdrop-blur-sm border-t border-white/5 py-4"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="w-full max-w-[98vw] mx-auto px-6">
-        <div className="flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-xs text-gray-400 text-center sm:text-left mb-2 sm:mb-0">
-            © {currentYear} Ekarikthin. All rights reserved. Developed and Maintained by Fermetrix Lab (HrishabhxCode) . 
-          </p>
-          
-          <div className="flex items-center space-x-4 text-xs">
-            
-            <span className="text-gray-600">•</span>
-            <Link 
-              to="/admin/login" 
-              className="text-emerald-400 hover:text-emerald-300 flex items-center transition-colors"
-            >
-              <Lock className="w-3 h-3 mr-1" />
-              Admin
-            </Link>
+    <footer className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black border-t border-gray-200 dark:border-white/10 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-12 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-12">
+          {/* Brand */}
+          <div className="text-center md:text-left space-y-4">
+            <div className="flex items-center justify-center md:justify-start mb-4">
+              <img
+                src="/assests/ekarikthin.png"
+                alt="Ekarikthin Logo"
+                className="h-16 sm:h-20 w-auto object-contain"
+              />
+            </div>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 dark:from-cyan-400 dark:via-blue-400 dark:to-cyan-400 bg-clip-text text-transparent mb-2">
+              EKARIKTHIN 2026
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xs mx-auto md:mx-0">
+              The Cultural Extravaganza of NIT Nagaland - where creativity meets celebration.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="text-center md:text-left space-y-4">
+            <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Quick Links
+            </h4>
+            <div className="space-y-3">
+              {organizationLinks.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center md:justify-start gap-2 text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group"
+                  whileHover={{ x: 4 }}
+                >
+                  <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm font-medium">{link.name}</span>
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact & Sponsor */}
+          <div className="text-center md:text-left space-y-4">
+            <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Contact Info
+            </h4>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <MapPin className="w-4 h-4 flex-shrink-0" />
+                <span>NIT Nagaland, Chumukedima</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <span>contact@ekarikthin.in</span>
+              </div>
+            </div>
+
+            <div className="inline-block">
+              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-2">
+                <Heart className="w-3 h-3 text-red-500 fill-red-500" />
+                <span>Sponsored By</span>
+              </div>
+              <motion.a
+                href="https://counselor.coding-club-nitn.tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-600 dark:to-blue-700 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all">
+                  <span className="font-bold text-sm">Do Consulting</span>
+                  <ExternalLink className="w-3 h-3" />
+                </div>
+              </motion.a>
+            </div>
           </div>
         </div>
+
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-8" />
+
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-center sm:text-left">
+            © {currentYear}{' '}
+            <span className="font-bold text-cyan-600 dark:text-cyan-400">
+              Ekarikthin
+            </span>
+            . All rights reserved.
+          </p>
+          <p className="text-center sm:text-right">
+            Organized by{' '}
+            <a
+              href="https://www.coding-club-nitn.tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
+            >
+              Coding Club NIT Nagaland
+            </a>
+          </p>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 
