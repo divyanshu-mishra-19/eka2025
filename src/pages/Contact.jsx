@@ -36,10 +36,10 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-pink-300 to-purple-400 mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 mb-6">
           Get In Touch
         </h1>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
           Have questions or want to get involved? We'd love to hear from you!
         </p>
       </motion.div>
@@ -51,9 +51,14 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm"
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl"
         >
-          <h2 className="text-2xl font-semibold text-white mb-6">Send us a message</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+              <Mail className="w-5 h-5 text-white" />
+            </div>
+            Send us a message
+          </h2>
           
           {isSubmitted ? (
             <motion.div
@@ -64,8 +69,8 @@ const Contact = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-full mb-4">
                 <MailCheck className="w-8 h-8 text-green-400" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
-              <p className="text-gray-400 mb-6">We'll get back to you as soon as possible.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">We'll get back to you as soon as possible.</p>
               <button
                 onClick={() => setIsSubmitted(false)}
                 className="px-6 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-sm font-medium hover:opacity-90 transition-all"
@@ -76,7 +81,7 @@ const Contact = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Your Name
                 </label>
                 <div className="relative">
@@ -90,14 +95,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-gray-800/50 border border-gray-700 text-white text-sm rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent block w-full pl-10 p-3 placeholder-gray-500"
+                    className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 p-3 placeholder-gray-500 dark:placeholder-gray-400"
                     placeholder="John Doe"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email Address
                 </label>
                 <div className="relative">
@@ -111,14 +116,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-gray-800/50 border border-gray-700 text-white text-sm rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent block w-full pl-10 p-3 placeholder-gray-500"
+                    className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 p-3 placeholder-gray-500 dark:placeholder-gray-400"
                     placeholder="you@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Your Message
                 </label>
                 <div className="relative">
@@ -132,7 +137,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="bg-gray-800/50 border border-gray-700 text-white text-sm rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent block w-full pl-10 p-3 placeholder-gray-500"
+                    className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 p-3 placeholder-gray-500 dark:placeholder-gray-400 resize-none"
                     placeholder="How can we help you?"
                   />
                 </div>
@@ -141,7 +146,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full flex items-center justify-center px-6 py-3 rounded-full font-medium text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 transition-all ${
+                className={`w-full flex items-center justify-center px-6 py-3 rounded-full font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 shadow-lg ${
                   isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
               >
@@ -167,8 +172,8 @@ const Contact = () => {
           className="space-y-8"
         >
           <div>
-            <h2 className="text-2xl font-semibold text-white mb-6">Contact Information</h2>
-            <p className="text-gray-400 mb-8">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Contact Information</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8">
               Have questions about events, participation, or anything else? Reach out to us through any of the channels below.
             </p>
           </div>
@@ -179,7 +184,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-pink-400" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">Email Us</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Email Us</h3>
                 <a 
                   href="mailto:contact@ekarikthin.com" 
                   className="text-pink-400 hover:text-pink-300 transition-colors"
@@ -194,7 +199,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-blue-400" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">Call Us</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Call Us</h3>
                 <a 
                   href="tel:+919876543210" 
                   className="text-blue-400 hover:text-blue-300 transition-colors"
@@ -209,8 +214,8 @@ const Contact = () => {
                 <MapPin className="h-6 w-6 text-yellow-400" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">Visit Us</h3>
-                <p className="text-gray-400">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Visit Us</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Ekarikthin 2026<br />
                   B.B. Court<br />
                   NIT Nagaland<br />
@@ -220,14 +225,14 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-gray-800">
-            <h3 className="text-lg font-medium text-white mb-4">Follow Us</h3>
+          <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               {['Instagram', 'Twitter', 'Facebook', 'LinkedIn'].map((social) => (
                 <a
                   key={social}
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-pink-500/20 text-gray-400 hover:text-white transition-colors"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-cyan-100 dark:hover:bg-cyan-900/30 text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                   aria-label={social}
                 >
                   <span className="sr-only">{social}</span>

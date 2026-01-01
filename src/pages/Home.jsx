@@ -183,18 +183,23 @@ export default function Home() {
         <section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pt-24 sm:pt-32 md:pt-36 pb-6 sm:pb-10">
           {/* BADGE */}
           <motion.div
-            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/50 dark:bg-white/10 backdrop-blur-xl rounded-full border border-gray-200 dark:border-white/20 shadow-lg text-gray-800 dark:text-white text-xs xs:text-sm sm:text-base font-medium sm:font-semibold mb-4 sm:mb-6 flex items-center gap-1.5 sm:gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
+            className="px-3 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl rounded-full border border-cyan-400/30 shadow-lg shadow-cyan-500/25 text-white text-sm sm:text-base font-semibold mb-6 sm:mb-8 flex items-center gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(34, 211, 238, 0.4)" }}
           >
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-600 dark:text-cyan-300 flex-shrink-0" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-300 flex-shrink-0 animate-pulse" />
             <span className="whitespace-nowrap overflow-hidden text-ellipsis">Ekarikthin 2026 • The Grand Cultural Festival</span>
           </motion.div>
 
           {/* HERO TITLE */}
           <motion.h1
             style={!isMobile ? { x: moveX, y: moveY } : {}}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-emerald-600 dark:from-cyan-300 dark:via-blue-400 dark:to-emerald-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-2 sm:px-4 text-center leading-[1.1] sm:leading-tight"
+            className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 dark:from-cyan-300 dark:via-blue-400 dark:to-emerald-300 bg-clip-text text-transparent drop-shadow-lg dark:drop-shadow-[0_0_30px_rgba(0,200,255,0.5)] px-2 sm:px-4 text-center leading-[1.1] sm:leading-tight animate-pulse"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, type: "spring", bounce: 0.5 }}
+            whileHover={{ scale: 1.05 }}
           >
             EKARIKTHIN 2K26
           </motion.h1>
@@ -230,23 +235,29 @@ export default function Home() {
 
           {/* BUTTONS */}
           <motion.div
-            className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
+            className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <Link
               to="/events"
-              className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_15px_rgba(0,200,255,0.4)] hover:shadow-[0_0_25px_rgba(0,200,255,0.6)] transition-all duration-300 flex items-center justify-center gap-1.5 w-full sm:w-auto"
+              className="group relative px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 shadow-[0_0_20px_rgba(0,200,255,0.4)] hover:shadow-[0_0_30px_rgba(0,200,255,0.6)] transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto overflow-hidden"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Explore Events <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="relative z-10">Explore Events</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
 
             <a
               href="#highlights"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base text-gray-700 dark:text-white bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 hover:bg-white/80 dark:hover:bg-white/20 transition flex items-center justify-center gap-1.5 w-full sm:w-auto"
+              className="group px-6 py-3 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-xl border border-purple-400/30 hover:border-purple-400/50 hover:bg-gradient-to-r hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Highlights
+              <Play className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" /> Highlights
             </a>
           </motion.div>
 

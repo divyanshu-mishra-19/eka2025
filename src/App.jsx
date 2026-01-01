@@ -89,7 +89,7 @@ function AppContent() {
 
         {/* Ticker - Only show on homepage */}
         {location.pathname === '/' && (
-          <div className="fixed top-16 left-0 right-0 z-40 w-full bg-black/80 backdrop-blur-sm border-t border-b border-white/10 overflow-hidden">
+          <div className="fixed top-16 left-0 right-0 z-[60] w-full bg-black/80 backdrop-blur-sm border-t border-b border-white/10 overflow-hidden">
             <div className="ticker-container">
               <div className="ticker-wrapper">
                 {/* Duplicate the messages for seamless looping */}
@@ -111,7 +111,7 @@ function AppContent() {
           </div>
         )}
         {/* Main content */}
-        <main className={`flex-1 w-full ${!location.pathname.startsWith('/admin') ? 'pt-15' : ''}`}>
+        <main className={`flex-1 w-full pt-10 ${!location.pathname.startsWith('/admin') ? 'pt-15' : ''}`}>
           <div className="min-h-[calc(100vh-200px)]">
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
@@ -195,7 +195,18 @@ function AppContent() {
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(() => {
+    // Check if splash screen was shown before
+    const hasSeenSplash = localStorage.getItem('hasSeenSplash');
+    return !hasSeenSplash; // Show splash only if not seen before
+  });
+
+  useEffect(() => {
+    // Mark splash as seen when it's shown
+    if (showSplash) {
+      localStorage.setItem('hasSeenSplash', 'true');
+    }
+  }, [showSplash]);
 
   return (
     <ThemeProvider>

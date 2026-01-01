@@ -60,11 +60,11 @@ const Gallery = () => {
 
       {/* HEADER */}
       <div className="text-center mb-10 md:mb-16 px-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 dark:from-blue-400 dark:via-cyan-400 dark:to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
           Gallery
         </h1>
-        <p className="text-gray-300 mt-3 md:mt-4 text-base md:text-lg">
-          Swipe through the highlights of Ekarikthin 2025
+        <p className="text-gray-700 dark:text-gray-300 mt-3 md:mt-4 text-base md:text-lg">
+          Swipe through the highlights of Ekarikthin 2026
         </p>
       </div>
 
@@ -75,10 +75,10 @@ const Gallery = () => {
             key={cat}
             whileHover={{ scale: 1.08 }}
             onClick={() => setActiveCategory(cat)}
-            className={`px-5 py-2 rounded-full backdrop-blur-xl border transition ${
+            className={`px-5 py-2 rounded-full backdrop-blur-xl border transition font-medium ${
               activeCategory === cat
-                ? "border-cyan-400 bg-white/10 text-cyan-300 shadow-[0_0_12px_#22d3ee]"
-                : "border-white/10 text-gray-400 hover:border-cyan-400 hover:text-white"
+                ? "border-cyan-500 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 shadow-lg shadow-cyan-500/30"
+                : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-900/20"
             }`}
           >
             {cat}
@@ -100,7 +100,7 @@ const Gallery = () => {
             <motion.div
               key={img.id}
               onClick={() => open(img, i)}
-              className="cursor-pointer w-full sm:w-auto lg:min-w-[280px] lg:max-w-[320px] relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition group lg:snap-center"
+              className="cursor-pointer w-full sm:w-auto lg:min-w-[280px] lg:max-w-[320px] relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition group lg:snap-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -125,13 +125,13 @@ const Gallery = () => {
 
             {/* CAPTION */}
             <div className="absolute bottom-0 p-3 sm:p-4 w-full bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 duration-300">
-              <h3 className="font-bold">{img.title}</h3>
+              <h3 className="font-bold text-white">{img.title}</h3>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-xs bg-cyan-500 px-2 py-1 rounded-full">
+                <span className="text-xs bg-cyan-500 px-2 py-1 rounded-full text-white">
                   {img.category}
                 </span>
                 {img.photographer && (
-                  <span className="text-xs text-white/70">
+                  <span className="text-xs text-white/80">
                     by {img.photographer}
                   </span>
                 )}

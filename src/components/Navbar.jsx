@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, Calendar, Mail, Info, Sparkles, Award, Users, Moon, Sun, Heart, X, Menu } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-// Fun emoji decorations
 const emojis = ['🎉', '✨', '🎨', '🎤', '🎭', '🎪', '🥁', '🎸', '🎯', '🎊', '🌈', '🎠', '🎡', '🎢', '🦄', '🍭', '🎈', '🎀'];
 const randomEmoji = () => emojis[Math.floor(Math.random() * emojis.length)];
 
@@ -72,7 +71,7 @@ const Navbar = () => {
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 ${scrolled
           ? 'bg-white/95 dark:bg-black/90 backdrop-blur-xl shadow-sm dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent backdrop-blur-none'
+          : 'bg-white dark:bg-black backdrop-blur-none'
           } transition-all duration-300`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
