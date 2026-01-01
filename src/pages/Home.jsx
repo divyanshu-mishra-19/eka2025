@@ -3,36 +3,42 @@ import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-mo
 import { Link } from "react-router-dom";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import Map from "../components/Map";
+import { useTheme } from "../context/ThemeContext";
 
 /* ============================================================
    🎥 1. CINEMATIC BACKGROUND
    ============================================================ */
 const CinematicBackground = () => {
+  const { theme } = useTheme();
+
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none w-full h-full" style={{ transform: 'scale(1)', transformOrigin: 'top left' }}>
-      {/* MAIN DARK GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b1220] to-black" />
+      {/* MAIN BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-cyan-100 dark:from-black dark:via-[#0b1220] dark:to-black transition-colors duration-500" />
 
       {/* VOLUMETRIC FOG */}
       <motion.div
-        className="absolute inset-0 opacity-40 mix-blend-screen"
-        animate={{ opacity: [0.25, 0.4, 0.25] }}
+        className="absolute inset-0 opacity-30 dark:opacity-40 mix-blend-multiply dark:mix-blend-screen"
+        animate={{ opacity: [0.2, 0.3, 0.2] }}
         transition={{ duration: 12, repeat: Infinity }}
         style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 50% 50%, rgba(0,140,255,0.18), transparent 70%)",
+          backgroundImage: theme === 'dark'
+            ? "radial-gradient(ellipse at 50% 50%, rgba(0,140,255,0.1), transparent 70%)"
+            : "radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%)",
           filter: "blur(80px)",
         }}
       />
 
       {/* MOVING SPOTLIGHT BEAM */}
       <motion.div
-        className="absolute top-[50%] left-1/2 w-[200vmax] h-[200vmax] sm:w-[1400px] sm:h-[1400px] rounded-full opacity-30"
+        className="absolute top-[50%] left-1/2 w-[200vmax] h-[200vmax] sm:w-[1400px] sm:h-[1400px] rounded-full opacity-20 dark:opacity-30"
         style={{
           transform: 'translate(-50%, -50%)',
           maxWidth: 'none',
           maxHeight: 'none',
-          background: "radial-gradient(circle, rgba(0,180,255,0.25), transparent 70%)",
+          background: theme === 'dark'
+            ? "radial-gradient(circle, rgba(0,180,255,0.15), transparent 70%)"
+            : "radial-gradient(circle, rgba(236, 72, 153, 0.1), transparent 70%)",
           filter: "blur(160px)",
         }}
         animate={{ x: ["-10%", "10%", "-10%"] }}
@@ -44,14 +50,14 @@ const CinematicBackground = () => {
         return (
           <motion.div
             key={i}
-            className="absolute w-[1px] sm:w-[2px] h-[200vh] bg-gradient-to-b from-cyan-400/40 to-transparent"
+            className="absolute w-[1px] sm:w-[2px] h-[200vh] bg-gradient-to-b from-purple-300/30 to-transparent dark:from-cyan-400/40"
             style={{
               transform: 'translateX(-50%)',
               top: '-30vh',
               left: `${15 + i * 15}%`,
-              opacity: 0.15,
+              opacity: 0.1,
             }}
-            animate={{ y: ["-20%", "20%", "-20%"], opacity: [0.1, 0.3, 0.1] }}
+            animate={{ y: ["-20%", "20%", "-20%"], opacity: [0.05, 0.2, 0.05] }}
             transition={{ duration: 10 + i * 2, repeat: Infinity, ease: "linear" }}
           />
         );
@@ -118,10 +124,10 @@ const Countdown = ({ targetDate = "2026-02-17T00:00:00" }) => {
             key={key}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 sm:p-3 md:p-4 rounded-lg sm:rounded-2xl shadow-[0_0_10px_rgba(0,200,255,0.2)] text-white"
+            className="bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 p-1.5 sm:p-3 md:p-4 rounded-lg sm:rounded-2xl shadow-lg dark:shadow-[0_0_10px_rgba(0,200,255,0.2)] text-gray-800 dark:text-white"
           >
             <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none">{value}</div>
-            <div className="text-[9px] xs:text-[10px] sm:text-xs uppercase mt-0.5 sm:mt-1 tracking-wider text-cyan-300">{key}</div>
+            <div className="text-[9px] xs:text-[10px] sm:text-xs uppercase mt-0.5 sm:mt-1 tracking-wider text-cyan-600 dark:text-cyan-300">{key}</div>
           </motion.div>
         ))}
       </div>
@@ -144,13 +150,13 @@ export default function Home() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkMobile();
-    
+
     // Add resize listener
     window.addEventListener('resize', checkMobile);
-    
+
     // Cleanup
     return () => {
       x.set(0);
@@ -160,7 +166,7 @@ export default function Home() {
   }, [x, y]);
 
   return (
-    <div 
+    <div
       className="relative min-h-screen overflow-x-hidden"
       onMouseMove={(e) => {
         // Only apply parallax effect on larger screens
@@ -174,28 +180,28 @@ export default function Home() {
 
       <div className="relative z-10">
         {/* ================= HERO ================= */}
-        <section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-10">
+        <section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pt-24 sm:pt-32 md:pt-36 pb-6 sm:pb-10">
           {/* BADGE */}
           <motion.div
-            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-lg text-white text-xs xs:text-sm sm:text-base font-medium sm:font-semibold mb-4 sm:mb-6 flex items-center gap-1.5 sm:gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/50 dark:bg-white/10 backdrop-blur-xl rounded-full border border-gray-200 dark:border-white/20 shadow-lg text-gray-800 dark:text-white text-xs xs:text-sm sm:text-base font-medium sm:font-semibold mb-4 sm:mb-6 flex items-center gap-1.5 sm:gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-300 flex-shrink-0" />
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-600 dark:text-cyan-300 flex-shrink-0" />
             <span className="whitespace-nowrap overflow-hidden text-ellipsis">Ekarikthin 2026 • The Grand Cultural Festival</span>
           </motion.div>
 
           {/* HERO TITLE */}
           <motion.h1
             style={!isMobile ? { x: moveX, y: moveY } : {}}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-2 sm:px-4 text-center leading-[1.1] sm:leading-tight"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-emerald-600 dark:from-cyan-300 dark:via-blue-400 dark:to-emerald-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(0,200,255,0.4)] px-2 sm:px-4 text-center leading-[1.1] sm:leading-tight"
           >
             EKARIKTHIN 2K26
           </motion.h1>
 
           <motion.div className="space-y-0.5 sm:space-y-1">
             <motion.p
-              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
+              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-700 dark:text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -203,7 +209,7 @@ export default function Home() {
               THE CULTURAL EXTRAVAGANZA
             </motion.p>
             <motion.p
-              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
+              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-700 dark:text-cyan-300 font-bold tracking-wider sm:tracking-widest px-2 sm:px-4 text-center leading-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -213,7 +219,7 @@ export default function Home() {
           </motion.div>
 
           <motion.p
-            className="max-w-2xl mt-4 sm:mt-6 text-sm xs:text-base sm:text-lg text-gray-300 px-3 sm:px-4 leading-relaxed"
+            className="max-w-2xl mt-4 sm:mt-6 text-sm xs:text-base sm:text-lg text-gray-600 dark:text-gray-300 px-3 sm:px-4 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -238,7 +244,7 @@ export default function Home() {
 
             <a
               href="#highlights"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base text-white bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition flex items-center justify-center gap-1.5 w-full sm:w-auto"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base text-gray-700 dark:text-white bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 hover:bg-white/80 dark:hover:bg-white/20 transition flex items-center justify-center gap-1.5 w-full sm:w-auto"
             >
               <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Highlights
             </a>
@@ -249,7 +255,7 @@ export default function Home() {
 
         {/* ================= SINGLE LOGO SHOWCASE ================= */}
         <section className="py-12 sm:py-16 md:py-20 relative z-10 text-center px-4 sm:px-6 md:px-8" id="highlights">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 mb-6 sm:mb-8 md:mb-10 drop-shadow-lg">Festival Logo</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-600 dark:text-cyan-300 mb-6 sm:mb-8 md:mb-10 drop-shadow-lg">Festival Logo</h2>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -266,10 +272,10 @@ export default function Home() {
 
         {/* ================= AFTERMOVIE SECTION ================= */}
         <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 sm:px-6 md:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Aftermovie 2023</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-600 dark:text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Aftermovie 2023</h2>
           <div className="max-w-4xl mx-auto px-1 sm:px-3">
             <motion.div
-              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg dark:shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-gray-200 dark:border-white/20 bg-white/50 dark:bg-black/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -292,11 +298,11 @@ export default function Home() {
         </section>
 
         {/* ================= EKARIKTHIN 2020 MOVIE SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-transparent to-black/30">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Ekarikthin 2020 Movie</h2>
+        <section className="py-12 sm:py-16 md:py-20 text-center relative z-10 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-transparent to-gray-100/50 dark:to-black/30">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-600 dark:text-cyan-300 drop-shadow-lg mb-6 sm:mb-8 md:mb-10">Ekarikthin 2020 Movie</h2>
           <div className="max-w-4xl mx-auto px-1 sm:px-3">
             <motion.div
-              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-white/20 bg-black/30"
+              className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg dark:shadow-[0_0_30px_rgba(0,200,255,0.3)] border border-gray-200 dark:border-white/20 bg-white/50 dark:bg-black/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -318,18 +324,18 @@ export default function Home() {
           </div>
         </section>
 
-        
+
 
         {/* ================= MAP SECTION ================= */}
         <section className="py-12 sm:py-16 md:py-20 relative z-10 px-4 sm:px-6 md:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-cyan-300 text-center mb-6 sm:mb-8">Festival Venue Map</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-cyan-600 dark:text-cyan-300 text-center mb-6 sm:mb-8">Festival Venue Map</h2>
 
-          <div className="max-w-4xl mx-auto rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_30px_rgba(0,200,255,0.4)] p-2 sm:p-3 md:p-4">
+          <div className="max-w-4xl mx-auto rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 shadow-lg dark:shadow-[0_0_30px_rgba(0,200,255,0.4)] p-2 sm:p-3 md:p-4">
             <div className="relative group">
               <Map />
-              <a 
-                href="https://www.google.com/maps/d/embed?mid=1vHMns8xqwBpyWr9j0JgeNNjDNWs&ehbc=2E312F" 
-                target="_blank" 
+              <a
+                href="https://www.google.com/maps/d/embed?mid=1vHMns8xqwBpyWr9j0JgeNNjDNWs&ehbc=2E312F"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
               >
@@ -342,13 +348,13 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-3 sm:mt-4 text-center">
-              <p className="text-gray-300 text-xs sm:text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
                 <span className="opacity-70">Venue:</span>{' '}
-                <a 
-                  href="https://www.google.com/maps?q=NIT+Nagaland" 
-                  target="_blank" 
+                <a
+                  href="https://www.google.com/maps?q=NIT+Nagaland"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-300 hover:text-cyan-200 hover:underline break-words inline-block max-w-full"
+                  className="text-cyan-600 dark:text-cyan-300 hover:text-cyan-500 dark:hover:text-cyan-200 hover:underline break-words inline-block max-w-full"
                 >
                   NIT Nagaland, Chumukedima, Nagaland - 797103
                 </a>

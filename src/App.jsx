@@ -41,7 +41,7 @@ import './fonts.css';
 // Protected Route Component
 const ProtectedRoute = ({ isAuthenticated, redirectPath = '/admin/login', children }) => {
   const token = localStorage.getItem('adminToken');
-  
+
   if (!isAuthenticated || !token) {
     // Clear any existing auth data if there's a mismatch
     if (token) {
@@ -50,7 +50,7 @@ const ProtectedRoute = ({ isAuthenticated, redirectPath = '/admin/login', childr
     }
     return <Navigate to={redirectPath} replace state={{ from: window.location.pathname }} />;
   }
-  
+
   return children || <Outlet />;
 };
 
@@ -81,12 +81,12 @@ function AppContent() {
         </>
       )}
 
-      <div className="flex flex-col flex-1">
+      <div className="w-full">
         {/* Navbar - Show on all non-admin routes */}
         {!location.pathname.startsWith('/admin') && (
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         )}
-        
+
         {/* Ticker - Only show on homepage */}
         {location.pathname === '/' && (
           <div className="fixed top-16 left-0 right-0 z-40 w-full bg-black/80 backdrop-blur-sm border-t border-b border-white/10 overflow-hidden">
@@ -94,8 +94,8 @@ function AppContent() {
               <div className="ticker-wrapper">
                 {/* Duplicate the messages for seamless looping */}
                 {[...tickerMessages, ...tickerMessages].map((message, index) => (
-                  <div 
-                    key={`ticker-${message.id}-${index}`} 
+                  <div
+                    key={`ticker-${message.id}-${index}`}
                     className="ticker-item"
                   >
                     <span className={`bg-${message.color} text-black text-[10px] font-bold px-3 py-1 rounded-full mr-3`}>
@@ -111,7 +111,7 @@ function AppContent() {
           </div>
         )}
         {/* Main content */}
-        <main className={`flex-1 w-full ${!location.pathname.startsWith('/admin') ? 'pt-20' : ''}`}>
+        <main className={`flex-1 w-full ${!location.pathname.startsWith('/admin') ? 'pt-15' : ''}`}>
           <div className="min-h-[calc(100vh-200px)]">
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
@@ -125,28 +125,28 @@ function AppContent() {
                 <Route path="/team" element={<Team />} />
                 <Route path="/playground" element={<Playground />} />
                 <Route path="/sponsors" element={<Sponsors />} />
-                
+
                 {/* Event Registration Routes */}
                 <Route path="/register" element={<Registration />} />
                 <Route path="/events/register" element={<EventRegistration />} />
                 <Route path="/registration/success" element={<RegistrationSuccess />} />
-                
+
                 {/* Admin Routes */}
                 <Route path="/admin">
                   {/* Admin Login - Only accessible when not authenticated */}
-                  <Route 
-                    path="login" 
+                  <Route
+                    path="login"
                     element={
                       isAuthenticated ? (
                         <Navigate to="/admin/dashboard" replace />
                       ) : (
                         <AdminLogin onLogin={() => setIsAuthenticated(true)} />
                       )
-                    } 
+                    }
                   />
-                  
+
                   {/* Protected Admin Routes */}
-                  <Route 
+                  <Route
                     element={
                       <ProtectedRoute isAuthenticated={isAuthenticated}>
                         <AdminLayout onLogout={() => {
@@ -170,14 +170,11 @@ function AppContent() {
               </Routes>
             </AnimatePresence>
           </div>
-
-          {/* Footer - Only show on non-admin routes */}
-          {!location.pathname.startsWith('/admin') && <Footer />}
         </main>
       </div>
-      
+
       {/* Toast */}
-      <Toaster 
+      <Toaster
         position="top-center"
         toastOptions={{
           style: {
@@ -192,6 +189,7 @@ function AppContent() {
           },
         }}
       />
+      {!location.pathname.startsWith('/admin') && <Footer />}
     </div>
   );
 }

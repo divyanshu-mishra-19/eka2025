@@ -1,41 +1,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+
 
 // Cinematic Background Component
 const CinematicBackground = () => {
+  const { theme } = useTheme();
+
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-      {/* MAIN DARK GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b1220] to-black" />
+      {/* MAIN BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-cyan-100 dark:from-black dark:via-[#0b1220] dark:to-black transition-colors duration-500" />
 
       {/* VOLUMETRIC FOG */}
       <motion.div
-        className="absolute inset-0 opacity-40 mix-blend-screen"
-        animate={{ opacity: [0.25, 0.4, 0.25] }}
+        className="absolute inset-0 opacity-30 dark:opacity-40 mix-blend-multiply dark:mix-blend-screen"
+        animate={{ opacity: [0.2, 0.3, 0.2] }}
         transition={{ duration: 12, repeat: Infinity }}
       >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30" />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 dark:opacity-30" />
       </motion.div>
 
-      {/* TWINKLING STARS */}
+      {/* TWINKLING STARS/PARTICLES */}
       {[...Array(20)].map((_, i) => {
         const size = Math.random() * 2 + 1;
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
         const duration = 2 + Math.random() * 3;
-        
+
         return (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-indigo-400 dark:bg-white"
             style={{
               width: `${size}px`,
               height: `${size}px`,
               left: `${posX}%`,
               top: `${posY}%`,
-              boxShadow: '0 0 10px 2px rgba(255, 255, 255, 0.8)',
+              boxShadow: theme === 'dark' ? '0 0 10px 2px rgba(255, 255, 255, 0.8)' : '0 0 10px 1px rgba(99, 102, 241, 0.6)',
             }}
             animate={{
               opacity: [0.3, 1, 0.3],
@@ -58,49 +62,49 @@ const Sponsors = () => {
   // Sponsor data
   const sponsors = {
     titleSponsor: [
-      { 
-        id: 1, 
-        name: 'Title Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 1,
+        name: 'Title Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'title'
       },
     ],
     goldSponsors: [
-      { 
-        id: 2, 
-        name: 'Gold Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 2,
+        name: 'Gold Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'gold'
       },
-      { 
-        id: 3, 
-        name: 'Gold Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 3,
+        name: 'Gold Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'gold'
       },
     ],
     silverSponsors: [
-      { 
-        id: 4, 
-        name: 'Silver Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 4,
+        name: 'Silver Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'silver'
       },
-      { 
-        id: 5, 
-        name: 'Silver Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 5,
+        name: 'Silver Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'silver'
       },
-      { 
-        id: 6, 
-        name: 'Silver Sponsor', 
-        logo: '/sponsors/logo-placeholder.png', 
+      {
+        id: 6,
+        name: 'Silver Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'silver'
       },
@@ -113,8 +117,8 @@ const Sponsors = () => {
   const renderSponsorCard = (sponsor) => {
     let gradient = '';
     let badgeColor = '';
-    
-    switch(sponsor.tier) {
+
+    switch (sponsor.tier) {
       case 'title':
         gradient = 'from-amber-400/10 to-yellow-500/10';
         badgeColor = 'from-amber-400 to-yellow-500';
@@ -133,7 +137,7 @@ const Sponsors = () => {
     }
 
     return (
-      <div className={`relative group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-${badgeColor.split(' ')[0].split('-')[1]}-500/20`}>
+      <div className={`relative group bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-${badgeColor.split(' ')[0].split('-')[1]}-500/20`}>
         <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
         <div className="relative z-10 h-full flex flex-col">
           <div className="flex-grow flex items-center justify-center mb-4 h-40">
@@ -148,7 +152,7 @@ const Sponsors = () => {
             />
           </div>
           <div className="mt-auto">
-            <h4 className="text-xl font-bold text-center text-white mb-2">{sponsor.name}</h4>
+            <h4 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">{sponsor.name}</h4>
             <div className="flex justify-center">
               <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${badgeColor} text-white`}>
                 <Star className="w-3 h-3 mr-1" />
@@ -171,13 +175,13 @@ const Sponsors = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-gray-900 dark:text-white transition-colors duration-500">
       <CinematicBackground />
-      
+
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -185,8 +189,8 @@ const Sponsors = () => {
           >
             Our Sponsors
           </motion.h1>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+          <motion.p
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -202,7 +206,7 @@ const Sponsors = () => {
           {/* Title Sponsor */}
           {sponsors.titleSponsor.length > 0 && (
             <div className="mb-20">
-              <motion.h3 
+              <motion.h3
                 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-300 to-yellow-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +233,7 @@ const Sponsors = () => {
           {/* Gold Sponsors */}
           {sponsors.goldSponsors.length > 0 && (
             <div className="mb-20">
-              <motion.h3 
+              <motion.h3
                 className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-yellow-300 to-amber-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +260,7 @@ const Sponsors = () => {
           {/* Silver Sponsors */}
           {sponsors.silverSponsors.length > 0 && (
             <div className="mb-16">
-              <motion.h3 
+              <motion.h3
                 className="text-xl md:text-2xl font-bold mb-8 text-center bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -292,9 +296,9 @@ const Sponsors = () => {
             className="relative"
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-300"></div>
-            <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 md:p-10 border border-white/10">
-              <motion.h2 
-                className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-300 to-yellow-500 bg-clip-text text-transparent"
+            <div className="relative bg-gradient-to-br from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-xl p-8 md:p-10 border border-gray-200 dark:border-white/10 shadow-xl">
+              <motion.h2
+                className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-500 to-yellow-600 dark:from-amber-300 dark:to-yellow-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -302,8 +306,8 @@ const Sponsors = () => {
               >
                 Want to be a part of Ekarikthin 2025?
               </motion.h2>
-              <motion.p 
-                className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+              <motion.p
+                className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
