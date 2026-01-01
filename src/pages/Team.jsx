@@ -259,13 +259,13 @@ const disciplinarySecretaries = [
     name: "Potula Sai Kumar",
     role: "Disciplinary Secretary",
     image: "/images/sai.jpg",
-    bio: "Ensures discipline and code of conduct in the boys' hostel.",
+    bio: "Ensures discipline and code of conduct in the hostel.",
   },
   {
-    name: "Khyothungo R Kikon",
+    name: "Khyothungo Kikon",
     role: "Disciplinary Secretary",
     image: "/images/kikon.jpeg",
-    bio: "Maintains discipline and enforces hostel rules for girls.",
+    bio: "Maintains discipline and enforces hostel Rules.",
   }
 ];
 
