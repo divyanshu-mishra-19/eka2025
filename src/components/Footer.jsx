@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   Github,
   ExternalLink,
@@ -14,6 +15,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const organizationLinks = [
+    {
+      name: 'Admin Login',
+      url: '/admin/login',
+      icon: Code,
+    },
     {
       name: 'Coding Club NITN',
       url: 'https://www.coding-club-nitn.tech/',
@@ -59,17 +65,32 @@ const Footer = () => {
             </h4>
             <div className="space-y-3">
               {organizationLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center md:justify-start gap-2 text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group"
-                  whileHover={{ x: 4 }}
-                >
-                  <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm font-medium">{link.name}</span>
-                </motion.a>
+                link.name === 'Admin Login' ? (
+                  <motion.div
+                    key={link.name}
+                    whileHover={{ x: 4 }}
+                  >
+                    <Link
+                      to={link.url}
+                      className="flex items-center justify-center md:justify-start gap-2 text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group"
+                    >
+                      <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">{link.name}</span>
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center md:justify-start gap-2 text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group"
+                    whileHover={{ x: 4 }}
+                  >
+                    <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">{link.name}</span>
+                  </motion.a>
+                )
               ))}
             </div>
           </div>
