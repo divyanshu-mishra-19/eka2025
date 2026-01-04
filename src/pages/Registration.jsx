@@ -244,7 +244,7 @@ const Registration = () => {
             hour12: true
           }),
           from_name: 'Ekarikthin 2026',
-          reply_to: 'techvai@nitnagaland.ac.in',
+          reply_to: 'techavi@nitnagaland.ac.in',
           // Add the recipient email in multiple formats to ensure it's recognized
           email: formData.email.trim(),
           user_email: formData.email.trim(),
@@ -631,7 +631,7 @@ const Registration = () => {
                   Failing to provide correct UTR will result in registration cancellation.
                 </p>
                 <p className="text-xs mt-2">
-                  Need help? Email us at <a href="mailto:techvai@nitnagaland.ac.in" className="text-cyan-300 hover:underline">techvai@nitnagaland.ac.in</a>
+                  Need help? Email us at <a href="mailto:techavi@nitnagaland.ac.in" className="text-cyan-300 hover:underline">techavi@nitnagaland.ac.in</a>
                 </p>
               </div>
             </div>
