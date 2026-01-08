@@ -1,4 +1,4 @@
-name: Slack Detailed Commit Notification
+name: Slack Notification
 on:
   push:
     branches: [main]
@@ -7,208 +7,30 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository with full history
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Get full history for comparison
 
-      - name: Extract detailed commit and PR info
-        id: extract
+      - name: Get Commit Info
+        id: commit
         run: |
-          # Get basic commit info
-          COMMIT_HASH=$(git log -1 --pretty=format:"%H")
-          COMMIT_SHORT_HASH=$(git log -1 --pretty=format:"%h")
-          AUTHOR_NAME=$(git log -1 --pretty=format:"%an")
-          AUTHOR_EMAIL=$(git log -1 --pretty=format:"%ae")
-          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
-          COMMIT_BODY=$(git log -1 --pretty=format:"%b")
-          COMMIT_DATE=$(git log -1 --pretty=format:"%cd" --date=format:"%Y-%m-%d %H:%M:%S")
-          COMMIT_URL="https://github.com/${{ github.repository }}/commit/${COMMIT_HASH}"
-          
-          # Get GitHub actor (who triggered the push - could be different from author)
-          ACTOR="${{ github.actor }}"
-          ACTOR_URL="https://github.com/${ACTOR}"
-          
-          # Get changed files count and stats
-          if [ $(git rev-list --count HEAD) -gt 1 ]; then
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | wc -l)
-            STATS=$(git diff --shortstat HEAD~1 HEAD 2>/dev/null || echo "No changes detected")
-            CHANGED_FILES_LIST=$(git diff --name-only HEAD~1 HEAD | head -10)
-          else
-            CHANGED_FILES=$(git diff --name-only HEAD | wc -l)
-            STATS=$(git diff --shortstat HEAD 2>/dev/null || echo "No changes detected")
-            CHANGED_FILES_LIST=$(git diff --name-only HEAD | head -10)
-          fi
-          
-          # Try to get PR info from commit message or GitHub API
-          PR_NUMBER=""
-          PR_TITLE=""
-          PR_DESCRIPTION=""
-          PR_URL=""
-          
-          # Check if commit message contains PR merge info
-          if [[ "$COMMIT_MESSAGE" =~ Merge\ pull\ request\ #([0-9]+) ]]; then
-            PR_NUMBER="${BASH_REMATCH[1]}"
-            PR_URL="https://github.com/${{ github.repository }}/pull/${PR_NUMBER}"
-            
-            # Try to get PR details using GitHub API
-            if [ -n "${{ secrets.GITHUB_TOKEN }}" ]; then
-              PR_DATA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-                "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}")
-              PR_TITLE=$(echo "$PR_DATA" | grep -o '"title":"[^"]*"' | head -1 | cut -d'"' -f4)
-              PR_DESCRIPTION=$(echo "$PR_DATA" | grep -o '"body":"[^"]*"' | head -1 | cut -d'"' -f4)
-            fi
-          fi
-          
-          # If no PR number found, check squash merge pattern
-          if [ -z "$PR_NUMBER" ] && [[ "$COMMIT_MESSAGE" =~ \(#([0-9]+)\)$ ]]; then
-            PR_NUMBER="${BASH_REMATCH[1]}"
-            PR_URL="https://github.com/${{ github.repository }}/pull/${PR_NUMBER}"
-            
-            # Extract PR title from commit message (remove PR number suffix)
-            PR_TITLE=$(echo "$COMMIT_MESSAGE" | sed 's/ (#[0-9]*)//g')
-          fi
-          
-          # Get commit author's GitHub profile if email matches
-          AUTHOR_PROFILE=""
-          if [[ "$AUTHOR_EMAIL" == *"@users.noreply.github.com" ]]; then
-            GITHUB_USER=$(echo "$AUTHOR_EMAIL" | cut -d'@' -f1)
-            AUTHOR_PROFILE="https://github.com/${GITHUB_USER}"
-          fi
-          
-          # Set outputs
-          echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
-          echo "commit_short_hash=${COMMIT_SHORT_HASH}" >> $GITHUB_OUTPUT
-          echo "author_name=${AUTHOR_NAME}" >> $GITHUB_OUTPUT
-          echo "author_email=${AUTHOR_EMAIL}" >> $GITHUB_OUTPUT
-          echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_OUTPUT
-          echo "commit_body=${COMMIT_BODY}" >> $GITHUB_OUTPUT
-          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
-          echo "commit_url=${COMMIT_URL}" >> $GITHUB_OUTPUT
-          echo "actor=${ACTOR}" >> $GITHUB_OUTPUT
-          echo "actor_url=${ACTOR_URL}" >> $GITHUB_OUTPUT
-          echo "changed_files=${CHANGED_FILES}" >> $GITHUB_OUTPUT
-          echo "stats=${STATS}" >> $GITHUB_OUTPUT
-          echo "changed_files_list=${CHANGED_FILES_LIST}" >> $GITHUB_OUTPUT
-          echo "pr_number=${PR_NUMBER}" >> $GITHUB_OUTPUT
-          echo "pr_title=${PR_TITLE}" >> $GITHUB_OUTPUT
-          echo "pr_description=${PR_DESCRIPTION}" >> $GITHUB_OUTPUT
-          echo "pr_url=${PR_URL}" >> $GITHUB_OUTPUT
-          echo "author_profile=${AUTHOR_PROFILE}" >> $GITHUB_OUTPUT
-          
-          # Debug output
-          echo "=== DEBUG INFO ==="
-          echo "PR Number: ${PR_NUMBER}"
-          echo "PR Title: ${PR_TITLE}"
-          echo "PR Description: ${PR_DESCRIPTION:0:100}..."
+          echo "hash=$(git log -1 --pretty=format:'%H')" >> $GITHUB_OUTPUT
+          echo "author=$(git log -1 --pretty=format:'%an <%ae>')" >> $GITHUB_OUTPUT
+          echo "message=$(git log -1 --pretty=format:'%s')" >> $GITHUB_OUTPUT
 
-      - name: Send Comprehensive Slack Notification
-        uses: slackapi/slack-github-action@v1.24.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          payload: |
-            {
-              "text": "🚀 New deployment to main: ${{ steps.extract.outputs.commit_message }}",
-              "blocks": [
+      - name: Send Slack Message
+        run: |
+          curl -X POST \
+            -H 'Content-type: application/json' \
+            --data "{
+              \"text\": \"🚀 New commit to main by ${{ steps.commit.outputs.author }}\",
+              \"blocks\": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "🚀 Production Deployment Notification",
-                    "emoji": true
+                  \"type\": \"section\",
+                  \"text\": {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*🚀 New Production Deployment*\\n*Repository:* ${{ github.repository }}\\n*Author:* ${{ steps.commit.outputs.author }}\\n*Commit:* ${{ steps.commit.outputs.message }}\\n*Link:* <https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.hash }}|View Commit>\"
                   }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Deployed By:*\n<${{ steps.extract.outputs.actor_url }}|${{ steps.extract.outputs.actor }}>"
-                    }
-                  ]
-                },
-                {
-                  "type": "divider"
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*👤 Code Author*\n${{ steps.extract.outputs.author_name }} ${{ steps.extract.outputs.author_profile != '' && '<' || '' }}${{ steps.extract.outputs.author_profile }}${{ steps.extract.outputs.author_profile != '' && '|' || '' }}${{ steps.extract.outputs.author_profile != '' && steps.extract.outputs.author_name || '' }}${{ steps.extract.outputs.author_profile != '' && '>' || '' }}\n${{ steps.extract.outputs.author_email }}"
-                  }
-                }
-                ${{ steps.extract.outputs.pr_number != '' && ',{
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📋 Pull Request*\n<${{ steps.extract.outputs.pr_url }}|#${{ steps.extract.outputs.pr_number }} - ${{ steps.extract.outputs.pr_title }}>"
-                  }
-                }' || '' }}
-                ${{ steps.extract.outputs.pr_description != '' && ',{
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📝 PR Description*\n```' || '' }}${{ steps.extract.outputs.pr_description }}${{ steps.extract.outputs.pr_description != '' && '```" } }' || '' }}
-                ,
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📦 Commit Details*\n```${{ steps.extract.outputs.commit_message }}```"
-                  }
-                }
-                ${{ steps.extract.outputs.commit_body != '' && ',{
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📄 Commit Description*\n' || '' }}${{ steps.extract.outputs.commit_body }}${{ steps.extract.outputs.commit_body != '' && '" } }' || '' }}
-                ,
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*📊 Changes*\n${{ steps.extract.outputs.changed_files }} files changed"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*📈 Stats*\n${{ steps.extract.outputs.stats }}"
-                    }
-                  ]
-                }
-                ${{ steps.extract.outputs.changed_files_list != '' && ',{
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📁 Modified Files (first 10):*\n```' || '' }}${{ steps.extract.outputs.changed_files_list }}${{ steps.extract.outputs.changed_files_list != '' && '```" } }' || '' }}
-                ,
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*📅 When*\n${{ steps.extract.outputs.commit_date }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*🔗 Commit*\n<${{ steps.extract.outputs.commit_url }}|${{ steps.extract.outputs.commit_short_hash }}>"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "Triggered by: ${{ github.event_name }} • Workflow: ${{ github.workflow }}"
-                    }
-                  ]
                 }
               ]
-            }
+            }" \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
