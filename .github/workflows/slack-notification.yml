@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for commit info
+          fetch-depth: 0
 
       - name: Get Commit Information
         id: commit-info
@@ -31,32 +31,38 @@ jobs:
           # Get number of files changed
           FILES_CHANGED=$(git diff --name-only HEAD~1 HEAD | wc -l)
           
-          # Get git author info
-          GIT_AUTHOR=$(git log -1 --pretty=format:"%an <%ae>")
-          
           # Get commit stats (additions/deletions)
           COMMIT_STATS=$(git diff --shortstat HEAD~1 HEAD 2>/dev/null || echo "0 files changed")
+          
+          # Get changed files list
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | head -20 | tr '\n' ',')
+          
+          # Format timestamp for display
+          COMMIT_TIME=$(date -d "${COMMIT_TIMESTAMP}" +"%Y-%m-%d %H:%M:%S UTC" 2>/dev/null || echo "${COMMIT_TIMESTAMP}")
           
           # Set outputs for later use
           echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
           echo "commit_author_name=${COMMIT_AUTHOR_NAME}" >> $GITHUB_OUTPUT
           echo "commit_author_email=${COMMIT_AUTHOR_EMAIL}" >> $GITHUB_OUTPUT
-          echo "commit_timestamp=${COMMIT_TIMESTAMP}" >> $GITHUB_OUTPUT
+          echo "commit_timestamp=${COMMIT_TIME}" >> $GITHUB_OUTPUT
           echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_OUTPUT
           echo "commit_body=${COMMIT_BODY}" >> $GITHUB_OUTPUT
           echo "commit_url=${COMMIT_URL}" >> $GITHUB_OUTPUT
           echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
           echo "repository_name=${REPOSITORY_NAME}" >> $GITHUB_OUTPUT
           echo "files_changed=${FILES_CHANGED}" >> $GITHUB_OUTPUT
-          echo "git_author=${GIT_AUTHOR}" >> $GITHUB_OUTPUT
           echo "commit_stats=${COMMIT_STATS}" >> $GITHUB_OUTPUT
-          
-          # Get changed files list
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | head -20)
           echo "changed_files=${CHANGED_FILES}" >> $GITHUB_OUTPUT
+          
+          # Debug output
+          echo "Timestamp: ${COMMIT_TIME}"
+          echo "Message: ${COMMIT_MESSAGE}"
+          echo "Body: ${COMMIT_BODY}"
 
       - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           payload: |
             {
@@ -96,16 +102,15 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*📝 Commit Message*\n```${{ steps.commit-info.outputs.commit_message }}```"
+                    "text": "*📝 Commit Message*\n```\n${{ steps.commit-info.outputs.commit_message }}\n```"
                   }
-                },
-                {
+                }
+                ${{ steps.commit-info.outputs.commit_body != '' && ',{
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*📋 Commit Description*\n${{ steps.commit-info.outputs.commit_body }}"
-                  }
-                },
+                    "text": "*📋 Commit Description*\n' || '' }}${{ steps.commit-info.outputs.commit_body }}${{ steps.commit-info.outputs.commit_body != '' && '" } }' || '' }}
+                ,
                 {
                   "type": "section",
                   "fields": [
@@ -130,14 +135,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*🕐 Timestamp*\n${{ fromJSON(steps.commit-info.outputs.commit_timestamp) }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*📄 Changed Files (first 20):*\n```${{ steps.commit-info.outputs.changed_files }}```"
+                    "text": "*🕐 Timestamp*\n${{ steps.commit-info.outputs.commit_timestamp }}"
                   }
                 },
                 {
@@ -151,6 +149,3 @@ jobs:
                 }
               ]
             }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
