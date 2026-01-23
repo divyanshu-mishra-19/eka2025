@@ -164,8 +164,8 @@ const technicalSecretaries = [
   {
     name: "Hrishabh Raj",
     role: "Technical Secretary and Lead Website Developer",
-    image: "https://unsplash.com/photos/an-empty-road-in-the-middle-of-a-forest-xy2UBoeQ4Sc",
-    bio: "Manages technical operations and implementations.",
+    image: "/images/hrishabh.jpeg",
+    bio: "Manages technical operations and implementations and Oversees the Ekarikthin 2026 Website.",
     socials: {
       linkedin: "https://www.linkedin.com/in/hrishabxcode/",
       instagram: "https://www.instagram.com/_hrishabhr/",
