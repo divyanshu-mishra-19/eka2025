@@ -125,8 +125,8 @@ const Events = () => {
       id: 3,
       title: "Cosplay",
       date: "Will be updated soon",
-      time: "9:00 AM - 9:00 PM",
-      location: "Computer Center",
+      time: "1:00 PM - 4:00 PM",
+      location: "Basketball Court",
       image: "/images/cp.png",
       description:
         "Cosplay\nA creative showcase where participants dress up as iconic characters from movies, anime, comics, or games.\nCosplay focuses on costume design, accuracy, expressions, and performance.\nA perfect blend of imagination, creativity, and fandom culture.",
@@ -151,7 +151,7 @@ const Events = () => {
         },
       },
       teamSize: "Solo / Duo / Group",
-      rules: ["Will be Updated Soon"],
+      rules: "/rules/cos.pdf",
       highlights: [
         "Celebrate anime, comics, movies, and gaming culture",
         "Judged on costume, accuracy, and performance",
