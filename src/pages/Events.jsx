@@ -569,6 +569,35 @@ const Events = () => {
         "High-intensity, crowd-pleasing matches",
       ],
     },
+    {
+      id: 18,
+      title: "Art Exhibition",
+      date: "Will be updated soon",
+      time: "11:00 AM - 3:00 PM",
+      location: "Mini Auditorium",
+      image: "",
+      description:
+        "Step into a world of color, creativity, and imagination at our Art Exhibition, where art comes alive through stunning paintings, sketches, sculptures, and mixed-media works.",
+      shortDescription:
+        "A vibrant Art Exhibition showcasing creative artworks by talented artists, celebrating imagination, expression, and visual storytelling.",
+      tag: "Cultural",
+      prizePool: NA,
+      prizeBreakup: {
+        first: NA,
+        second: NA,
+        consolation: NA,
+      },
+      registrationFee: {
+        inside: NA,
+        outside: NA,
+      },
+      teamSize: "Solo",
+      rules: ["/rules/fut.pdf"],
+      highlights: [
+        "Sell Your Art",
+        
+      ],
+    },
   ];
 
   const getTagClasses = (tag) => {
