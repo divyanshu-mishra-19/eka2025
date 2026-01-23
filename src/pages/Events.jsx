@@ -151,7 +151,7 @@ const Events = () => {
         },
       },
       teamSize: "Solo / Duo / Group",
-      rules: "/rules/cos.pdf",
+      rules: ["/rules/cos.pdf"],
       highlights: [
         "Celebrate anime, comics, movies, and gaming culture",
         "Judged on costume, accuracy, and performance",
