@@ -150,11 +150,11 @@ const HoverTeamCard = ({ member, isGeneralSecretary = false }) => {
 const generalSecretary = {
   name: "Khrieketouzo Peter Sekhose",
   role: "General Secretary",
-  image: "NA",
-  bio: "Leads the entire team and oversees all operations of Ekarikthin 2025.",
+  image: "/images/peter.jpeg",
+  bio: "Leads the entire team and oversees all operations of Ekarikthin 2026.",
   socials: {
-    linkedin: "NA",
-    instagram: "https://www.instagram.com/khrieketouzosekhose?igsh=ejd5cHQyaXdrbGRx",
+    linkedin: "https://www.linkedin.com/in/khrieketouzo-peter-sekhose?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    instagram: "https://www.instagram.com/khrieketouzosekhose/",
     email: "khrieketouzopetersekhose@gmail.com"
   }
 };
