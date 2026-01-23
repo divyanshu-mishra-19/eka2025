@@ -68,7 +68,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "6:00 PM - 10:00 PM",
       location: "B.B. Court",
-      image: "/images/voe.png",
+      image: "/images/voe.jpg",
       description:
         "🎤 Voice of Ekarikthin (Singing)\nA flagship musical competition where talented singers perform solo to showcase their vocal range, control, and emotional expression.\nOpen to multiple genres, this event celebrates passion for music and stage confidence.\nJudged on voice quality, pitch, expression, and overall performance.",
       shortDescription:
@@ -97,7 +97,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "4:00 PM - 8:00 PM",
       location: "Open Air Theater",
-      image: "/images/rit.jpeg",
+      image: "/images/rit.jpg",
       description:
         "Ritzy (Ramp Walk)\nA dazzling fashion event where participants express confidence, elegance, and personality on the ramp.\nIt's not just about outfits, but attitude, posture, and presentation.\nRitzy celebrates individuality, style, and stage presence.",
       shortDescription:
@@ -164,7 +164,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "10:00 AM - 4:00 PM",
       location: "Main Ground",
-      image: "/images/rv.png",
+      image: "/images/rv.jpg",
       description:
         "Rockville \nAn electrifying Musical Band Show that brings the campus alive with powerful beats and vibrant energy.\nA celebration of music, beat , and togetherness, making it one of the most awaited events.\nPure vibes, lights, and unforgettable memories.",
       shortDescription:
@@ -193,7 +193,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 5:00 PM",
       location: "Engineering Block",
-      image: "/images/bgmi.png",
+      image: "/images/bgmi.jpg",
       description:
         "BGMI\nA competitive battle royale tournament testing teamwork, strategy, and in-game decision-making.\nTeams fight it out in intense matches where survival and coordination are key.\nOnly the smartest and sharpest squads make it to the top.",
       shortDescription:
@@ -222,7 +222,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "All Day",
       location: "Campus Wide",
-      image: "/images/ml.png",
+      image: "/images/mlbb.jpg",
       description:
         "A fast-paced MOBA gaming competition where teams battle using heroes, skills, and strategy.\nEmphasizes coordination, tactical planning, and quick reflexes.\nPerfect for gamers who thrive under pressure.",
       shortDescription:
@@ -483,7 +483,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar.jpeg",
+      image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
@@ -514,7 +514,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar.jpeg",
+      image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
@@ -545,7 +545,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "/images/fut.jpeg",
+      image: "/images/fut.jpg",
       description:
         "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
       shortDescription:
