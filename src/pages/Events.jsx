@@ -84,7 +84,7 @@ const Events = () => {
         outside: 700,
       },
       teamSize: "Solo",
-      rules: ["Will be Updates Soon"],
+      rules: ["/rules/voe.pdf"],
       highlights: [
         "Open to all music forms",
         "Professional sound and lighting provided",
@@ -114,7 +114,7 @@ const Events = () => {
         outside: 800,
       },
       teamSize: "Solo",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/rit.pdf"],
       highlights: [
         "Professional sound system provided",
         "Judges from the fashion and media industry",
@@ -180,7 +180,7 @@ const Events = () => {
         outside: 2500,
       },
       teamSize: "1-3 members",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/rock.pdf"],
       highlights: [
         "High-energy EDM and Bollywood mixes",
         "Professional lights and sound system",
@@ -238,7 +238,7 @@ const Events = () => {
         outside: 1500,
       },
       teamSize: "5 members",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/mlbb.pdf"],
       highlights: [
         "Structured brackets and fair seeding",
         "Meta-defining strategies and drafts",
@@ -501,7 +501,7 @@ const Events = () => {
         outside: 200,
       },
       teamSize: "Solo",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/mar.pdf"],
       highlights: [
         "Distance-based running event",
         "Promotes fitness and discipline",
@@ -532,7 +532,7 @@ const Events = () => {
         outside: 150,
       },
       teamSize: "Solo",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/mar.pdf"],
       highlights: [
         "Exclusively for women participants",
         "Focus on inclusion and fitness",
@@ -562,7 +562,7 @@ const Events = () => {
         outside: 2500,
       },
       teamSize: "Team",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/fut.pdf"],
       highlights: [
         "Fast-paced small-sided football",
         "Ideal for competitive teams",
