@@ -1033,15 +1033,19 @@ const Events = () => {
                             ensure you go through them before participating.
                           </p>
                         </div>
-                        <a
-                          href="/rules.pdf"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-xs font-medium border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-100"
-                        >
-                          <ExternalLink size={13} className="mr-1" />
-                          View PDF
-                        </a>
+                        {selectedEvent.rules && selectedEvent.rules[0] !== "Will be Updated Soon" ? (
+                          <a
+                            href={selectedEvent.rules[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-xs font-medium border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-100"
+                          >
+                            <ExternalLink size={13} className="mr-1" />
+                            View PDF
+                          </a>
+                        ) : (
+                          <span className="text-xs text-gray-500 dark:text-slate-400">Coming soon</span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1113,15 +1117,25 @@ const Events = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <a
-                    href="/rules.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-slate-900 hover:bg-gray-200 dark:hover:bg-slate-800 text-xs sm:text-sm border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-100 transition-colors"
-                  >
-                    <ExternalLink size={14} className="mr-1.5" />
-                    Rules PDF
-                  </a>
+                  {selectedEvent.rules && selectedEvent.rules[0] !== "Will be Updated Soon" ? (
+                    <a
+                      href={selectedEvent.rules[0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-slate-900 hover:bg-gray-200 dark:hover:bg-slate-800 text-xs sm:text-sm border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-100 transition-colors"
+                    >
+                      <ExternalLink size={14} className="mr-1.5" />
+                      Rules PDF
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-slate-900 text-xs sm:text-sm border border-gray-300 dark:border-slate-700/80 text-gray-400 dark:text-slate-500 cursor-not-allowed"
+                    >
+                      <ExternalLink size={14} className="mr-1.5" />
+                      Rules Coming Soon
+                    </button>
+                  )}
                   <Link
                     to={`/register?event=${selectedEvent.id}`}
                     onClick={closeModal}
