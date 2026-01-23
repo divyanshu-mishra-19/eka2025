@@ -585,14 +585,14 @@ const Events = () => {
       prizeBreakup: {
         first: NA,
         second: NA,
-        consolation: NA,
+        consolation: "NA",
       },
       registrationFee: {
-        inside: NA,
-        outside: NA,
+        inside: "NA",
+        outside: "NA",
       },
       teamSize: "Solo",
-      rules: ["/rules/fut.pdf"],
+      rules: [],
       highlights: [
         "Sell Your Art",
         
