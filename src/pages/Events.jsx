@@ -74,10 +74,10 @@ const Events = () => {
       shortDescription:
         "A flagship singing competition showcasing vocal talent across genres, judged on voice quality, pitch, and stage presence.",
       tag: "Cultural",
-      prizePool: 20000,
+      prizePool: 17000,
       prizeBreakup: {
-        first: 12000,
-        second: 8000,
+        first: 10000,
+        second: 7000,
       },
       registrationFee: {
         inside: 700,
