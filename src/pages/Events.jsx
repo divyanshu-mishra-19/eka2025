@@ -581,10 +581,10 @@ const Events = () => {
       shortDescription:
         "A vibrant Art Exhibition showcasing creative artworks by talented artists, celebrating imagination, expression, and visual storytelling.",
       tag: "Cultural",
-      prizePool: NA,
+      prizePool: "NA",
       prizeBreakup: {
-        first: NA,
-        second: NA,
+        first: "NA",
+        second: "NA",
         consolation: "NA",
       },
       registrationFee: {
