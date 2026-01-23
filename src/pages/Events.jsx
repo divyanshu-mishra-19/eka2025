@@ -199,10 +199,10 @@ const Events = () => {
       shortDescription:
         "A high-intensity battle royale gaming competition testing strategy, teamwork, and sharp reflexes.",
       tag: "Gaming",
-      prizePool: 40000,
+      prizePool: 30000,
       prizeBreakup: {
-        first: 24000,
-        second: 16000,
+        first: 18000,
+        second: 12000,
       },
       registrationFee: {
         inside: 600,
@@ -228,10 +228,10 @@ const Events = () => {
       shortDescription:
         "A fast-paced MOBA tournament where teams compete using skills, coordination, and tactical gameplay.",
       tag: "Gaming",
-      prizePool: 50000,
+      prizePool: 40000,
       prizeBreakup: {
-        first: 40000,
-        second: 20000,
+        first: 24000,
+        second: 16000,
       },
       registrationFee: {
         inside: 750,
@@ -257,9 +257,9 @@ const Events = () => {
       shortDescription:
         "A survival-based challenge inspired by reality shows, pushing participants through physical, mental, and strategic tasks.",
       tag: "Sports",
-      prizePool: 3000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 3000,
+        first: 1500,
         second: 0,
       },
       registrationFee: {
@@ -286,9 +286,9 @@ const Events = () => {
       shortDescription:
         "An innovation-driven event where participants pitch creative ideas and solutions to real-world problems.",
       tag: "Entrepreneurship",
-      prizePool: 2000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 2000,
+        first: 1500,
         second: 0,
       },
       registrationFee: {
@@ -315,9 +315,9 @@ const Events = () => {
       shortDescription:
         "A brain-teasing competition full of puzzles, riddles, and logical challenges to test problem-solving skills.",
       tag: "Sports",
-      prizePool: 2000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 2000,
+        first: 1500,
         second: 0,
       },
       registrationFee: {
@@ -344,9 +344,9 @@ const Events = () => {
       shortDescription:
         "A classic spelling competition that tests vocabulary, pronunciation, and linguistic accuracy.",
       tag: "Sports",
-      prizePool: 2000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 2000,
+        first: 1500,
         second: 0,
       },
       registrationFee: {
@@ -373,9 +373,9 @@ const Events = () => {
       shortDescription:
         "An electrical circuit-solving competition designed to test technical knowledge, logic, and practical understanding.",
       tag: "Sports",
-      prizePool: 2000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 2000,
+        first: 1500,
         second: 0,
       },
       registrationFee: {
@@ -402,9 +402,9 @@ const Events = () => {
       shortDescription:
         "A colorful artistic event celebrating creativity, symmetry, and cultural expression through rangoli designs.",
       tag: "Cultural",
-      prizePool: 2000,
+      prizePool: 1000,
       prizeBreakup: {
-        first: 2000,
+        first: 1000,
         second: 0,
       },
       registrationFee: {
@@ -431,10 +431,10 @@ const Events = () => {
       shortDescription:
         "A short-reel creation contest capturing the spirit, excitement, and moments of Ekarikthin.",
       tag: "Cultural",
-      prizePool: 3000,
+      prizePool: 1500,
       prizeBreakup: {
-        first: 2000,
-        second: 1000,
+        first: 1000,
+        second: 500,
       },
       registrationFee: {
         inside: 0,
@@ -460,10 +460,10 @@ const Events = () => {
       shortDescription:
         "A photography competition focused on capturing stunning visuals, emotions, and memories of the fest.",
       tag: "Cultural",
-      prizePool: 2500,
+      prizePool: 1000,
       prizeBreakup: {
-        first: 1500,
-        second: 1000,
+        first: 700,
+        second: 300,
       },
       registrationFee: {
         inside: 0,
