@@ -21,6 +21,8 @@ const images = [
    { id: 12, src: "8.jpeg", title: "Nature", category: "College", photographer: "Sudipto Baral" },
    { id: 13, src: "10.jpeg", title: "Nature", category: "College", photographer: "Sudipto Baral" },
    { id: 14, src: "11.jpeg", title: "Nature", category: "College", photographer: "Sudipto Baral" },
+   { id: 15, src: "ravish.jpeg", title: "Nature", category: "College", photographer: "Ravish Bhardwaj" },
+   { id: 16, src: "ravish2.jpeg", title: "Nature", category: "College", photographer: "Sudipto Baral" },
 ];
 
 const categories = ["all", ...new Set(images.map((i) => i.category))];
