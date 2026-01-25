@@ -35,6 +35,11 @@ const Footer = () => {
       url: 'https://www.nitnagaland.ac.in/',
       icon: Building2,
     },
+    {
+      name: 'Volunteer Registration',
+      url: 'https://forms.gle/n8pUbzvhbeSiTit8A',
+      icon: Building2,
+    },
   ];
 
   return (
