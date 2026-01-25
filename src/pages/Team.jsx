@@ -318,6 +318,14 @@ const alumniSecretaries = [
   }
 ];
 
+const techTeam = {
+  name: "Fermetrix Lab",
+  role: "Website Developer",
+  image: "",
+  bio: "Developed and Manages all operations of Ekarikthin 2026 Website",
+  
+};
+
 
 
 const Team = () => {
@@ -458,6 +466,18 @@ const Team = () => {
             </div>
           </div>
         ))}
+
+          {/* GENERAL SECRETARY */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-bold text-cyan-300 mb-8">Tech Team</h2>
+          <div className="max-w-2xl mx-auto">
+            <HoverTeamCard 
+              member={techTeam} 
+              onClick={() => setSelected(techTeam)}
+              isGeneralSecretary={true}
+            />
+          </div>
+        </div>
 
       {/* ---------------- MODAL ---------------- */}
       {selected && (
