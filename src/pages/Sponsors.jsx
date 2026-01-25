@@ -195,7 +195,7 @@ const Sponsors = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2025 possible.
+            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2026 possible.
           </motion.p>
         </div>
       </section>
@@ -304,7 +304,7 @@ const Sponsors = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                Want to be a part of Ekarikthin 2025?
+                Want to be a part of Ekarikthin 2026?
               </motion.h2>
               <motion.p
                 className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
