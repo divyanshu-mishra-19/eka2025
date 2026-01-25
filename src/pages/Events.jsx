@@ -576,6 +576,7 @@ const Events = () => {
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
       image: "/images/ART.jpeg",
+      registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLScqVLvsMQj24HStaQY5AhMmLZFFr-0yXznVUozUG6hbDGNK9Q/viewform?usp=preview",
       description:
         "Step into a world of color, creativity, and imagination at our Art Exhibition, where art comes alive through stunning paintings, sketches, sculptures, and mixed-media works.",
       shortDescription:
@@ -1165,14 +1166,27 @@ const Events = () => {
                       Rules Coming Soon
                     </button>
                   )}
-                  <Link
-                    to={`/register?event=${selectedEvent.id}`}
-                    onClick={closeModal}
-                    className="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs sm:text-sm font-semibold shadow-lg shadow-emerald-500/40 transition-colors"
-                  >
-                    <span>Register Now</span>
-                    <ArrowRight size={16} className="ml-1.5" />
-                  </Link>
+                  {selectedEvent.registrationUrl ? (
+                    <a
+                      href={selectedEvent.registrationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeModal}
+                      className="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs sm:text-sm font-semibold shadow-lg shadow-emerald-500/40 transition-colors"
+                    >
+                      <span>Register Now</span>
+                      <ArrowRight size={16} className="ml-1.5" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={`/register?event=${selectedEvent.id}`}
+                      onClick={closeModal}
+                      className="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs sm:text-sm font-semibold shadow-lg shadow-emerald-500/40 transition-colors"
+                    >
+                      <span>Register Now</span>
+                      <ArrowRight size={16} className="ml-1.5" />
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>
