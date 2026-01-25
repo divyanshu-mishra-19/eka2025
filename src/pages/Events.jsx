@@ -575,7 +575,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "",
+      image: "/images/ART.jpeg",
       description:
         "Step into a world of color, creativity, and imagination at our Art Exhibition, where art comes alive through stunning paintings, sketches, sculptures, and mixed-media works.",
       shortDescription:
