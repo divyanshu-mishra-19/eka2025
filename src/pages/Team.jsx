@@ -321,7 +321,7 @@ const alumniSecretaries = [
 const techTeam = {
   name: "Fermetrix Lab",
   role: "Website Developer",
-  image: "",
+  image: "/images/fl.png",
   bio: "Developed and Manages all operations of Ekarikthin 2026 Website",
   
 };
