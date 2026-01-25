@@ -112,7 +112,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>contact@ekarikthin.in</span>
+                <span>ekarikthin@nitnagaland.ac.in</span>
               </div>
             </div>
 
@@ -155,7 +155,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
             >
-              Coding Club NIT Nagaland
+              Coding Club of NIT Nagaland 
             </a>
           </p>
         </div>
