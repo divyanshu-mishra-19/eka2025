@@ -189,7 +189,7 @@ const Contact = () => {
                   href="mailto:contact@ekarikthin.com" 
                   className="text-pink-400 hover:text-pink-300 transition-colors"
                 >
-                  techavi@nitnagaland.ac.in
+                  ekarikthin@nitnagaland.ac.in
                 </a>
               </div>
             </div>
@@ -201,10 +201,25 @@ const Contact = () => {
               <div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">Call Us</h3>
                 <a 
-                  href="tel:+919876543210" 
+                  href="tel:+917640859887" 
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   +91 7640859887
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0 p-3 bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-lg">
+                <Phone className="h-6 w-6 text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Call Us</h3>
+                <a 
+                  href="tel:+917981516480" 
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  +91 7981516480
                 </a>
               </div>
             </div>
