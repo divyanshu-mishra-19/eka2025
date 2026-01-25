@@ -318,14 +318,7 @@ const alumniSecretaries = [
   }
 ];
 
-const techTeam = [{
-  name: "Fermetrix Lab",
-  role: "Website Designing",
-  image: "",
-  bio: "Manages the Website for Ekarikthin 2026",
-  
-};
-];
+
 
 const Team = () => {
   const [selected, setSelected] = useState(null);
@@ -384,11 +377,7 @@ const Team = () => {
       members: disciplinarySecretaries,
       description: "Ensuring discipline and enforcing hostel rules"
     },
-    {
-      title: "Tech Team",
-      members: techTeam,
-      description: "Website Developer"
-    },
+    
     // {
     //   title: "clu",
     //   members: disciplinarySecretaries,
