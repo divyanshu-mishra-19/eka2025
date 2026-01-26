@@ -96,25 +96,25 @@ const Events = () => {
       title: "Ritzy",
       date: "Will be updated soon",
       time: "4:00 PM - 8:00 PM",
-      location: "Open Air Theater",
-      image: "/images/rit.jpg",
+      location: "BB Court",
+      image: "/images/ritzy.jpeg",
       description:
         "Ritzy (Ramp Walk)\nA dazzling fashion event where participants express confidence, elegance, and personality on the ramp.\nIt's not just about outfits, but attitude, posture, and presentation.\nRitzy celebrates individuality, style, and stage presence.",
       shortDescription:
         "A glamorous ramp walk event celebrating confidence, attitude, and fashion sense as participants own the stage with style.",
       tag: "Ramp Walk",
-      prizePool: 50000,
+      prizePool: 60000,
       prizeBreakup: {
-        first: 24000,
-        second: 16000,
-        subtitle: 10000,
+        first: 15000,
+        second: 7500,
+        subtitle: 15000,
       },
       registrationFee: {
         inside: 800,
         outside: 800,
       },
       teamSize: "Solo",
-      rules: ["/rules/rit.pdf"],
+      rules: ["/rules/rit_rules.pdf"],
       highlights: [
         "Professional sound system provided",
         "Judges from the fashion and media industry",
