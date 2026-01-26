@@ -116,7 +116,7 @@ const Events = () => {
       teamSize: "Solo",
       rules: ["/rules/rit_rules.pdf"],
       highlights: [
-        "Professional sound system provided",
+        "Direct Entry to Mr. Dimapur/Mr. Chumoukedima and Miss Chumoukedima",
         "Judges from the fashion and media industry",
         "Showcase your unique style and confidence",
       ],
