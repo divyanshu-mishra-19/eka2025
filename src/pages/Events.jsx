@@ -107,7 +107,7 @@ const Events = () => {
       prizeBreakup: {
         first: 15000,
         second: 7500,
-        subtitle: 15000,
+        subtitle: 2500,
       },
       registrationFee: {
         inside: 800,
