@@ -105,9 +105,9 @@ const Events = () => {
       tag: "Ramp Walk",
       prizePool: 60000,     //updated
       prizeBreakup: {
-        first: 15000,    //correction needed
-        second: 7500,
-        subtitle: 2500,
+        first: 14000, // Winner
+        second: 7000, // 2 Runners-up (each)
+        subtitle: 3000, // 6 Subtitles (each)
       },
       registrationFee: {
         inside: 800,
@@ -116,6 +116,9 @@ const Events = () => {
       teamSize: "Solo",
       rules: ["/rules/rit_rules.pdf"],
       highlights: [
+        "2 Winners: ₹14,000 each",
+        "2 Runners-up: ₹7,000 each",
+        "6 Subtitles: ₹3,000 each",
         "Direct Entry to Mr. Dimapur/Mr. Chumoukedima and Miss Chumoukedima",
         "Judges from the fashion and media industry",
         "Showcase your unique style and confidence",
