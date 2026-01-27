@@ -572,6 +572,7 @@ const Events = () => {
         "Semi Finalist : ₹5000 (Each)",
         "Best Player : ₹2000",
         "Best Keeper : ₹2000",
+        "On Spot Registration Available on 17 Feb 2026"
         "Fast-paced small-sided football",
         "Ideal for competitive teams",
         "High-intensity, crowd-pleasing matches",
