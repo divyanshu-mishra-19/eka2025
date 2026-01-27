@@ -126,7 +126,7 @@ const Registration = () => {
     '17': { 
       name: 'Futsal', 
       inside: 1500, 
-      outside: 2500,
+      outside: 3000,
       teamSize: '5-7 members'
     },
   };
