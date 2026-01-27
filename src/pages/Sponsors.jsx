@@ -72,11 +72,20 @@ const Sponsors = () => {
     ],
     printingPartner: [
       {
-        id: 1,
+        id: 'print1',
         name: 'Printing Partner',
-        logo: '/images/fing.png',
+        logo: '/sponsors/printing-partner.png',
         url: '#',
-        tier: 'Partner'
+        tier: 'printing'
+      },
+    ],
+    hydrationPartner: [
+      {
+        id: 'hydration1',
+        name: 'Hydration Partner',
+        logo: '/sponsors/hydration-partner.png',
+        url: '#',
+        tier: 'hydration'
       },
     ],
     goldSponsors: [
@@ -132,11 +141,6 @@ const Sponsors = () => {
         gradient = 'from-amber-400/10 to-yellow-500/10';
         badgeColor = 'from-amber-400 to-yellow-500';
         break;
-      case 'printing':
-        gradient = 'from-amber-400/10 to-yellow-500/10';
-        badgeColor = 'from-amber-400 to-yellow-500';
-        break;
-        
       case 'gold':
         gradient = 'from-yellow-300/10 to-yellow-600/10';
         badgeColor = 'from-yellow-400 to-amber-500';
@@ -144,6 +148,14 @@ const Sponsors = () => {
       case 'silver':
         gradient = 'from-gray-300/10 to-gray-500/10';
         badgeColor = 'from-gray-300 to-gray-400';
+        break;
+      case 'printing':
+        gradient = 'from-blue-200/10 to-blue-400/10';
+        badgeColor = 'from-blue-400 to-blue-600';
+        break;
+      case 'hydration':
+        gradient = 'from-cyan-200/10 to-sky-400/10';
+        badgeColor = 'from-cyan-400 to-sky-600';
         break;
       default:
         gradient = 'from-cyan-500/10 to-blue-500/10';
@@ -209,7 +221,7 @@ const Sponsors = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2026 possible.
+            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2025 possible.
           </motion.p>
         </div>
       </section>
@@ -248,7 +260,7 @@ const Sponsors = () => {
           {sponsors.printingPartner.length > 0 && (
             <div className="mb-20">
               <motion.h3
-                className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-300 to-yellow-500 bg-clip-text text-transparent"
+                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -261,10 +273,87 @@ const Sponsors = () => {
                     key={sponsor.id}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex justify-center"
                   >
-                    {renderSponsorCard(sponsor)}
+                    <div className="w-64 h-64 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/10 to-blue-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative z-10 h-full flex flex-col">
+                        <div className="flex-grow flex items-center justify-center mb-4 h-full">
+                          <img
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain p-4"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      {sponsor.url && (
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 z-20"
+                          aria-label={`Visit ${sponsor.name} website`}
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Hydration Partner */}
+          {sponsors.hydrationPartner.length > 0 && (
+            <div className="mb-20">
+              <motion.h3
+                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-sky-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                Hydration Partner
+              </motion.h3>
+              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+                {sponsors.hydrationPartner.map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex justify-center"
+                  >
+                    <div className="w-64 h-64 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/10 to-sky-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative z-10 h-full flex flex-col">
+                        <div className="flex-grow flex items-center justify-center mb-4 h-full">
+                          <img
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain p-4"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      {sponsor.url && (
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 z-20"
+                          aria-label={`Visit ${sponsor.name} website`}
+                        />
+                      )}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -345,7 +434,7 @@ const Sponsors = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                Want to be a part of Ekarikthin 2026?
+                Want to be a part of Ekarikthin 2025?
               </motion.h2>
               <motion.p
                 className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
