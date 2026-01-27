@@ -68,7 +68,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "6:00 PM - 10:00 PM",
       location: "B.B. Court",
-      image: "/images/voe.jpg",
+      image: "/images/voe1.jpg",
       description:
         "🎤 Voice of Ekarikthin (Singing)\nMusic is a powerful art form that crosses boundaries, stirs emotions, and brings people together across the world. \nVoice of Ekarikthin 2026, the premier solo singing event of Ekarikthin, is a celebration of this shared human expression. \nThe platform welcomes vocalists of all styles, offering a stage where voices shine, stories are told through melody, and rhythms spark emotion. Spanning genres from classical traditions to modern sounds",
       shortDescription:
