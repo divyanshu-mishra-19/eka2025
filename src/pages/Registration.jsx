@@ -47,7 +47,7 @@ const Registration = () => {
     },
     '4': { 
       name: 'Rockville', 
-      inside: 3500, 
+      inside: 2000, 
       outside: 3500,
       teamSize: 'Band'
     },
