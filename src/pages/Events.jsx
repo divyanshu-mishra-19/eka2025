@@ -182,7 +182,7 @@ const Events = () => {
         inside: 3500,
         outside: 3500,
       },
-      teamSize: "1-3 members",
+      
       rules: ["/rules/rock.pdf"],
       highlights: [
         "High-energy EDM and Bollywood mixes",
