@@ -70,6 +70,15 @@ const Sponsors = () => {
         tier: 'title'
       },
     ],
+    printingPartner: [
+      {
+        id: 1,
+        name: 'Printing Partner',
+        logo: '/images/fing.png',
+        url: '#',
+        tier: 'Partner'
+      },
+    ],
     goldSponsors: [
       {
         id: 2,
@@ -123,6 +132,11 @@ const Sponsors = () => {
         gradient = 'from-amber-400/10 to-yellow-500/10';
         badgeColor = 'from-amber-400 to-yellow-500';
         break;
+      case 'printing':
+        gradient = 'from-amber-400/10 to-yellow-500/10';
+        badgeColor = 'from-amber-400 to-yellow-500';
+        break;
+        
       case 'gold':
         gradient = 'from-yellow-300/10 to-yellow-600/10';
         badgeColor = 'from-yellow-400 to-amber-500';
@@ -213,6 +227,33 @@ const Sponsors = () => {
                 viewport={{ once: true, margin: "-50px" }}
               >
                 Title Sponsor
+              </motion.h3>
+              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+                {sponsors.titleSponsor.map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    {renderSponsorCard(sponsor)}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Printing Partner */}
+          {sponsors.printingPartner.length > 0 && (
+            <div className="mb-20">
+              <motion.h3
+                className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-300 to-yellow-500 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                Printing Partner
               </motion.h3>
               <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
                 {sponsors.titleSponsor.map((sponsor, index) => (
