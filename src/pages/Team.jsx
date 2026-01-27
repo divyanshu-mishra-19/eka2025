@@ -206,7 +206,7 @@ const financialSecretaries = [
   {
     name: "Kondari Venkata Teja",
     role: "Financial Secretary",
-    image: "/images/teja.jpg",
+    image: "/images/teja.JPG",
     bio: "Manages financial operations and budgeting .",
   },
   {
