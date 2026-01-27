@@ -486,7 +486,7 @@ const Events = () => {
       date: "19 February 2026",
       time: "06:00 AM Onwards",
       location: "NIT Nagaland",
-      image: "/images/mar.jpg",
+      image: "/images/mar1.jpeg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
@@ -518,7 +518,7 @@ const Events = () => {
       date: "19 February 2026",
       time: "06:00 AM Onwards",
       location: "NIT Nagaland",
-      image: "/images/mar.jpg",
+      image: "/images/mar1.jpeg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
@@ -549,7 +549,7 @@ const Events = () => {
       date: "19,20,21 February 2026",
       time: "09:00 AM Onwards",
       location: "NIT Football Ground",
-      image: "/images/fut.jpg",
+      image: "/images/fut1.jpeg",
       description:
         "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
       shortDescription:
