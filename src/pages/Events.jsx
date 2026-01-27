@@ -65,7 +65,7 @@ const Events = () => {
     {
       id: 1,
       title: "Voice of Ekarikthin",
-      date: "21 Feb , 2026",
+      date: "21 February , 2026",
       time: "3:30 PM Onwards",
       location: "B.B. Court",
       image: "/images/voe1.jpg",
