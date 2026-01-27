@@ -179,7 +179,7 @@ const Events = () => {
         second: 30000,
       },
       registrationFee: {
-        inside: 3500,
+        inside: 2000,
         outside: 3500,
       },
       
