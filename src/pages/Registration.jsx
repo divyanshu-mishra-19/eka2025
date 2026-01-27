@@ -244,7 +244,7 @@ const Registration = () => {
             hour12: true
           }),
           from_name: 'Ekarikthin 2026',
-          reply_to: 'techavi@nitnagaland.ac.in',
+          reply_to: 'ekarikthin@nitnagaland.ac.in',
           // Add the recipient email in multiple formats to ensure it's recognized
           email: formData.email.trim(),
           user_email: formData.email.trim(),
