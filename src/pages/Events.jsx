@@ -559,9 +559,6 @@ const Events = () => {
       prizeBreakup: {
         first: 50000,
         second: 30000,
-        semifinalist: 5000,
-        "best player": 2000,
-        "best keeper": 2000,
       },
       registrationFee: {
         inside: 1500,
