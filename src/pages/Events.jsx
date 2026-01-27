@@ -183,7 +183,7 @@ const Events = () => {
         outside: 3500,
       },
       
-      rules: ["/rules/rock.pdf"],
+      rules: ["/rules/rock1.pdf"],
       highlights: [
         "High-energy EDM and Bollywood mixes",
         "Professional lights and sound system",
