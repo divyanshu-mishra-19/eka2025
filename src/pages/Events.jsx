@@ -65,8 +65,8 @@ const Events = () => {
     {
       id: 1,
       title: "Voice of Ekarikthin",
-      date: "Will be updated soon",
-      time: "6:00 PM - 10:00 PM",
+      date: "21 Feb , 2026",
+      time: "3:30 PM Onwards",
       location: "B.B. Court",
       image: "/images/voe1.jpg",
       description:
@@ -94,8 +94,8 @@ const Events = () => {
     {
       id: 2,
       title: "Ritzy",
-      date: "Will be updated soon",
-      time: "4:00 PM - 8:00 PM",
+      date: "20 February 2026",
+      time: "4:30 PM Onwards",
       location: "BB Court",
       image: "/images/ritzy.jpeg",
       description:
@@ -127,8 +127,8 @@ const Events = () => {
     {
       id: 3,
       title: "Cosplay",
-      date: "Will be updated soon",
-      time: "1:00 PM - 4:00 PM",
+      date: "20 February 2026",
+      time: "1:00 PM Onwards",
       location: "Basketball Court",
       image: "/images/cp.png",
       description:
@@ -164,8 +164,8 @@ const Events = () => {
     {
       id: 4,
       title: "Rockville",
-      date: "Will be updated soon",
-      time: "10:00 AM - 4:00 PM",
+      date: "21 February 2026",
+      time: "5:30 PM Onwards",
       location: "Main Ground",
       image: "/images/rv.jpg",
       description:
@@ -193,8 +193,8 @@ const Events = () => {
     {
       id: 5,
       title: "BGMI",
-      date: "Will be updated soon",
-      time: "11:00 AM - 5:00 PM",
+      date: "19 February 2026",
+      time: "09:00 AM Onwards",
       location: "Engineering Block",
       image: "/images/bgmi.jpg",
       description:
@@ -222,8 +222,8 @@ const Events = () => {
     {
       id: 6,
       title: "MLBB",
-      date: "Will be updated soon",
-      time: "All Day",
+      date: "19 February 2026",
+      time: "09:00 A.M.",
       location: "Campus Wide",
       image: "/images/mlbb.jpg",
       description:
@@ -483,9 +483,9 @@ const Events = () => {
     {
       id: 15,
       title: "MEN'S MARATHON",
-      date: "Will be updated soon",
-      time: "11:00 AM - 3:00 PM",
-      location: "Campus",
+      date: "19 February 2026",
+      time: "06:00 AM Onwards",
+      location: "NIT Nagaland",
       image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
@@ -515,9 +515,9 @@ const Events = () => {
     {
       id: 16,
       title: "WOMEN'S MARATHON",
-      date: "Will be updated soon",
-      time: "11:00 AM - 3:00 PM",
-      location: "Campus",
+      date: "19 February 2026",
+      time: "06:00 AM Onwards",
+      location: "NIT Nagaland",
       image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
@@ -546,9 +546,9 @@ const Events = () => {
     {
       id: 17,
       title: "FUTSAL",
-      date: "Will be updated soon",
-      time: "11:00 AM - 3:00 PM",
-      location: "Mini Auditorium",
+      date: "19,20,21 February 2026",
+      time: "09:00 AM Onwards",
+      location: "NIT Football Ground",
       image: "/images/fut.jpg",
       description:
         "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
