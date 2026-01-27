@@ -567,6 +567,11 @@ const Events = () => {
       teamSize: "Team",
       rules: ["/rules/fut.pdf"],
       highlights: [
+        "First Prize : ₹50000",
+        "Second Prize : ₹30000",
+        "Semi Finalist : ₹5000 (Each)",
+        "Best Player : ₹2000",
+        "Best Keeper : ₹2000",
         "Fast-paced small-sided football",
         "Ideal for competitive teams",
         "High-intensity, crowd-pleasing matches",
