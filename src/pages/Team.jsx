@@ -291,7 +291,7 @@ const nssSecretaries = [
   {
     name: "Pachei  P Khiamniungan",
     role: "NSS Secretary",
-    image: "/images/pachei.jpg",
+    image: "/images/pachey.jpeg",
     bio: "Coordinates NSS Activities",
   },
   {
