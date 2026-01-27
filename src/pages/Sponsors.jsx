@@ -256,7 +256,7 @@ const Sponsors = () => {
                 Printing Partner
               </motion.h3>
               <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
-                {sponsors.titleSponsor.map((sponsor, index) => (
+                {sponsors.printingPartner.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
                     initial={{ opacity: 0, scale: 0.95 }}
