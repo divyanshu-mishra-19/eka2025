@@ -179,8 +179,8 @@ const Events = () => {
         second: 30000,
       },
       registrationFee: {
-        inside: 2500,
-        outside: 2500,
+        inside: 3500,
+        outside: 3500,
       },
       teamSize: "1-3 members",
       rules: ["/rules/rock.pdf"],
