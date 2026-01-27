@@ -70,14 +70,14 @@ const Events = () => {
       location: "B.B. Court",
       image: "/images/voe.jpg",
       description:
-        "🎤 Voice of Ekarikthin (Singing)\nA flagship musical competition where talented singers perform solo to showcase their vocal range, control, and emotional expression.\nOpen to multiple genres, this event celebrates passion for music and stage confidence.\nJudged on voice quality, pitch, expression, and overall performance.",
+        "🎤 Voice of Ekarikthin (Singing)\nMusic is a powerful art form that crosses boundaries, stirs emotions, and brings people together across the world. \nVoice of Ekarikthin 2026, the premier solo singing event of Ekarikthin, is a celebration of this shared human expression. \nThe platform welcomes vocalists of all styles, offering a stage where voices shine, stories are told through melody, and rhythms spark emotion. Spanning genres from classical traditions to modern sounds",
       shortDescription:
         "A flagship singing competition showcasing vocal talent across genres, judged on voice quality, pitch, and stage presence.",
       tag: "Cultural",
-      prizePool: 17000,
+      prizePool: 20000,   //updated
       prizeBreakup: {
-        first: 10000,
-        second: 7000,
+        first: 12000,
+        second: 8000,
       },
       registrationFee: {
         inside: 700,
@@ -99,11 +99,11 @@ const Events = () => {
       location: "BB Court",
       image: "/images/ritzy.jpeg",
       description:
-        "Ritzy (Ramp Walk)\nA dazzling fashion event where participants express confidence, elegance, and personality on the ramp.\nIt's not just about outfits, but attitude, posture, and presentation.\nRitzy celebrates individuality, style, and stage presence.",
+        "Ritzy (Ramp Walk)\nRitzy, the signature pageant of Ekarikthin, is a platform where confidence is built, purpose is discovered, and courage is shaped. More than a celebration of appearance, it represents discipline, resilience, and the determination to rise higher. \nContestants competing for the titles of Mr. and Miss Ekarikthin 2026 step onto a journey that can open doors to greater opportunities, including direct qualification for Mr. Dimapur/ Mr.Chumoukedima and Miss Chumoukedima. \nInspired by the legacy of remarkable past winners, Ritzy continues to empower young individuals to lead with grace, strength, and self-belief, setting the stage for a new generation to inspire through character and charisma.",
       shortDescription:
         "A glamorous ramp walk event celebrating confidence, attitude, and fashion sense as participants own the stage with style.",
       tag: "Ramp Walk",
-      prizePool: 60000,
+      prizePool: 60000,     //updated
       prizeBreakup: {
         first: 14000, // Winner
         second: 7000, // 2 Runners-up (each)
@@ -173,10 +173,10 @@ const Events = () => {
       shortDescription:
         "An electrifying Musical Band filled with music, beats, and energy—where the crowd vibes nonstop.",
       tag: "Music",
-      prizePool: 60000,
+      prizePool: 100000,  // changed
       prizeBreakup: {
-        first: 40000,
-        second: 20000,
+        first: 70000,
+        second: 30000,
       },
       registrationFee: {
         inside: 2500,
@@ -486,18 +486,19 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar1.jpeg",
+      image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
         "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
-      prizePool: 24500,
+      prizePool: 26000,   //updated and added
       prizeBreakup: {
         first: 10000,
         second: 7000,
         third: 4000,
-        consolation: 3500,
+        "top 4 to 6": 1000,
+        "top 7 to 10": 500,
       },
       registrationFee: {
         inside: 100,
@@ -517,18 +518,18 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar1.jpeg",
+      image: "/images/mar.jpg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
         "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
-      prizePool: 16500,
+      prizePool: 16500,    //updated and added
       prizeBreakup: {
         first: 7000,
         second: 4000,
         third: 2000,
-        consolation: 3500,
+        "top 4 to 10": 500,
       },
       registrationFee: {
         inside: 70,
@@ -548,17 +549,19 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "/images/fut1.jpeg",
+      image: "/images/fut.jpg",
       description:
         "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
       shortDescription:
         "A thrilling five-a-side football tournament featuring speed, teamwork, and high-energy gameplay.",
       tag: "Sports",
-      prizePool: 54000,
+      prizePool: 94000,   //updated and added
       prizeBreakup: {
         first: 50000,
         second: 30000,
-        consolation: 14000,
+        semifinalist: 5000,
+        "best player": 2000,
+        "best keeper": 2000,
       },
       registrationFee: {
         inside: 1500,
