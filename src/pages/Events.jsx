@@ -483,17 +483,17 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar.jpg",
+      image: "/images/mar1.jpeg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
         "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
-      prizePool: 21500,
+      prizePool: 24500,
       prizeBreakup: {
         first: 10000,
-        second: 5000,
-        third: 3000,
+        second: 7000,
+        third: 4000,
         consolation: 3500,
       },
       registrationFee: {
@@ -514,7 +514,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Campus",
-      image: "/images/mar.jpg",
+      image: "/images/mar1.jpeg",
       description:
         "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
       shortDescription:
@@ -545,7 +545,7 @@ const Events = () => {
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
-      image: "/images/fut.jpg",
+      image: "/images/fut1.jpeg",
       description:
         "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
       shortDescription:
@@ -553,13 +553,13 @@ const Events = () => {
       tag: "Sports",
       prizePool: 54000,
       prizeBreakup: {
-        first: 30000,
-        second: 20000,
-        consolation: 4000,
+        first: 50000,
+        second: 30000,
+        consolation: 14000,
       },
       registrationFee: {
         inside: 1500,
-        outside: 2500,
+        outside: 3000,
       },
       teamSize: "Team",
       rules: ["/rules/fut.pdf"],
