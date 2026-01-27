@@ -74,7 +74,7 @@ const Sponsors = () => {
       {
         id: 'print1',
         name: 'Printing Partner',
-        logo: '/sponsors/printing-partner.png',
+        logo: '/images/fing.png',
         url: '#',
         tier: 'printing'
       },
