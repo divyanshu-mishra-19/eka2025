@@ -83,7 +83,7 @@ const Sponsors = () => {
       {
         id: 'hydration1',
         name: 'Hydration Partner',
-        logo: '/sponsors/hydration-partner.png',
+        logo: '/images/os.jpg',
         url: '#',
         tier: 'hydration'
       },
