@@ -69,7 +69,7 @@ const CinematicBackground = () => {
 /* ============================================================
    ⏳ 2. COUNTDOWN TIMER
    ============================================================ */
-const Countdown = ({ targetDate = "2026-02-17T00:00:00" }) => {
+const Countdown = ({ targetDate = "2026-02-19T00:00:00" }) => {
   const target = new Date(targetDate);
 
   const [time, setTime] = useState({
