@@ -196,7 +196,7 @@ const Events = () => {
       date: "19 February 2026",
       time: "09:00 AM Onwards",
       location: "NIT Nagaland",
-      image: "/images/bgmi.jpg",
+      image: "/images/bgmi1.png",
       description:
         "BGMI\nA competitive battle royale tournament testing teamwork, strategy, and in-game decision-making.\nTeams fight it out in intense matches where survival and coordination are key.\nOnly the smartest and sharpest squads make it to the top.",
       shortDescription:
