@@ -580,7 +580,7 @@ const Events = () => {
     },
     {
       id: 18,
-      title: "Art Exhibition",
+      title: "Art and Photography Exhibition",
       date: "Will be updated soon",
       time: "11:00 AM - 3:00 PM",
       location: "Mini Auditorium",
@@ -602,7 +602,7 @@ const Events = () => {
         outside: "NA",
       },
       teamSize: "Solo",
-      rules: [],
+      rules: ["/rules/art_rules.pdf"],
       highlights: [
         "Sell Your Art",
         
