@@ -211,12 +211,13 @@ const Events = () => {
         inside: 600,
         outside: 1500,
       },
-      teamSize: "4 members",
+      teamSize: "4 + 2 members",
       rules: ["Will be Updated Soon"],
       highlights: [
         "Custom rooms and fair play ensured",
         "Casting and live spectating for finals",
         "Perfect for competitive squads",
+        "Kindly Go through the Rules PDF Carefully",
       ],
     },
     {
