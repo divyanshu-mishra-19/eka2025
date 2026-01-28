@@ -209,7 +209,7 @@ const Events = () => {
       },
       registrationFee: {
         inside: 600,
-        outside: 1200,
+        outside: 1500,
       },
       teamSize: "4 members",
       rules: ["Will be Updated Soon"],
@@ -238,7 +238,7 @@ const Events = () => {
       },
       registrationFee: {
         inside: 750,
-        outside: 1500,
+        outside: 2000,
       },
       teamSize: "5 members",
       rules: ["/rules/mlbb.pdf"],
