@@ -132,7 +132,7 @@ const Events = () => {
       location: "Basketball Court",
       image: "/images/cp.png",
       description:
-        "Cosplay\nA creative showcase where participants dress up as iconic characters from movies, anime, comics, or games.\nCosplay focuses on costume design, accuracy, expressions, and performance.\nA perfect blend of imagination, creativity, and fandom culture.",
+        "Cosplay\nACosplay at Ekarikthin 2026 invites you into a vibrant universe where imagination transforms into reality. \nThis showcase celebrates innovation, craftsmanship, and performance, offering students a dynamic platform to reinterpret iconic characters from anime, films, games, and beyond. Each costume becomes a creative expression, each performance a story brought to life through skill and passion. \nThe cosplay event is more than a display—it is a fusion of art, fandom, and originality that turns the campus into a living canvas of creativity.",
       shortDescription:
         "Step into the shoes of your favorite characters and bring imagination to life through creative costumes and performances.",
       tag: "Cultural",
@@ -169,7 +169,7 @@ const Events = () => {
       location: "Main Ground",
       image: "/images/rv.jpg",
       description:
-        "Rockville \nAn electrifying Musical Band Show that brings the campus alive with powerful beats and vibrant energy.\nA celebration of music, beat , and togetherness, making it one of the most awaited events.\nPure vibes, lights, and unforgettable memories.",
+        "Rockville \nRockville, Ekarikthin’s high-voltage battle of bands, is a celebration of raw sound, live energy, and musical innovation. \nBringing together the finest local talent across diverse styles, the event transforms the stage into a space of fierce competition and unforgettable performances. From thunderous drums to electrifying guitar riffs and powerful vocals, Rockville captures the adrenaline of live music at its best. \nWith a legacy of acclaimed judges and iconic performances by renowned bands, the platform continues to elevate rising artists, offering recognition, exposure, and a night where the rock spirit truly comes alive.",
       shortDescription:
         "An electrifying Musical Band filled with music, beats, and energy—where the crowd vibes nonstop.",
       tag: "Music",
@@ -185,9 +185,9 @@ const Events = () => {
       
       rules: ["/rules/rock1.pdf"],
       highlights: [
-        "High-energy EDM and Bollywood mixes",
-        "Professional lights and sound system",
-        "Massive crowd and unforgettable atmosphere",
+        "Rocking Music",
+        "Stunning Visuals",
+        "Crazy Atmosphere",
       ],
     },
     {
@@ -198,7 +198,7 @@ const Events = () => {
       location: "NIT Nagaland",
       image: "/images/bgmi1.png",
       description:
-        "BGMI\nA competitive battle royale tournament testing teamwork, strategy, and in-game decision-making.\nTeams fight it out in intense matches where survival and coordination are key.\nOnly the smartest and sharpest squads make it to the top.",
+        "BGMI\nBattlegrounds Mobile India at Ekarikthin 2026 delivers an adrenaline-charged esports experience where strategy, precision, and teamwork determine survival. \nThis tournament brings together skilled players to compete in high-stakes matches that test reflexes, tactical awareness, and coordination under pressure.",
       shortDescription:
         "A high-intensity battle royale gaming competition testing strategy, teamwork, and sharp reflexes.",
       tag: "Gaming",
@@ -228,7 +228,7 @@ const Events = () => {
       location: "NIT Nagaland",
       image: "/images/mlbb.jpg",
       description:
-        "A fast-paced MOBA gaming competition where teams battle using heroes, skills, and strategy.\nEmphasizes coordination, tactical planning, and quick reflexes.\nPerfect for gamers who thrive under pressure.",
+        "Mobile Legends: Bang Bang at Ekarikthin 2026 brings the thrill of competitive esports to the forefront, where strategy, teamwork, and quick decision-making define victory. \nThis event provides a platform for gamers to showcase their skills, master tactical gameplay, and compete in intense battles that test coordination and resilience.",
       shortDescription:
         "A fast-paced MOBA tournament where teams compete using skills, coordination, and tactical gameplay.",
       tag: "Gaming",
@@ -489,7 +489,7 @@ const Events = () => {
       location: "NIT Nagaland",
       image: "/images/mar1.jpeg",
       description:
-        "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
+        "Making its debut at Ekarikthin 2026, the Marathon marks a new chapter in the festival’s sporting spirit. \nThis inaugural run invites participants to challenge their endurance, embrace discipline, and experience the thrill of pushing  beyond personal limits. \nEvery stride represents determination, resilience, and the courage to begin something new. More than just a race, the first-ever Ekarikthin Marathon is a celebration of fitness, unity and the start of a lasting tradition.",
       shortDescription:
         "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
@@ -521,7 +521,7 @@ const Events = () => {
       location: "NIT Nagaland",
       image: "/images/mar1.jpeg",
       description:
-        "A fitness-focused event promoting endurance, discipline, and healthy living.\nParticipants challenge themselves physically while embracing sportsmanship.\nA run fueled by determination and energy.",
+        "Making its debut at Ekarikthin 2026, the Marathon marks a new chapter in the festival’s sporting spirit. \nThis inaugural run invites participants to challenge their endurance, embrace discipline, and experience the thrill of pushing  beyond personal limits. \nEvery stride represents determination, resilience, and the courage to begin something new. More than just a race, the first-ever Ekarikthin Marathon is a celebration of fitness, unity and the start of a lasting tradition.",
       shortDescription:
         "A test of endurance and determination, promoting fitness, discipline, and sportsmanship.",
       tag: "Sports",
@@ -552,7 +552,7 @@ const Events = () => {
       location: "NIT Football Ground",
       image: "/images/fut1.jpeg",
       description:
-        "A high-energy five-a-side football tournament played with speed and skill.\nFocuses on teamwork, quick passes, and fast gameplay.\nAn action-packed event for football lovers.",
+        "Futsal Ekarikthin 2026 brings fast-paced action and raw athleticism to the court, where skill, speed, and teamwork drive every moment of the game. \nThis tournament offers players a competitive platform to showcase sharp footwork, quick thinking, and seamless coordination in high-intensity matches.",
       shortDescription:
         "A thrilling five-a-side football tournament featuring speed, teamwork, and high-energy gameplay.",
       tag: "Sports",
@@ -588,7 +588,7 @@ const Events = () => {
       image: "/images/ART.jpeg",
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLScqVLvsMQj24HStaQY5AhMmLZFFr-0yXznVUozUG6hbDGNK9Q/viewform?usp=preview",
       description:
-        "Step into a world of color, creativity, and imagination at our Art Exhibition, where art comes alive through stunning paintings, sketches, sculptures, and mixed-media works.",
+        "The Art Exhibition at Ekarikthin 2026 provides a refined platform for artistic expression and creative excellence. \nIt features a diverse collection of artworks that highlights innovation, cultural perspectives, and technical skill.",
       shortDescription:
         "A vibrant Art Exhibition showcasing creative artworks by talented artists, celebrating imagination, expression, and visual storytelling.",
       tag: "Cultural",
