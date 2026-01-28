@@ -212,7 +212,7 @@ const Events = () => {
         outside: 1500,
       },
       teamSize: "4 + 2 members",
-      rules: ["Will be Updated Soon"],
+      rules: ["/rules/BGMI_Rules.pdf"],
       highlights: [
         "Custom rooms and fair play ensured",
         "Casting and live spectating for finals",
