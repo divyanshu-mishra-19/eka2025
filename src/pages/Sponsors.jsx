@@ -115,43 +115,43 @@ const Sponsors = () => {
         tier: 'LED'
       },
     ],
-    goldSponsors: [
+    platinumSponsors: [
       {
         id: 2,
-        name: 'Gold Sponsor',
+        name: 'Platinum Sponsor',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
-        tier: 'gold'
+        tier: 'platinum'
       },
       {
         id: 3,
+        name: 'Platinum Sponsor',
+        logo: '/sponsors/logo-placeholder.png',
+        url: '#',
+        tier: 'platinum'
+      },
+    ],
+    goldSponsors: [
+      {
+        id: 4,
         name: 'Gold Sponsor',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'gold'
       },
-    ],
-    silverSponsors: [
-      {
-        id: 4,
-        name: 'Silver Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
-        url: '#',
-        tier: 'silver'
-      },
       {
         id: 5,
-        name: 'Silver Sponsor',
+        name: 'Gold Sponsor',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
-        tier: 'silver'
+        tier: 'gold'
       },
       {
         id: 6,
-        name: 'Silver Sponsor',
+        name: 'Gold Sponsor',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
-        tier: 'silver'
+        tier: 'gold'
       },
     ]
   };
@@ -168,11 +168,11 @@ const Sponsors = () => {
         gradient = 'from-amber-400/10 to-yellow-500/10';
         badgeColor = 'from-amber-400 to-yellow-500';
         break;
-      case 'gold':
+      case 'platinum':
         gradient = 'from-yellow-300/10 to-yellow-600/10';
         badgeColor = 'from-yellow-400 to-amber-500';
         break;
-      case 'silver':
+      case 'gold':
         gradient = 'from-gray-300/10 to-gray-500/10';
         badgeColor = 'from-gray-300 to-gray-400';
         break;
@@ -559,8 +559,8 @@ const Sponsors = () => {
 
           
           
-          {/* Gold Sponsors */}
-          {sponsors.goldSponsors.length > 0 && (
+          {/* Platinum Sponsors */}
+          {sponsors.platinumSponsors.length > 0 && (
             <div className="mb-20">
               <motion.h3
                 className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-yellow-300 to-amber-500 bg-clip-text text-transparent"
@@ -568,10 +568,10 @@ const Sponsors = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                Gold Sponsors
+                Platinum Sponsors
               </motion.h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                {sponsors.goldSponsors.map((sponsor, index) => (
+                {sponsors.platinumSponsors.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -586,8 +586,8 @@ const Sponsors = () => {
             </div>
           )}
 
-          {/* Silver Sponsors */}
-          {sponsors.silverSponsors.length > 0 && (
+          {/* Gold Sponsors */}
+          {sponsors.goldSponsors.length > 0 && (
             <div className="mb-16">
               <motion.h3
                 className="text-xl md:text-2xl font-bold mb-8 text-center bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent"
@@ -595,10 +595,10 @@ const Sponsors = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                Silver Sponsors
+                Gold Sponsors
               </motion.h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {sponsors.silverSponsors.map((sponsor, index) => (
+                {sponsors.goldSponsors.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
                     initial={{ opacity: 0, y: 20 }}
