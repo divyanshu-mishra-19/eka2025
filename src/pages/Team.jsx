@@ -196,7 +196,7 @@ const culturalSecretaries = [
   {
     name: "Khrieto Rhutso",
     role: "Cultural Secretary",
-    image: "/images/khrieto.jpeg",
+    image: "/images/khr1.jpeg",
     bio: "Manages cultural programs and events.",
   }
 ];
