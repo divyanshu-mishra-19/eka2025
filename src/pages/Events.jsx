@@ -573,6 +573,7 @@ const Events = () => {
         "Semi Finalist : ₹5000 (Each)",
         "Best Player : ₹2000",
         "Best Keeper : ₹2000",
+        "Important : If the Total Number of Participants will be less than 20 but not less than 15 , Then Prize will be decreased to \n30K (Winner) and 20K (Runner Up),
         "On Spot Registration Available on 17 Feb 2026",
         "Fast-paced small-sided football",
         "Ideal for competitive teams",
