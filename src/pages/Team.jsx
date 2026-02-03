@@ -212,7 +212,7 @@ const financialSecretaries = [
   {
     name: "Vikhosano Rino",
     role: "Financial Secretary",
-    image: "/images/vivy.jpeg",
+    image: "/images/vivi.jpeg",
     bio: "Oversees financial management and expenditures.",
   }
 ];
