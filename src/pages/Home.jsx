@@ -180,7 +180,7 @@ export default function Home() {
 
       <div className="relative z-10 pt-24 sm:pt-32 md:pt-36">
         {/* ================= HERO ================= */}
-        <"section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pb-6 sm:pb-10"">
+        <"section className="min-h-[78vh] sm:min-h-[85vh] flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-6 relative z-10 pb-6 sm:pb-10">
           {/* BADGE */}
           <motion.div
             className="px-3 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl rounded-full border border-cyan-400/30 shadow-lg shadow-cyan-500/25 text-white text-sm sm:text-base font-semibold mb-6 sm:mb-8 flex items-center gap-2 mx-2 w-auto max-w-[95vw] sm:max-w-none"
