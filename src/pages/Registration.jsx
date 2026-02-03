@@ -401,7 +401,7 @@ const Registration = () => {
                 <p className="text-white">{formData.phone}</p>
               </div>
               <div>
-                <p className="text-gray-400 text-sm">College</p>
+                <p className="text-gray-400 text-sm">College / Address</p>
                 <p className="text-white">{formData.college || 'Not specified'}</p>
               </div>
               <div>
@@ -492,7 +492,7 @@ const Registration = () => {
             />
             <input
               name="college"
-              placeholder="College"
+              placeholder="College / Address"
               value={formData.college}
               onChange={handleChange}
               className="w-full p-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
