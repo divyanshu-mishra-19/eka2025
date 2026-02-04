@@ -54,13 +54,13 @@ const Registration = () => {
     '5': { 
       name: 'BGMI', 
       inside: 600, 
-      outside: 1500,
+      outside: 1200,
       teamSize: '4 members'
     },
     '6': { 
       name: 'MLBB', 
       inside: 750, 
-      outside: 2000,
+      outside: 1500,
       teamSize: '5 members'
     },
     '7': { 
