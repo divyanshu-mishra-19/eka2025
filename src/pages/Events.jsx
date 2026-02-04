@@ -234,8 +234,8 @@ const Events = () => {
       tag: "Gaming",
       prizePool: 40000,
       prizeBreakup: {
-        first: 24000,
-        second: 16000,
+        first: 28000,
+        second: 12000,
       },
       registrationFee: {
         inside: 750,
