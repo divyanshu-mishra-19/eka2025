@@ -194,7 +194,7 @@ const Events = () => {
       id: 5,
       title: "BGMI",
       date: "19 February 2026",
-      time: "09:00 AM Onwards",
+      time: "08:30 AM Onwards",
       location: "NIT Nagaland",
       image: "/images/bgmi1.png",
       description:
@@ -209,7 +209,7 @@ const Events = () => {
       },
       registrationFee: {
         inside: 600,
-        outside: 1500,
+        outside: 1200,
       },
       teamSize: "4 + 2 members",
       rules: ["/rules/BGMI_Rules.pdf"],
@@ -224,7 +224,7 @@ const Events = () => {
       id: 6,
       title: "MLBB",
       date: "19 February 2026",
-      time: "09:00 A.M.",
+      time: "02:30 P.M.",
       location: "NIT Nagaland",
       image: "/images/mlbb.jpg",
       description:
@@ -239,7 +239,7 @@ const Events = () => {
       },
       registrationFee: {
         inside: 750,
-        outside: 2000,
+        outside: 1500,
       },
       teamSize: "5 members",
       rules: ["/rules/mlbb.pdf"],
@@ -573,7 +573,6 @@ const Events = () => {
         "Semi Finalist : ₹5000 (Each)",
         "Best Player : ₹2000",
         "Best Keeper : ₹2000",
-        "Important : If the Total Number of Participants will be less than 20 but not less than 15 , Then Prize will be decreased to \n30K (Winner) and 20K (Runner Up)",
         "On Spot Registration Available on 17 Feb 2026",
         "Fast-paced small-sided football",
         "Ideal for competitive teams",
