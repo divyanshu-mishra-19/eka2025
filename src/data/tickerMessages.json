@@ -1,24 +1,31 @@
 [
-  {
+    {
     "id": 1,
+    "type": "IMPORTANT",
+    "color": "amber-400",
+    "text": "Registration Link for Accomodation",
+    "link": "https://forms.gle/x3s6aTWYjxZ9XoTS6"
+  },
+  {
+    "id": 2,
     "type": "IMPORTANT",
     "color": "amber-400",
     "text": "Wishing You all a Happy New Year"
   },
   {
-    "id": 2,
+    "id": 3,
     "type": "SPOTLIGHT",
     "color": "red-400",
     "text": "Ekarikthin 2026 Official Launch of Ekarikthin 2026 Website"
   },
   {
-    "id": 3,
+    "id": 4,
     "type": "NEW",
     "color": "green-400",
     "text": "Exciting new events and competitions added to Ekarikthin 2026. Check out the events page for details!"
   },
   {
-    "id": 4,
+    "id": 5,
     "type": "UPDATE",
     "color": "purple-400",
     "text": "New Events and competitions added to Ekarikthin 2026. Check out the events page for details!"
