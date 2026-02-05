@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from './context/ThemeContext';
@@ -56,6 +56,7 @@ const ProtectedRoute = ({ isAuthenticated, redirectPath = '/admin/login', childr
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -89,20 +90,30 @@ function AppContent() {
 
         {/* Ticker - Only show on homepage */}
         {location.pathname === '/' && (
-          <div className="fixed top-16 left-0 right-0 z-40 w-full bg-black/80 backdrop-blur-sm border-t border-b border-white/10 overflow-hidden">
+          <div className="fixed top-16 left-0 right-0 z-40 w-full bg-gradient-to-r from-black/30 via-black/20 to-black/30 backdrop-blur-md border-t border-b border-white/5 overflow-hidden shadow-lg">
             <div className="ticker-container">
               <div className="ticker-wrapper">
                 {/* Duplicate the messages for seamless looping */}
                 {[...tickerMessages, ...tickerMessages].map((message, index) => (
                   <div
                     key={`ticker-${message.id}-${index}`}
-                    className="ticker-item"
+                    className={`ticker-item group ${message.link ? 'cursor-pointer hover:bg-white/5 transition-all duration-200' : ''}`}
+                    onClick={(e) => {
+                      if (!message.link) return;
+                      e.preventDefault();
+                      if (message.external) {
+                        window.open(message.link, '_blank', 'noopener,noreferrer');
+                      } else {
+                        navigate(message.link);
+                      }
+                    }}
                   >
-                    <span className={`bg-${message.color} text-black text-[10px] font-bold px-3 py-1 rounded-full mr-3`}>
+                    <span className={`bg-${message.color} text-black text-[10px] font-bold px-3 py-1 rounded-full mr-3 shadow-sm`}>
                       {message.type}
                     </span>
-                    <span className="text-white text-sm font-medium">
+                    <span className="text-white/90 text-sm font-medium group-hover:text-white transition-colors">
                       {message.text}
+                      {message.link && <span className="ml-2 text-xs text-gray-400 group-hover:text-blue-300 transition-colors">(click to view)</span>}
                     </span>
                   </div>
                 ))}
