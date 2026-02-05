@@ -16,6 +16,11 @@ const Footer = () => {
 
   const organizationLinks = [
     {
+      name: 'Accomodation Form',
+      url: 'https://forms.gle/x3s6aTWYjxZ9XoTS6'
+      icon: Building,
+    },
+    {
       name: 'Coding Club NITN',
       url: 'https://www.coding-club-nitn.tech/',
       icon: Code,
