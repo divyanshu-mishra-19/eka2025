@@ -16,11 +16,6 @@ const Footer = () => {
 
   const organizationLinks = [
     {
-      name: 'Admin Login',
-      url: '/admin/login',
-      icon: Code,
-    },
-    {
       name: 'Coding Club NITN',
       url: 'https://www.coding-club-nitn.tech/',
       icon: Code,
