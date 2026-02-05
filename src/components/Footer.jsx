@@ -18,7 +18,7 @@ const Footer = () => {
     {
       name: 'Accomodation Form',
       url: 'https://forms.gle/x3s6aTWYjxZ9XoTS6'
-      icon: Building2 ,
+      icon: Building2,
     },
     {
       name: 'Coding Club NITN',
