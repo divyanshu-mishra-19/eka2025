@@ -17,7 +17,7 @@ const Footer = () => {
   const organizationLinks = [
     {
       name: 'Accomodation Form',
-      url: 'https://forms.gle/x3s6aTWYjxZ9XoTS6',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLSdHbkljZdaHrxXVM2QxbAc3p0aKE4mr_QDD0v4ItLQ2Hd_0pA/viewform',
       icon: Building2,
     },
     {
