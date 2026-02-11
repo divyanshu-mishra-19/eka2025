@@ -153,6 +153,45 @@ const Sponsors = () => {
         url: '#',
         tier: 'gold'
       },
+    ],
+    collaborationSponsors: [
+      {
+        id: 1,
+        name: 'JJ Arena',
+        logo: '/images/jj.jpg',
+        url: '#',
+        tier: 'gold'
+      },
+      {
+        id: 5,
+        name: 'Ohito Sumi',
+        logo: '/sponsors/logo-placeholder.png',
+        url: '#',
+        tier: 'gold'
+      },
+    ],
+    InkindSponsors: [
+      {
+        id: 1,
+        name: 'Daba Arcade',
+        logo: '/images/da.jpg',
+        url: '#',
+        tier: 'gold'
+      },
+      {
+        id: 2,
+        name: 'Nagaland Running Club',
+        logo: '/images/nrc.jpg',
+        url: '#',
+        tier: 'gold'
+      },
+      {
+        id: 3,
+        name: 'Naga Jersey Club',
+        logo: '/images/njh.jpg',
+        url: '#',
+        tier: 'gold'
+      },
     ]
   };
 
@@ -518,6 +557,110 @@ const Sponsors = () => {
               </motion.h3>
               <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
                 {sponsors.ledPartner.map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex justify-center"
+                  >
+                    <div className="w-64 h-64 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/10 to-sky-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative z-10 h-full flex flex-col">
+                        <div className="flex-grow flex items-center justify-center mb-4 h-full">
+                          <img
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain p-4"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      {sponsor.url && (
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 z-20"
+                          aria-label={`Visit ${sponsor.name} website`}
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+           {/* collaboration Partner */}
+          {sponsors.collaborationSponsor.length > 0 && (
+            <div className="mb-20">
+              <motion.h3
+                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-sky-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                Collaboration & Partners
+              </motion.h3>
+              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+                {sponsors.collaborationSponsors.map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex justify-center"
+                  >
+                    <div className="w-64 h-64 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/10 to-sky-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative z-10 h-full flex flex-col">
+                        <div className="flex-grow flex items-center justify-center mb-4 h-full">
+                          <img
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain p-4"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      {sponsor.url && (
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 z-20"
+                          aria-label={`Visit ${sponsor.name} website`}
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Inkind Partner */}
+          {sponsors.InkindSponsors.length > 0 && (
+            <div className="mb-20">
+              <motion.h3
+                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-sky-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                Inkind Sponsors
+              </motion.h3>
+              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+                {sponsors.InkindSponsors.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
                     initial={{ opacity: 0, scale: 0.95 }}
