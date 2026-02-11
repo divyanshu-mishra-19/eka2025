@@ -77,7 +77,7 @@ const Sponsors = () => {
         tier: 'title'
       },
       {
-        id: 1,
+        id: 3,
         name: 'Melody Centre',
         logo: '/images/mc.jpg',
         url: '#',
@@ -147,7 +147,7 @@ const Sponsors = () => {
         tier: 'gold'
       },
       {
-        id: 5,
+        id: 2,
         name: 'Ohito Sumi',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
@@ -163,7 +163,7 @@ const Sponsors = () => {
         tier: 'gold'
       },
       {
-        id: 5,
+        id: 2,
         name: 'Ohito Sumi',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
