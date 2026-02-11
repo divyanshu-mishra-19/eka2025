@@ -153,13 +153,6 @@ const Sponsors = () => {
         url: '#',
         tier: 'gold'
       },
-      {
-        id: 6,
-        name: 'Gold Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
-        url: '#',
-        tier: 'gold'
-      },
     ]
   };
 
