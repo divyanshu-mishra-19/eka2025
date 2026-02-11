@@ -198,82 +198,175 @@ const Sponsors = () => {
   // Replace with your actual Google Form URL
   const sponsorFormUrl = '#';
 
-  const renderSponsorCard = (sponsor) => {
-    let gradient = '';
-    let badgeColor = '';
+  const getSponsorStyle = (tier) => {
+    const styles = {
+      title: {
+        gradient: 'from-amber-400/10 to-yellow-500/10',
+        badgeColor: 'from-amber-400 to-yellow-500',
+        textGradient: 'from-amber-300 to-yellow-500',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      },
+      platinum: {
+        gradient: 'from-yellow-300/10 to-yellow-600/10',
+        badgeColor: 'from-yellow-400 to-amber-500',
+        textGradient: 'from-yellow-400 to-amber-500',
+        containerClass: 'max-w-5xl',
+        gridCols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2',
+        cardClass: 'h-56'
+      },
+      gold: {
+        gradient: 'from-gray-300/10 to-gray-500/10',
+        badgeColor: 'from-gray-300 to-gray-400',
+        textGradient: 'from-gray-300 to-gray-400',
+        containerClass: 'max-w-6xl',
+        gridCols: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+        cardClass: 'h-52'
+      },
+      printing: {
+        gradient: 'from-blue-200/10 to-blue-400/10',
+        badgeColor: 'from-blue-400 to-blue-600',
+        textGradient: 'from-blue-400 to-blue-600',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      },
+      hydration: {
+        gradient: 'from-cyan-200/10 to-sky-400/10',
+        badgeColor: 'from-cyan-400 to-sky-600',
+        textGradient: 'from-cyan-400 to-sky-600',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      },
+      Sound: {
+        gradient: 'from-purple-200/10 to-indigo-400/10',
+        badgeColor: 'from-purple-400 to-indigo-600',
+        textGradient: 'from-purple-400 to-indigo-600',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      },
+      Lighting: {
+        gradient: 'from-yellow-200/10 to-amber-400/10',
+        badgeColor: 'from-yellow-400 to-amber-500',
+        textGradient: 'from-yellow-400 to-amber-500',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      },
+      LED: {
+        gradient: 'from-green-200/10 to-emerald-400/10',
+        badgeColor: 'from-green-400 to-emerald-600',
+        textGradient: 'from-green-400 to-emerald-600',
+        containerClass: 'max-w-3xl',
+        gridCols: 'grid-cols-1',
+        cardClass: 'h-64'
+      }
+    };
 
-    switch (sponsor.tier) {
-      case 'title':
-        gradient = 'from-amber-400/10 to-yellow-500/10';
-        badgeColor = 'from-amber-400 to-yellow-500';
-        break;
-      case 'platinum':
-        gradient = 'from-yellow-300/10 to-yellow-600/10';
-        badgeColor = 'from-yellow-400 to-amber-500';
-        break;
-      case 'gold':
-        gradient = 'from-gray-300/10 to-gray-500/10';
-        badgeColor = 'from-gray-300 to-gray-400';
-        break;
-      case 'printing':
-        gradient = 'from-blue-200/10 to-blue-400/10';
-        badgeColor = 'from-blue-400 to-blue-600';
-        break;
-      case 'hydration':
-        gradient = 'from-cyan-200/10 to-sky-400/10';
-        badgeColor = 'from-cyan-400 to-sky-600';
-        break;
-       case 'Sound':
-        gradient = 'from-cyan-200/10 to-sky-400/10';
-        badgeColor = 'from-cyan-400 to-sky-600';
-        break;
-       case 'Lighting':
-        gradient = 'from-cyan-200/10 to-sky-400/10';
-        badgeColor = 'from-cyan-400 to-sky-600';
-        break;
-       case 'LED':
-        gradient = 'from-cyan-200/10 to-sky-400/10';
-        badgeColor = 'from-cyan-400 to-sky-600';
-        break;
-      default:
-        gradient = 'from-cyan-500/10 to-blue-500/10';
-        badgeColor = 'from-cyan-400 to-blue-500';
-    }
+    return styles[tier] || {
+      gradient: 'from-cyan-500/10 to-blue-500/10',
+      badgeColor: 'from-cyan-400 to-blue-500',
+      textGradient: 'from-cyan-400 to-blue-500',
+      containerClass: 'max-w-3xl',
+      gridCols: 'grid-cols-1',
+      cardClass: 'h-56'
+    };
+  };
+
+  const renderSponsorCard = (sponsor) => {
+    const { gradient, badgeColor, cardClass } = getSponsorStyle(sponsor.tier);
 
     return (
-      <div className={`relative group bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-${badgeColor.split(' ')[0].split('-')[1]}-500/20`}>
-        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-        <div className="relative z-10 h-full flex flex-col">
-          <div className="flex-grow flex items-center justify-center mb-4 h-40">
-            <img
-              src={sponsor.logo}
-              alt={sponsor.name}
-              className="max-h-full max-w-full object-contain"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://via.placeholder.com/300x150/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
-              }}
-            />
-          </div>
-          <div className="mt-auto">
-            <h4 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">{sponsor.name}</h4>
-            <div className="flex justify-center">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${badgeColor} text-white`}>
-                <Star className="w-3 h-3 mr-1" />
-                {sponsor.tier.charAt(0).toUpperCase() + sponsor.tier.slice(1)} Tier
-              </span>
+        <div className={`relative group bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg ${cardClass} flex flex-col`}>
+          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+          <div className="relative z-10 h-full flex flex-col">
+            <div className="flex-grow flex items-center justify-center mb-4">
+              <div className="w-full h-32 md:h-40 flex items-center justify-center p-2">
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="max-h-full max-w-full object-contain"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://via.placeholder.com/300x150/1a1a2e/e6e6e6?text=${encodeURIComponent(sponsor.name)}`;
+                  }}
+                />
+              </div>
+            </div>
+            <div className="mt-auto">
+              <h4 className="text-lg font-bold text-center text-gray-900 dark:text-white mb-2 line-clamp-2 h-12 flex items-center justify-center">
+                {sponsor.name}
+              </h4>
+              <div className="flex justify-center">
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${badgeColor} text-white`}>
+                  <Star className="w-3 h-3 mr-1 flex-shrink-0" />
+                  <span className="truncate">
+                    {sponsor.tier === 'title' ? 'Title Sponsor' : 
+                     sponsor.tier === 'printing' ? 'Printing Partner' :
+                     sponsor.tier === 'hydration' ? 'Hydration Partner' :
+                     sponsor.tier === 'Sound' ? 'Sound Partner' :
+                     sponsor.tier === 'Lighting' ? 'Lighting Partner' :
+                     sponsor.tier === 'LED' ? 'LED Partner' :
+                     `${sponsor.tier.charAt(0).toUpperCase() + sponsor.tier.slice(1)} ${sponsor.tier === 'gold' ? 'Sponsor' : 'Partner'}`}
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
+          {sponsor.url && (
+            <a
+              href={sponsor.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 z-20"
+              aria-label={`Visit ${sponsor.name} website`}
+            />
+          )}
         </div>
-        {sponsor.url && (
-          <a
-            href={sponsor.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0 z-20"
-            aria-label={`Visit ${sponsor.name} website`}
-          />
-        )}
+    );
+  };
+
+  const renderSponsorSection = (title, sponsors, tier) => {
+    if (!sponsors || sponsors.length === 0) return null;
+    
+    const { textGradient, containerClass, gridCols } = getSponsorStyle(tier);
+    const displayTitle = tier === 'title' ? 'Title Sponsor' : 
+                        tier === 'printing' ? 'Printing Partner' :
+                        tier === 'hydration' ? 'Hydration Partner' :
+                        tier === 'Sound' ? 'Sound Partner' :
+                        tier === 'Lighting' ? 'Lighting Partner' :
+                        tier === 'LED' ? 'LED Partner' :
+                        tier === 'platinum' ? 'Platinum Sponsors' :
+                        tier === 'gold' ? 'Gold Sponsors' :
+                        tier === 'collaboration' ? 'Collaboration Partners' :
+                        tier === 'inkind' ? 'In-Kind Sponsors' : title;
+
+    return (
+      <div className="mb-16">
+        <motion.h3
+          className={`text-2xl md:text-4xl font-bold mb-10 text-center bg-gradient-to-r ${textGradient} bg-clip-text text-transparent`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {displayTitle}
+        </motion.h3>
+        <div className={`grid ${gridCols} gap-6 mx-auto ${containerClass}`}>
+          {sponsors.map((sponsor, index) => (
+            <motion.div
+              key={sponsor.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              {renderSponsorCard({ ...sponsor, tier })}
+            </motion.div>
+          ))}
+        </div>
       </div>
     );
   };
@@ -283,7 +376,7 @@ const Sponsors = () => {
       <CinematicBackground />
 
       {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
@@ -305,99 +398,37 @@ const Sponsors = () => {
       </section>
 
       {/* Sponsors Grid */}
-      <section className="relative z-10 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative z-10 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-16">
           {/* Title Sponsor */}
-          {sponsors.titleSponsor.length > 0 && (
-            <div className="mb-20">
-              <motion.h3
-                className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-300 to-yellow-500 bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                Title Sponsor
-              </motion.h3>
-              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
-                {sponsors.titleSponsor.map((sponsor, index) => (
-                  <motion.div
-                    key={sponsor.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {renderSponsorCard(sponsor)}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
-
+          {renderSponsorSection('Title Sponsor', sponsors.titleSponsor, 'title')}
+          
+          {/* Platinum Sponsors */}
+          {renderSponsorSection('Platinum Sponsors', sponsors.platinumSponsors, 'platinum')}
+          
+          {/* Gold Sponsors */}
+          {renderSponsorSection('Gold Sponsors', sponsors.goldSponsors, 'gold')}
+          
           {/* Printing Partner */}
-          {sponsors.printingPartner.length > 0 && (
-            <div className="mb-20">
-              <motion.h3
-                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                Printing Partner
-              </motion.h3>
-              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
-                {sponsors.printingPartner.map((sponsor, index) => (
-                  <motion.div
-                    key={sponsor.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex justify-center"
-                  >
-                    <div className="w-64 h-64 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/10 p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/10 to-blue-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="relative z-10 h-full flex flex-col">
-                        <div className="flex-grow flex items-center justify-center mb-4 h-full">
-                          <img
-                            src={sponsor.logo}
-                            alt={sponsor.name}
-                            className="max-h-full max-w-full object-contain p-4"
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/e6e6e6?text=' + encodeURIComponent(sponsor.name);
-                            }}
-                          />
-                        </div>
-                      </div>
-                      {sponsor.url && (
-                        <a
-                          href={sponsor.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute inset-0 z-20"
-                          aria-label={`Visit ${sponsor.name} website`}
-                        />
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
-
+          {renderSponsorSection('Printing Partner', sponsors.printingPartner, 'printing')}
+          
           {/* Hydration Partner */}
-          {sponsors.hydrationPartner.length > 0 && (
-            <div className="mb-20">
-              <motion.h3
-                className="text-2xl md:text-3xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-sky-600 bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                Hydration Partner
-              </motion.h3>
-              <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+          {renderSponsorSection('Hydration Partner', sponsors.hydrationPartner, 'hydration')}
+          
+          {/* Sound Partner */}
+          {renderSponsorSection('Sound Partner', sponsors.soundPartner, 'Sound')}
+          
+          {/* Lighting Partner */}
+          {renderSponsorSection('Lighting Partner', sponsors.lightingPartner, 'Lighting')}
+          
+          {/* LED Partner */}
+          {renderSponsorSection('LED Partner', sponsors.ledPartner, 'LED')}
+          
+          {/* Collaboration Sponsors */}
+          {renderSponsorSection('Collaboration Partners', sponsors.collaborationSponsors, 'collaboration')}
+          
+          {/* In-Kind Sponsors */}
+          {renderSponsorSection('In-Kind Sponsors', sponsors.InkindSponsors, 'inkind')}
                 {sponsors.hydrationPartner.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
@@ -729,8 +760,8 @@ const Sponsors = () => {
             </div>
           )}
 
-          {/* Gold Sponsors */}
-          {sponsors.goldSponsors.length > 0 && (
+          {/* Title Sponsors */}
+          {sponsors.titleSponsor && sponsors.titleSponsor.length > 0 && (
             <div className="mb-16">
               <motion.h3
                 className="text-xl md:text-2xl font-bold mb-8 text-center bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent"
@@ -738,10 +769,10 @@ const Sponsors = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                Gold Sponsors
+                Title Sponsors
               </motion.h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {sponsors.goldSponsors.map((sponsor, index) => (
+                {sponsors.titleSponsor.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -755,8 +786,7 @@ const Sponsors = () => {
               </div>
             </div>
           )}
-        </div>
-      </section>
+        
 
       {/* CTA Section */}
       <section className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
@@ -811,8 +841,7 @@ const Sponsors = () => {
           </motion.div>
         </div>
       </section>
-    </div>
-  );
-};
+  
+
 
 export default Sponsors;
