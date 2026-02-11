@@ -96,7 +96,13 @@ const Sponsors = () => {
           {title}
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div
+          className={`grid gap-10 mx-auto ${
+            list.length === 1
+              ? "grid-cols-1 justify-items-center max-w-sm"
+              : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl"
+          }`}
+        >
           {list.map((sponsor, index) => (
             <motion.div
               key={sponsor.id}
@@ -106,7 +112,6 @@ const Sponsors = () => {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              {/* Logo only (no box) */}
               <img
                 src={sponsor.logo}
                 alt={sponsor.name}
@@ -149,7 +154,7 @@ const Sponsors = () => {
         </p>
       </section>
 
-      {/* Sponsors */}
+      {/* Sponsors Sections */}
       <section className="px-4">
         {renderSection("Title Sponsors", sponsors.titleSponsor)}
         {renderSection("Platinum Sponsors", sponsors.platinumSponsors)}
