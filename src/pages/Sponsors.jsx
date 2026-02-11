@@ -64,8 +64,22 @@ const Sponsors = () => {
     titleSponsor: [
       {
         id: 1,
-        name: 'Title Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
+        name: 'Tawa Restaurant',
+        logo: '/images/tr.jpeg',
+        url: '#',
+        tier: 'title'
+      },
+      {
+        id: 2,
+        name: 'Progressive Motors',
+        logo: '/images/pm.jpg',
+        url: '#',
+        tier: 'title'
+      },
+      {
+        id: 1,
+        name: 'Melody Centre',
+        logo: '/images/mc.jpg',
         url: '#',
         tier: 'title'
       },
