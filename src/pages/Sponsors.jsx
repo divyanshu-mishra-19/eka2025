@@ -131,31 +131,24 @@ const Sponsors = () => {
     ],
     platinumSponsors: [
       {
-        id: 2,
-        name: 'Platinum Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
-        url: '#',
-        tier: 'platinum'
-      },
-      {
-        id: 3,
-        name: 'Platinum Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
+        id: 1,
+        name: 'Zone Niathu',
+        logo: '/images/zn.png',
         url: '#',
         tier: 'platinum'
       },
     ],
     goldSponsors: [
       {
-        id: 4,
-        name: 'Gold Sponsor',
-        logo: '/sponsors/logo-placeholder.png',
+        id: 1,
+        name: 'JJ Arena',
+        logo: '/images/jj.jpg',
         url: '#',
         tier: 'gold'
       },
       {
         id: 5,
-        name: 'Gold Sponsor',
+        name: 'Ohito Sumi',
         logo: '/sponsors/logo-placeholder.png',
         url: '#',
         tier: 'gold'
