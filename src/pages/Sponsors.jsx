@@ -260,7 +260,7 @@ const Sponsors = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2025 possible.
+            We're grateful to our amazing sponsors for their generous support in making Ekarikthin 2026 possible.
           </motion.p>
         </div>
       </section>
