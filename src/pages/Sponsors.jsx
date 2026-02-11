@@ -72,7 +72,8 @@ const Sponsors = () => {
       { id: 1, name: "LED Partner", logo: "/images/loki.jpeg" }
     ],
     collaborationSponsors: [
-      { id: 1, name: "JJ Arena", logo: "/images/jj.jpg" }
+      { id: 1, name: "JJ Arena", logo: "/images/jj.jpg" },
+      { id: 2, name: "Ohito Sumi", logo: "/sponsors/logo-placeholder.png" }
     ],
     inkindSponsors: [
       { id: 1, name: "Daba Arcade", logo: "/images/da.jpg" },
@@ -100,6 +101,8 @@ const Sponsors = () => {
           className={`grid gap-10 mx-auto ${
             list.length === 1
               ? "grid-cols-1 justify-items-center max-w-sm"
+              : list.length === 2
+              ? "grid-cols-1 sm:grid-cols-2 justify-items-center max-w-2xl"
               : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl"
           }`}
         >
