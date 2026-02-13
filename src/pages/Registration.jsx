@@ -6,7 +6,7 @@ import { generateUserId } from "../utils/generateId";
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with your public key
-emailjs.init('jbcSCSP6NK0Na1BXw'); // Replace with your EmailJS public key
+emailjs.init('0USUATog8baAe23ye'); // Replace with your EmailJS public key
 
 const Registration = () => {
   const [searchParams] = useSearchParams();
