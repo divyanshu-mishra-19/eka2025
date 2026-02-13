@@ -226,7 +226,7 @@ const Registration = () => {
       const emailData = {
         service_id: 'service_5rp2rdw',
         template_id: 'template_m5jp9zs',
-        user_id: 'jbcSCSP6NK0Na1BXw',
+        user_id: '0USUATog8baAe23ye',
         template_params: {
           to_email: formData.email.trim(),
           to_name: formData.name.trim(),
