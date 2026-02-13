@@ -226,7 +226,7 @@ const Events = () => {
       date: "19 February 2026",
       time: "02:30 P.M.",
       location: "NIT Nagaland",
-      image: "/images/mlbb.jpg",
+      image: "/images/mlbb_n.jpeg",
       description:
         "Mobile Legends: Bang Bang at Ekarikthin 2026 brings the thrill of competitive esports to the forefront, where strategy, teamwork, and quick decision-making define victory. \nThis event provides a platform for gamers to showcase their skills, master tactical gameplay, and compete in intense battles that test coordination and resilience.",
       shortDescription:
