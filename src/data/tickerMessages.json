@@ -29,5 +29,11 @@
     "type": "UPDATE",
     "color": "purple-400",
     "text": "New Events and competitions added to Ekarikthin 2026. Check out the events page for details!"
-  }
+  },
+    {
+    "id": 6,
+    "type": "UPDATE",
+    "color": "purple-400",
+    "text": "Registration for All Events to be open by 14 February till 23:59 P.M. Strictly . "
+  },
 ]
