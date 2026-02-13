@@ -6,7 +6,7 @@ import { generateUserId } from "../utils/generateId";
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with your public key
-emailjs.init('FFyoZMeqTVWPiNlqK'); // Replace with your EmailJS public key
+emailjs.init('jbcSCSP6NK0Na1BXw'); // Replace with your EmailJS public key
 
 const Registration = () => {
   const [searchParams] = useSearchParams();
@@ -224,9 +224,9 @@ const Registration = () => {
 
       // Prepare email template parameters
       const emailData = {
-        service_id: 'service_0b6q16h',
-        template_id: 'template_nwz4kjh',
-        user_id: 'FFyoZMeqTVWPiNlqK',
+        service_id: 'service_5rp2rdw',
+        template_id: 'template_m5jp9zs',
+        user_id: 'jbcSCSP6NK0Na1BXw',
         template_params: {
           to_email: formData.email.trim(),
           to_name: formData.name.trim(),
