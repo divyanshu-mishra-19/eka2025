@@ -48,7 +48,7 @@ const Sponsors = () => {
       { id: 1, name: "Tawa Restaurant", logo: "/images/tr.jpeg" },
       { id: 2, name: "Progressive Motors", logo: "/images/pm.jpg" },
       { id: 3, name: "Melody Centre", logo: "/images/mc.jpg" },
-     // { id: 4, name: "Swarna Bhoomi", logo: "/images/swarna.jpg" }
+      { id: 4, name: "Swarna Bhoomi", logo: "/images/swarna.jpg" }
     ],
     platinumSponsors: [
       { id: 1, name: "Zone Niathu", logo: "/images/zn.png" }
@@ -104,6 +104,8 @@ const Sponsors = () => {
               ? "grid-cols-1 justify-items-center max-w-sm"
               : list.length === 2
               ? "grid-cols-1 sm:grid-cols-2 justify-items-center max-w-2xl"
+              : list.length === 4
+              ? "grid-cols-1 sm:grid-cols-2 justify-items-center max-w-3xl"
               : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl"
           }`}
         >
