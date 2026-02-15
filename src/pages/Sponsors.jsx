@@ -47,7 +47,8 @@ const Sponsors = () => {
     titleSponsor: [
       { id: 1, name: "Tawa Restaurant", logo: "/images/tr.jpeg" },
       { id: 2, name: "Progressive Motors", logo: "/images/pm.jpg" },
-      { id: 3, name: "Melody Centre", logo: "/images/mc.jpg" }
+      { id: 3, name: "Melody Centre", logo: "/images/mc.jpg" },
+     // { id: 4, name: "Swarna Bhoomi", logo: "/images/swarna.jpg" }
     ],
     platinumSponsors: [
       { id: 1, name: "Zone Niathu", logo: "/images/zn.png" }
