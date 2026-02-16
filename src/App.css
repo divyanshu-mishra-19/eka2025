@@ -26,7 +26,7 @@
   white-space: nowrap;
   will-change: transform;
   padding: 0.5rem 0;
-  animation: ticker-scroll 60s linear infinite;
+  animation: ticker-scroll 70s linear infinite;
 }
 
 /* Individual ticker item */
