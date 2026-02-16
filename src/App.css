@@ -22,7 +22,7 @@
 
 /* Ticker content wrapper */
 .ticker-wrapper {
-  display: flex;
+  display: inline-flex;
   white-space: nowrap;
   will-change: transform;
   padding: 0.5rem 0;
